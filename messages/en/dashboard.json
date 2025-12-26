@@ -1,6 +1,6 @@
 {
   "hero": {
-    "badge": "My SOTA Control",
+    "badge": "My SotA Control",
     "greeting": "Welcome back,",
     "fallbackName": "Operator",
     "description": "Monitor your subscription status, track releases you've touched, and keep your profile aligned with the latest art drops.",
@@ -11,7 +11,7 @@
     "title": "Membership Status",
     "premiumLabel": "Premium member",
     "freeLabel": "Free account",
-    "premiumDescription": "You have full access to every SOTA release and activation playbook.",
+    "premiumDescription": "You have full access to every SotA release and activation playbook.",
     "freeDescription": "Upgrade to unlock premium releases, advanced playbooks, and community drops.",
     "memberSince": "Member since",
     "unknown": "Unknown",
@@ -31,7 +31,7 @@
   },
   "activityCard": {
     "title": "Recent activity",
-    "description": "Your latest interactions across SOTA",
+    "description": "Your latest interactions across SotA",
     "empty": "No recent activity yet — explore a line to get started."
   }
 }

@@ -1,9 +1,9 @@
 {
   "hero": {
-    "eyebrow": "Dentro de SOTA",
+    "eyebrow": "Dentro de SotA",
     "title": "SotA Research convierte la investigación de frontera en apalancamiento operativo de estado del arte.",
     "description": "Mapeamos las señales, curamos el arte y entregamos lanzamientos listos para activar para que los equipos desplieguen lo que viene, no lo que fue relevante el trimestre pasado.",
-    "primaryCta": "Explorar líneas SOTA",
+    "primaryCta": "Explorar líneas SotA",
     "secondaryCta": "Ver lanzamientos recientes"
   },
   "principles": [
@@ -42,7 +42,7 @@
   ],
   "how": {
     "title": "Cómo trabajamos",
-    "intro": "El colectivo SotA Research combina experiencia en investigación, producto y operaciones. Cada lanzamiento SOTA atraviesa un pipeline editorial que une insights cualitativos con resultados medibles.",
+    "intro": "El colectivo SotA Research combina experiencia en investigación, producto y operaciones. Cada lanzamiento SotA atraviesa un pipeline editorial que une insights cualitativos con resultados medibles.",
     "body": "Nuestra hoja de ruta se construye con la comunidad: detectamos arte emergente, co-diseñamos líneas con socios y sostenemos ciclos de actualización para que la inteligencia nunca se estanque.",
     "pillars": {
       "title": "Pilares de impacto",
@@ -60,8 +60,8 @@
   },
   "cta": {
     "title": "¿Listo para construir con el arte?",
-    "description": "Únete a la plataforma SOTA, explora líneas activas y colabora con nosotros en futuros lanzamientos.",
+    "description": "Únete a la plataforma SotA, explora líneas activas y colabora con nosotros en futuros lanzamientos.",
     "primary": "Crear una cuenta gratuita",
-    "secondary": "Explorar líneas SOTA"
+    "secondary": "Explorar líneas SotA"
   }
 }

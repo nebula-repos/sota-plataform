@@ -2,11 +2,11 @@
   "gate": {
     "back": "Volver a {lineTitle}",
     "eyebrow": "Acceso requerido",
-    "title": "Desbloquea este lanzamiento SOTA para mantenerte alineado con el arte.",
+    "title": "Desbloquea este lanzamiento SotA para mantenerte alineado con el arte.",
     "description": "Suscribirte a {lineTitle} te da acceso completo al flujo de lanzamientos, futuros drops y playbooks de activación para tu equipo.",
     "advantage": {
-      "title": "Ventaja SOTA",
-      "body": "Accede a inteligencia curada, frameworks anotados y la bóveda de lanzamientos SOTA de esta línea.",
+      "title": "Ventaja SotA",
+      "body": "Accede a inteligencia curada, frameworks anotados y la bóveda de lanzamientos SotA de esta línea.",
       "live": {
         "title": "Señales en vivo",
         "description": "Drops frescos y comentarios cada vez que la frontera se mueve."
@@ -18,14 +18,14 @@
     },
     "subscribe": {
       "title": "Suscríbete ahora",
-      "description": "Activa tu pase SOTA para ver todo el contenido del lanzamiento y descargar recursos.",
+      "description": "Activa tu pase SotA para ver todo el contenido del lanzamiento y descargar recursos.",
       "cta": "Suscribirse a la línea",
       "login": "Inicia sesión para suscribirte"
     }
   },
   "release": {
     "back": "Volver a {lineTitle}",
-    "eyebrow": "Lanzamiento SOTA · {lineTitle}",
+    "eyebrow": "Lanzamiento SotA · {lineTitle}",
     "status": {
       "unpublished": "Sin publicar",
       "accessGranted": "Acceso al flujo de lanzamientos concedido",

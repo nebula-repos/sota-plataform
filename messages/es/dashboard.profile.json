@@ -1,7 +1,7 @@
 {
   "hero": {
     "badge": "Sincronización de perfil",
-    "title": "Ajusta tu identidad SOTA.",
+    "title": "Ajusta tu identidad SotA.",
     "description": "Mantén tus datos al día para personalizar lanzamientos, alertas e invitaciones de colaboración según tu contexto operativo.",
     "backCta": "Volver al panel"
   },
@@ -12,7 +12,7 @@
   },
   "form": {
     "cardTitle": "Información personal",
-    "cardDescription": "Actualiza tus datos. Los cambios se aplican al instante en todas las superficies de SOTA.",
+    "cardDescription": "Actualiza tus datos. Los cambios se aplican al instante en todas las superficies de SotA.",
     "missingUser": "No pudimos identificar al usuario actual.",
     "genericError": "Ocurrió un error.",
     "emailLabel": "Correo electrónico",

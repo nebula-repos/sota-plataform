@@ -1,11 +1,11 @@
 {
   "hero": {
-    "eyebrow": "SOTA Atlas",
+    "eyebrow": "SotA Atlas",
     "title": "Research lines engineered to deliver State of the Art velocity.",
-    "description": "Explore the living catalogue of SOTA research lines. Each track curates the signals, releases, and playbooks that keep your teams aligned with the frontier.",
+    "description": "Explore the living catalogue of SotA research lines. Each track curates the signals, releases, and playbooks that keep your teams aligned with the frontier.",
     "primaryCta": "Browse active lines",
     "authCta": "Go to my dashboard",
-    "guestCta": "Request SOTA access"
+    "guestCta": "Request SotA access"
   },
   "stats": [
     {
@@ -30,7 +30,7 @@
     }
   ],
   "list": {
-    "badge": "SOTA Line",
+    "badge": "SotA Line",
     "releasesLabel": "Releases live",
     "viewReleases": "View releases",
     "freshFallback": "Fresh drop",

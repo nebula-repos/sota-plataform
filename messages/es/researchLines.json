@@ -1,11 +1,11 @@
 {
   "hero": {
-    "eyebrow": "Atlas SOTA",
+    "eyebrow": "Atlas SotA",
     "title": "Líneas de investigación diseñadas para entregar velocidad de estado del arte.",
-    "description": "Explora el catálogo vivo de líneas de investigación SOTA. Cada track cura las señales, lanzamientos y playbooks que mantienen a tus equipos alineados con la frontera.",
+    "description": "Explora el catálogo vivo de líneas de investigación SotA. Cada track cura las señales, lanzamientos y playbooks que mantienen a tus equipos alineados con la frontera.",
     "primaryCta": "Ver líneas activas",
     "authCta": "Ir a mi panel",
-    "guestCta": "Solicitar acceso a SOTA"
+    "guestCta": "Solicitar acceso a SotA"
   },
   "stats": [
     {
@@ -30,7 +30,7 @@
     }
   ],
   "list": {
-    "badge": "Línea SOTA",
+    "badge": "Línea SotA",
     "releasesLabel": "Lanzamientos activos",
     "viewReleases": "Ver lanzamientos",
     "freshFallback": "Lanzamiento reciente",

@@ -2,11 +2,11 @@
   "gate": {
     "back": "Back to {lineTitle}",
     "eyebrow": "Access required",
-    "title": "Unlock this SOTA release to stay aligned with the art.",
+    "title": "Unlock this SotA release to stay aligned with the art.",
     "description": "Subscribing to {lineTitle} grants the full release stream, future drops, and activation playbooks for your team.",
     "advantage": {
-      "title": "SOTA advantage",
-      "body": "Access curated intelligence, annotated frameworks, and the SOTA release vault for this line.",
+      "title": "SotA advantage",
+      "body": "Access curated intelligence, annotated frameworks, and the SotA release vault for this line.",
       "live": {
         "title": "Live Signals",
         "description": "Fresh drops and commentary whenever the frontier shifts."
@@ -18,14 +18,14 @@
     },
     "subscribe": {
       "title": "Subscribe now",
-      "description": "Activate your SOTA pass to see the full release content and download resources.",
+      "description": "Activate your SotA pass to see the full release content and download resources.",
       "cta": "Subscribe to the line",
       "login": "Log in to subscribe"
     }
   },
   "release": {
     "back": "Back to {lineTitle}",
-    "eyebrow": "SOTA Release · {lineTitle}",
+    "eyebrow": "SotA Release · {lineTitle}",
     "status": {
       "unpublished": "Unpublished",
       "accessGranted": "Release stream access granted",

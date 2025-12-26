@@ -1,9 +1,9 @@
 {
   "hero": {
-    "eyebrow": "SOTA · State of the Art",
+    "eyebrow": "SotA · State of the Art",
     "title": "Signal-first intelligence for State of the Art operators.",
-    "subtitle": "We distill the noise into the SOTA briefings you need: structured releases, applied frameworks, and ready to activate plays that keep your team ahead of the curve.",
-    "primaryCta": "Explore SOTA Releases",
+    "subtitle": "We distill the noise into the SotA briefings you need: structured releases, applied frameworks, and ready to activate plays that keep your team ahead of the curve.",
+    "primaryCta": "Explore SotA Releases",
     "secondaryCta": "Start for Free"
   },
   "highlights": [
@@ -30,8 +30,8 @@
     }
   ],
   "features": {
-    "title": "SOTA pillars to translate frontier research into leverage.",
-    "subtitle": "The SOTA layer blends academic rigor with applied context so your org can deploy what is next — not what was relevant last quarter.",
+    "title": "SotA pillars to translate frontier research into leverage.",
+    "subtitle": "The SotA layer blends academic rigor with applied context so your org can deploy what is next — not what was relevant last quarter.",
     "cards": [
       {
         "icon": "cpu",
@@ -40,7 +40,7 @@
       },
       {
         "icon": "workflow",
-        "title": "SOTA Playbooks",
+        "title": "SotA Playbooks",
         "description": "Opinionated frameworks, reference architectures, and implementation notes engineered for velocity."
       },
       {
@@ -51,18 +51,18 @@
     ]
   },
   "latest": {
-    "eyebrow": "Latest SOTA drops",
+    "eyebrow": "Latest SotA drops",
     "title": "Releases landing now inside the platform.",
     "description": "Your fast lane to the art: we surface the newest lines, ready to plug into your roadmap.",
     "newLabel": "New",
-    "cardEyebrow": "SOTA Release",
+    "cardEyebrow": "SotA Release",
     "button": "View all releases",
     "cta": "Dive into the Art"
   },
   "releaseTags": ["Brief", "Implementation", "Signals"],
   "workflow": {
-    "title": "A workflow engineered for SOTA decision-making.",
-    "description": "From signal detection to rollout, SOTA keeps your organisation aligned on the art that matters. Each release travels through our live pipeline so you can trust the output.",
+    "title": "A workflow engineered for SotA decision-making.",
+    "description": "From signal detection to rollout, SotA keeps your organisation aligned on the art that matters. Each release travels through our live pipeline so you can trust the output.",
     "steps": [
       {
         "title": "Capture & context",
@@ -93,7 +93,7 @@
   },
   "cta": {
     "title": "Ready to operate at the state of the art?",
-    "description": "Join the SOTA platform and transform how your team senses, understands, and deploys what is next.",
+    "description": "Join the SotA platform and transform how your team senses, understands, and deploys what is next.",
     "primary": "Create a free account",
     "secondary": "Learn about the mission"
   }

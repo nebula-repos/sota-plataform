@@ -1,9 +1,9 @@
 {
   "hero": {
-    "eyebrow": "SOTA · Estado del Arte",
+    "eyebrow": "SotA · Estado del Arte",
     "title": "Inteligencia orientada a señales para operadores en el estado del arte.",
-    "subtitle": "Destilamos el ruido en los informes SOTA que necesitas: lanzamientos estructurados, frameworks aplicados y jugadas listas para activar que mantienen a tu equipo por delante.",
-    "primaryCta": "Explorar lanzamientos SOTA",
+    "subtitle": "Destilamos el ruido en los informes SotA que necesitas: lanzamientos estructurados, frameworks aplicados y jugadas listas para activar que mantienen a tu equipo por delante.",
+    "primaryCta": "Explorar lanzamientos SotA",
     "secondaryCta": "Comenzar gratis"
   },
   "highlights": [
@@ -30,8 +30,8 @@
     }
   ],
   "features": {
-    "title": "Pilares de SOTA para convertir la investigación de frontera en ventaja.",
-    "subtitle": "La capa SOTA combina rigor académico con contexto aplicado para que tu organización despliegue lo que sigue, no lo que fue relevante el trimestre pasado.",
+    "title": "Pilares de SotA para convertir la investigación de frontera en ventaja.",
+    "subtitle": "La capa SotA combina rigor académico con contexto aplicado para que tu organización despliegue lo que sigue, no lo que fue relevante el trimestre pasado.",
     "cards": [
       {
         "icon": "cpu",
@@ -40,7 +40,7 @@
       },
       {
         "icon": "workflow",
-        "title": "Playbooks SOTA",
+        "title": "Playbooks SotA",
         "description": "Frameworks con criterio, arquitecturas de referencia y notas de implementación diseñadas para la velocidad."
       },
       {
@@ -51,18 +51,18 @@
     ]
   },
   "latest": {
-    "eyebrow": "Últimas entregas SOTA",
+    "eyebrow": "Últimas entregas SotA",
     "title": "Lanzamientos que llegan ahora a la plataforma.",
     "description": "Tu carril rápido hacia el arte: destacamos las líneas más recientes, listas para integrarse en tu hoja de ruta.",
     "newLabel": "Nuevo",
-    "cardEyebrow": "Lanzamiento SOTA",
+    "cardEyebrow": "Lanzamiento SotA",
     "button": "Ver todos los lanzamientos",
     "cta": "Sumergirse en el arte"
   },
   "releaseTags": ["Resumen", "Implementación", "Señales"],
   "workflow": {
-    "title": "Un flujo de trabajo diseñado para decisiones SOTA.",
-    "description": "Desde la detección de señales hasta el despliegue, SOTA mantiene alineada a tu organización con el arte que importa. Cada lanzamiento recorre nuestro pipeline vivo para que confíes en el resultado.",
+    "title": "Un flujo de trabajo diseñado para decisiones SotA.",
+    "description": "Desde la detección de señales hasta el despliegue, SotA mantiene alineada a tu organización con el arte que importa. Cada lanzamiento recorre nuestro pipeline vivo para que confíes en el resultado.",
     "steps": [
       {
         "title": "Captura y contexto",
@@ -93,7 +93,7 @@
   },
   "cta": {
     "title": "¿Listo para operar en el estado del arte?",
-    "description": "Únete a la plataforma SOTA y transforma la forma en que tu equipo detecta, comprende y despliega lo que viene.",
+    "description": "Únete a la plataforma SotA y transforma la forma en que tu equipo detecta, comprende y despliega lo que viene.",
     "primary": "Crear una cuenta gratuita",
     "secondary": "Conoce la misión"
   }

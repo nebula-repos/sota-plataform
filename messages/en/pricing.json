@@ -9,7 +9,7 @@
   "overview": {
     "eyebrow": "Plans",
     "title": "Choose how many research lines you want to monitor.",
-    "description": "Each bundle unlocks the same SOTA intelligence — you only decide how many live research lines (RL) you want to follow simultaneously.",
+    "description": "Each bundle unlocks the same SotA intelligence — you only decide how many live research lines (RL) you want to follow simultaneously.",
     "cta": "View full pricing details",
     "note": "All prices are in USD and billed monthly. You can still access the Current Landscape briefing even without a subscription."
   },
@@ -17,9 +17,9 @@
     {
       "id": "subscription",
       "tag": "Base",
-      "name": "SOTA Subscription",
+      "name": "SotA Subscription",
       "price": "USD 6/mo",
-      "description": "Stay connected to the SOTA drops with one active research line and weekly curated releases.",
+      "description": "Stay connected to the SotA drops with one active research line and weekly curated releases.",
       "features": [
         "1 concurrent research line (RL)",
         "Weekly briefings and implementation notes",

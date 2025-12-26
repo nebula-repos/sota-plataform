@@ -1,6 +1,6 @@
 {
   "hero": {
-    "badge": "Mi control SOTA",
+    "badge": "Mi control SotA",
     "greeting": "Bienvenido de nuevo,",
     "fallbackName": "Operador",
     "description": "Monitorea tu suscripción, sigue los lanzamientos que tocaste y mantén tu perfil alineado con los drops más recientes.",
@@ -11,7 +11,7 @@
     "title": "Estado de membresía",
     "premiumLabel": "Miembro premium",
     "freeLabel": "Cuenta gratuita",
-    "premiumDescription": "Tienes acceso completo a cada lanzamiento SOTA y playbook de activación.",
+    "premiumDescription": "Tienes acceso completo a cada lanzamiento SotA y playbook de activación.",
     "freeDescription": "Mejora tu plan para desbloquear lanzamientos premium, playbooks avanzados y drops de la comunidad.",
     "memberSince": "Miembro desde",
     "unknown": "Desconocido",
@@ -31,7 +31,7 @@
   },
   "activityCard": {
     "title": "Actividad reciente",
-    "description": "Tus interacciones más recientes en SOTA",
+    "description": "Tus interacciones más recientes en SotA",
     "empty": "Aún no tienes actividad; explora una línea para comenzar."
   }
 }

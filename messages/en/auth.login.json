@@ -1,10 +1,10 @@
 {
-  "badge": "SOTA Access",
+  "badge": "SotA Access",
   "headline": "Welcome back to the art.",
   "subhead": "Log in to jump straight into the latest releases, activation playbooks, and signal briefings curated for your teams.",
   "badgeFooter": "Secure Supabase authentication · Session monitored",
   "cardTitle": "Log in",
-  "cardDescription": "Enter your credentials to access SOTA releases",
+  "cardDescription": "Enter your credentials to access SotA releases",
   "emailLabel": "Email address",
   "emailPlaceholder": "you@example.com",
   "passwordLabel": "Password",

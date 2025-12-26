@@ -4,7 +4,7 @@
     "inceptionPending": "Inception pending"
   },
   "hero": {
-    "badge": "SOTA Line",
+    "badge": "SotA Line",
     "cards": {
       "signal": {
         "title": "Signal density",
@@ -16,7 +16,7 @@
       },
       "cadence": {
         "title": "Drops cadence",
-        "description": "SOTA editors push new releases as signals emerge — expect movement multiple times a month."
+        "description": "SotA editors push new releases as signals emerge — expect movement multiple times a month."
       }
     },
     "access": {
@@ -26,7 +26,7 @@
         "locked": "Locked"
       },
       "streamLabel": "Release stream",
-      "granted": "You have full access to every release and activation note in this SOTA line.",
+      "granted": "You have full access to every release and activation note in this SotA line.",
       "locked": "Subscribe to unlock releases, frameworks, and ongoing intelligence for this line.",
       "actions": {
         "unsubscribe": "Unsubscribe from line",
@@ -40,10 +40,10 @@
     "eyebrow": "Release vault",
     "title": "Latest drops inside {lineTitle}",
     "description": "Access the full art stream: every release is packaged with briefs, implementation notes, and signal callouts.",
-    "cardBadge": "SOTA Release",
+    "cardBadge": "SotA Release",
     "viewRelease": "View release",
     "empty": "No releases available for this research line yet.",
-    "locked": "Subscribe to unlock every SOTA release in this line and receive alerts when new drops land.",
+    "locked": "Subscribe to unlock every SotA release in this line and receive alerts when new drops land.",
     "login": "Log in to subscribe",
     "unpublished": "Unpublished"
   }
