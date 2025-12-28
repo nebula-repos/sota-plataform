@@ -1,61 +1,84 @@
 {
   "hero": {
     "eyebrow": "Precios",
-    "title": "Precios simples alineados con tu velocidad de investigación.",
-    "description": "Comienza con la suscripción base o elige un paquete de líneas de investigación (RL) para mantener varios frentes activos. Puedes cambiar de plan en cualquier momento desde tu espacio de trabajo.",
+    "title": "Precios predecibles para inteligencia de alto valor.",
+    "description": "Comienza con una sola señal o escala a una suite de monitoreo completa. Todos los planes incluyen una tarifa de implementación única para configurar tu ingesta de señales.",
     "primaryCta": "Comenzar suscripción",
     "secondaryCta": "Hablar con el equipo"
   },
   "overview": {
     "eyebrow": "Planes",
-    "title": "Elige cuántas líneas de investigación quieres monitorear.",
-    "description": "Cada paquete desbloquea la misma inteligencia SotA; solo decides cuántas líneas de investigación (RL) activas quieres seguir al mismo tiempo.",
+    "title": "Elige la cantidad de Señales que necesitas rastrear.",
+    "description": "Cada plan incluye la plataforma SotA base. Simplemente elige el volumen de señales que necesitas monitorear para mantener tu hoja de ruta por delante del mercado.",
     "cta": "Ver detalles de precios",
-    "note": "Todos los precios están en USD y se facturan mensualmente. Aunque no te suscribas, igual puedes acceder al documento del Panorama Actual."
+    "note": "Todos los precios están en USD y se facturan mensualmente. Aplica tarifa de implementación para la configuración inicial."
   },
   "plans": [
     {
-      "id": "subscription",
-      "tag": "Base",
-      "name": "Suscripción SotA",
-      "price": "USD 6/mes",
-      "description": "Mantente conectado a las entregas SotA con una línea de investigación activa y lanzamientos semanales curados.",
+      "id": "tier-1",
+      "tag": "Iniciación",
+      "name": "1 Señal",
+      "price": "USD 200/mes",
+      "implementationFee": "+ USD 200 pago único",
+      "originalPrice": null,
+      "description": "Perfecto para el monitoreo enfocado de una sola señal crítica.",
       "features": [
-        "1 línea de investigación (RL) concurrente",
-        "Briefings semanales y notas de implementación",
-        "Cancela o mejora cuando quieras"
+        "1 Señal Verificada",
+        "2 Usuarios",
+        "Briefings Semanales"
       ],
-      "cta": "Comenzar con la suscripción"
+      "cta": "Comenzar con 1 Señal"
     },
     {
-      "id": "bundle-3",
-      "tag": "Paquete",
-      "name": "Pack 3 RL",
-      "price": "USD 15/mes",
-      "originalPrice": "USD 18/mes",
-      "highlightLabel": "el más popular",
-      "description": "Sigue tres líneas de investigación a la vez para ampliar la cobertura sin perder profundidad.",
+      "id": "tier-2",
+      "tag": "Crecimiento",
+      "name": "3+1 Señales",
+      "price": "USD 800/mes",
+      "implementationFee": "+ USD 200 pago único",
+      "originalPrice": "USD 900/mes",
+      "highlightLabel": "Más popular",
+      "description": "Amplía tu cobertura con 3 señales estándar y 1 señal a medida.",
       "features": [
-        "3 cupos de RL concurrentes para tu equipo",
-        "Alertas prioritarias para nuevos lanzamientos",
-        "Espacio compartido para colaboradores"
+        "3 Señales Estándar",
+        "1 Señal a Medida",
+        "4 Usuarios",
+        "Briefings Semanales"
       ],
-      "cta": "Activar pack de 3 RL"
+      "cta": "Activar Pack 3+1"
     },
     {
-      "id": "bundle-5",
-      "tag": "Paquete",
-      "name": "Pack 5 RL",
-      "price": "USD 20/mes",
-      "originalPrice": "USD 30/mes",
+      "id": "tier-3",
+      "tag": "Escala",
+      "name": "5+1 Señales",
+      "price": "USD 1200/mes",
+      "implementationFee": "+ USD 200 pago único",
+      "originalPrice": "USD 1300/mes",
       "highlightLabel": null,
-      "description": "Cobertura máxima para organizaciones que necesitan monitorear toda la frontera.",
+      "description": "Monitoreo integral con 5 señales estándar y 1 señal a medida.",
       "features": [
-        "5 cupos de RL concurrentes",
-        "Acceso anticipado a lanzamientos experimentales",
-        "Sesiones de éxito dedicadas"
+        "5 Señales Estándar",
+        "1 Señal a Medida",
+        "7 Usuarios",
+        "Briefings a Medida"
       ],
-      "cta": "Activar pack de 5 RL"
+      "cta": "Activar Pack Escala"
+    },
+    {
+      "id": "tier-custom",
+      "tag": "Empresas",
+      "name": "Señales a Medida",
+      "price": "Contáctanos",
+      "implementationFee": null,
+      "originalPrice": null,
+      "highlightLabel": null,
+      "description": "Plataforma completa de señales bajo demanda para grandes organizaciones.",
+      "features": [
+        "Señales Ilimitadas",
+        "Analista Dedicado",
+        "Usuarios Ilimitados",
+        "SLA a Medida"
+      ],
+      "cta": "Contactar Ventas"
     }
   ],
   "included": {

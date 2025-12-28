@@ -1,61 +1,84 @@
 {
   "hero": {
     "eyebrow": "Pricing",
-    "title": "Simple pricing aligned with your research velocity.",
-    "description": "Start with the base subscription or choose a bundle of research lines (RL) to keep multiple tracks active. Upgrade or downgrade at any time directly from your workspace.",
+    "title": "Predictable pricing for high-value intelligence.",
+    "description": "Start with a single signal or scale to a full monitoring suite. All plans include a one-time implementation fee to configure your custom signal intake.",
     "primaryCta": "Start subscription",
     "secondaryCta": "Contact sales"
   },
   "overview": {
     "eyebrow": "Plans",
-    "title": "Choose how many research lines you want to monitor.",
-    "description": "Each bundle unlocks the same SotA intelligence — you only decide how many live research lines (RL) you want to follow simultaneously.",
+    "title": "Choose the number of Signals you need to track.",
+    "description": "Every plan includes the core SotA platform. Simply choose the volume of signals you need to monitor to keep your roadmap ahead of the market.",
     "cta": "View full pricing details",
-    "note": "All prices are in USD and billed monthly. You can still access the Current Landscape briefing even without a subscription."
+    "note": "All prices are in USD and billed monthly. Implementation fee applies to the initial setup."
   },
   "plans": [
     {
-      "id": "subscription",
-      "tag": "Base",
-      "name": "SotA Subscription",
-      "price": "USD 6/mo",
-      "description": "Stay connected to the SotA drops with one active research line and weekly curated releases.",
+      "id": "tier-1",
+      "tag": "Starter",
+      "name": "1 Signal",
+      "price": "USD 200/mo",
+      "implementationFee": "+ USD 200 one-time fee",
+      "originalPrice": null,
+      "description": "Perfect for focused monitoring of a single critical signal.",
       "features": [
-        "1 concurrent research line (RL)",
-        "Weekly briefings and implementation notes",
-        "Cancel or upgrade anytime"
+        "1 Verified Signal",
+        "2 User Seats",
+        "Weekly Briefings"
       ],
-      "cta": "Start with subscription"
+      "cta": "Start with 1 Signal"
     },
     {
-      "id": "bundle-3",
-      "tag": "Bundle",
-      "name": "3 RL Pack",
-      "price": "USD 15/mo",
-      "originalPrice": "USD 18/mo",
+      "id": "tier-2",
+      "tag": "Growth",
+      "name": "3+1 Signals",
+      "price": "USD 800/mo",
+      "implementationFee": "+ USD 200 one-time fee",
+      "originalPrice": "USD 900/mo",
       "highlightLabel": "Most popular",
-      "description": "Follow three research lines at once for broader coverage without losing depth.",
+      "description": "Expand your coverage with 3 standard signals and 1 custom signal.",
       "features": [
-        "3 concurrent RL slots for your team",
-        "Priority alerts for new releases",
-        "Shared workspace for collaborators"
+        "3 Standard Signals",
+        "1 Custom Signal",
+        "4 User Seats",
+        "Weekly Briefings"
       ],
-      "cta": "Activate 3 RL pack"
+      "cta": "Activate 3+1 Pack"
     },
     {
-      "id": "bundle-5",
-      "tag": "Bundle",
-      "name": "5 RL Pack",
-      "price": "USD 20/mo",
-      "originalPrice": "USD 30/mo",
+      "id": "tier-3",
+      "tag": "Scale",
+      "name": "5+1 Signals",
+      "price": "USD 1200/mo",
+      "implementationFee": "+ USD 200 one-time fee",
+      "originalPrice": "USD 1300/mo",
       "highlightLabel": null,
-      "description": "Maximum coverage for organizations that need the full frontier monitor.",
+      "description": "Comprehensive monitoring with 5 standard signals and 1 custom signal.",
       "features": [
-        "5 concurrent RL slots",
-        "Early access to experimental drops",
-        "Dedicated success check-ins"
+        "5 Standard Signals",
+        "1 Custom Signal",
+        "7 User Seats",
+        "Custom Briefings"
       ],
-      "cta": "Activate 5 RL pack"
+      "cta": "Activate Scale Pack"
+    },
+    {
+      "id": "tier-custom",
+      "tag": "Enterprise",
+      "name": "Custom Signals",
+      "price": "Contact Us",
+      "implementationFee": null,
+      "originalPrice": null,
+      "highlightLabel": null,
+      "description": "Full signals-on-demand platform for large organizations.",
+      "features": [
+        "Unlimited Signals",
+        "Dedicated Analyst",
+        "Unlimited Users",
+        "Custom SLA"
+      ],
+      "cta": "Contact Sales"
     }
   ],
   "included": {

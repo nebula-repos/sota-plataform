@@ -16,6 +16,7 @@ export default async function PricingPage() {
     tag?: string | null
     name: string
     price: string
+    implementationFee?: string | null
     originalPrice?: string | null
     highlightLabel?: string | null
     description: string
@@ -89,9 +90,8 @@ export default async function PricingPage() {
               {plans.map((plan) => (
                 <Card
                   key={plan.id}
-                  className={`group relative overflow-hidden border border-white/10 bg-gradient-to-b from-background/90 via-background/60 to-background/40 shadow-[0_35px_80px_-50px_rgba(15,15,15,0.7)] transition-all duration-300 hover:-translate-y-2 hover:border-primary/50 hover:shadow-[0_55px_130px_-60px_rgba(15,15,15,0.9)] ${
-                    plan.highlightLabel ? "ring-2 ring-primary/70" : ""
-                  }`}
+                  className={`group relative overflow-hidden border border-white/10 bg-gradient-to-b from-background/90 via-background/60 to-background/40 shadow-[0_35px_80px_-50px_rgba(15,15,15,0.7)] transition-all duration-300 hover:-translate-y-2 hover:border-primary/50 hover:shadow-[0_55px_130px_-60px_rgba(15,15,15,0.9)] ${plan.highlightLabel ? "ring-2 ring-primary/70" : ""
+                    }`}
                 >
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-blue-800/10 via-transparent to-emerald-400/5 opacity-60" />
                   {plan.tag && (
@@ -112,6 +112,11 @@ export default async function PricingPage() {
                         <span className="text-sm font-semibold text-muted-foreground/80 line-through">{plan.originalPrice}</span>
                       )}
                     </div>
+                    {plan.implementationFee && (
+                      <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground/80">
+                        {plan.implementationFee}
+                      </p>
+                    )}
                     <CardDescription className="text-muted-foreground">{plan.description}</CardDescription>
                   </CardHeader>
                   <CardContent className="relative space-y-6">
@@ -123,7 +128,7 @@ export default async function PricingPage() {
                         </li>
                       ))}
                     </ul>
-                    <Link href="/auth/signup">
+                    <Link href={plan.id === "tier-custom" ? "/contact" : "/auth/signup"}>
                       <Button className="w-full rounded-full">{plan.cta}</Button>
                     </Link>
                   </CardContent>

@@ -59,7 +59,7 @@ export default async function HomePage() {
               {home.hero.subtitle}
             </p>
             <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
-              <Link href="/research-lines">
+              <Link href="/about">
                 <Button
                   size="lg"
                   className="group relative gap-2 overflow-hidden rounded-full !bg-gradient-to-r !from-blue-800 !via-cyan-600 !to-emerald-400 !text-primary-foreground px-8 shadow-xl shadow-primary/30 transition-all duration-300 hover:scale-[1.02]"
@@ -135,6 +135,33 @@ export default async function HomePage() {
           </div>
         </section>
 
+        {/* Signals Examples Section */}
+        <section className="relative overflow-hidden border-y border-border/60 bg-gradient-to-br from-muted/50 via-background to-muted/30 py-24">
+          <div className="container mx-auto px-4">
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">{home.signals.title}</p>
+              <h2 className="mt-4 text-3xl font-semibold tracking-tight md:text-4xl">{home.signals.subtitle}</h2>
+            </div>
+            <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+              {home.signals.examples.map((signal, index) => {
+                const Icon = iconMap[signal.icon as keyof typeof iconMap] ?? Sparkles
+                return (
+                  <MouseGlowCard
+                    key={`${signal.title}-${index}`}
+                    className="flex h-full flex-col border border-white/10 bg-white/5 p-6 backdrop-blur transition-all duration-300 hover:-translate-y-2 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10"
+                  >
+                    <div className="mb-4 inline-flex size-10 items-center justify-center rounded-xl border border-primary/20 bg-primary/10 text-primary">
+                      <Icon className="h-5 w-5" aria-hidden />
+                    </div>
+                    <h3 className="mb-2 text-lg font-semibold text-foreground">{signal.title}</h3>
+                    <p className="text-sm text-muted-foreground">{signal.description}</p>
+                  </MouseGlowCard>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+
         {/* Pricing Section */}
         <section className="relative overflow-hidden border-y border-border/60 bg-gradient-to-b from-background via-muted/30 to-background py-24">
           <div className="container mx-auto px-4">
@@ -180,6 +207,11 @@ export default async function HomePage() {
                         <span className="text-sm font-semibold text-muted-foreground/80 line-through">{plan.originalPrice}</span>
                       )}
                     </div>
+                    {(plan as any).implementationFee && (
+                      <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground/80">
+                        {(plan as any).implementationFee}
+                      </p>
+                    )}
                     <CardDescription>{plan.description}</CardDescription>
                   </CardHeader>
                   <CardContent className="relative space-y-4">
@@ -191,7 +223,7 @@ export default async function HomePage() {
                         </li>
                       ))}
                     </ul>
-                    <Link href="/auth/signup">
+                    <Link href={plan.id === "tier-custom" ? "/contact" : "/auth/signup"}>
                       <Button className="w-full rounded-full bg-gradient-to-r from-blue-800 via-cyan-600 to-emerald-400 text-primary-foreground shadow-md shadow-primary/30">
                         {plan.cta}
                       </Button>
