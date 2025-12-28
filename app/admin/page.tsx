@@ -4,7 +4,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { createClient } from "@/lib/supabase/server"
 import { resolveUserProfile, buildProfileFallback } from "@/lib/supabase/profiles"
-import { Users, BookOpen, FileText, Activity, Sparkles, ArrowRight } from "lucide-react"
+import { Users, Activity, Sparkles, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { getLocale } from "@/lib/i18n/server"
@@ -32,11 +32,7 @@ export default async function AdminPage() {
 
   const { count: totalUsers } = await supabase.from("users").select("*", { count: "exact", head: true })
 
-  const { count: totalResearchLines } = await supabase
-    .from("research_lines")
-    .select("*", { count: "exact", head: true })
 
-  const { count: totalReleases } = await supabase.from("releases").select("*", { count: "exact", head: true })
 
   const { count: totalEvents } = await supabase.from("events").select("*", { count: "exact", head: true })
 
@@ -47,16 +43,6 @@ export default async function AdminPage() {
       label: adminCopy.stats.users,
       value: totalUsers || 0,
       icon: Users,
-    },
-    {
-      label: adminCopy.stats.lines,
-      value: totalResearchLines || 0,
-      icon: BookOpen,
-    },
-    {
-      label: adminCopy.stats.releases,
-      value: totalReleases || 0,
-      icon: FileText,
     },
     {
       label: adminCopy.stats.events,
@@ -72,20 +58,6 @@ export default async function AdminPage() {
       description: adminCopy.sections.users.description,
       cta: adminCopy.sections.users.cta,
       href: "/admin/users",
-    },
-    {
-      icon: BookOpen,
-      title: adminCopy.sections.lines.title,
-      description: adminCopy.sections.lines.description,
-      cta: adminCopy.sections.lines.cta,
-      href: "/admin/research-lines",
-    },
-    {
-      icon: FileText,
-      title: adminCopy.sections.releases.title,
-      description: adminCopy.sections.releases.description,
-      cta: adminCopy.sections.releases.cta,
-      href: "/admin/releases",
     },
     {
       icon: Activity,
@@ -129,17 +101,6 @@ export default async function AdminPage() {
                   {adminCopy.hero.description}
                 </p>
                 <div className="mt-10 flex flex-wrap gap-4">
-                  <Link href="/research-lines">
-                    <Button
-                      size="lg"
-                      className="group relative gap-3 overflow-hidden rounded-full !bg-gradient-to-r !from-blue-800 !via-cyan-600 !to-emerald-400 !text-primary-foreground px-8 shadow-xl shadow-primary/30 transition-all duration-300 hover:scale-[1.02]"
-                    >
-                      <span className="relative z-10 flex items-center gap-2">
-                        {adminCopy.hero.cta}
-                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
-                      </span>
-                    </Button>
-                  </Link>
                 </div>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
