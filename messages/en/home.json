@@ -2,8 +2,8 @@
   "hero": {
     "eyebrow": "SotA · State of the Art",
     "title": "Signal-first intelligence for State of the Art operators.",
-    "subtitle": "We distill the noise into the SotA briefings you need: structured releases, applied frameworks, and ready to activate plays that keep your team ahead of the curve.",
-    "primaryCta": "Explore SotA Releases",
+    "subtitle": "We distill market noise into verifyable Signals and actionable Deliverables. No fluff, just the intelligence you need to operate at the frontier.",
+    "primaryCta": "Explore Signals",
     "secondaryCta": "Start for Free"
   },
   "highlights": [
@@ -30,36 +30,57 @@
     }
   ],
   "features": {
-    "title": "SotA pillars to translate frontier research into leverage.",
-    "subtitle": "The SotA layer blends academic rigor with applied context so your org can deploy what is next — not what was relevant last quarter.",
+    "title": "From Signal to Deliverable.",
+    "subtitle": "SotA creates a direct line from market events to your roadmap. We capture the signal, context, and the move you need to make.",
     "cards": [
       {
+        "icon": "radar",
+        "title": "Signal Detection",
+        "description": "Continuous scanning of competitor moves, pricing changes, and regulatory shifts. If it matters, we capture it."
+      },
+      {
         "icon": "cpu",
-        "title": "Frontier Intelligence",
-        "description": "Rapid synthesis of bleeding-edge research with the context that matters for product, policy, and growth teams."
+        "title": "Contextual Intelligence",
+        "description": "We layer proprietary context on every signal. Why it matters, who it impacts, and the threat level to your operations."
       },
       {
         "icon": "workflow",
-        "title": "SotA Playbooks",
-        "description": "Opinionated frameworks, reference architectures, and implementation notes engineered for velocity."
-      },
-      {
-        "icon": "shield",
-        "title": "Signal Guardrails",
-        "description": "Curation, validation, and expert review that filters hype and surfaces only the durable moves."
+        "title": "Actionable Deliverables",
+        "description": "Signals resolve into concrete deliverables: briefs, counter-strategies, and implementation guides ready for your team."
       }
     ]
   },
-  "latest": {
-    "eyebrow": "Latest SotA drops",
-    "title": "Releases landing now inside the platform.",
-    "description": "Your fast lane to the art: we surface the newest lines, ready to plug into your roadmap.",
-    "newLabel": "New",
-    "cardEyebrow": "SotA Release",
-    "button": "View all releases",
-    "cta": "Dive into the Art"
+  "signals": {
+    "title": "Intelligence starts with a Signal.",
+    "subtitle": "A verified event that changes the state of the art. We track thousands, but you only see what matters.",
+    "examples": [
+      {
+        "title": "Competitive Move",
+        "description": "Verifiable competitive movement: rival launch, market entry/exit, offensive pricing, or repositioning. Impacts dynamics and customer choices.",
+        "icon": "radar"
+      },
+      {
+        "title": "Pricing / Packaging",
+        "description": "Changes in prices, plans, billing metrics, quotas, or bundling. Directly affects costs and economic viability of scaling.",
+        "icon": "gauge"
+      },
+      {
+        "title": "Feature Launch",
+        "description": "New capability (GA/Beta) that changes how a process is performed. Reported only when there is verifiable delivery and scope.",
+        "icon": "sparkles"
+      },
+      {
+        "title": "Regulatory Change",
+        "description": "Shift in regulation, official guidance, or legal criteria. Modifies obligations, permissions, limits, or compliance requirements.",
+        "icon": "shield"
+      }
+    ]
   },
-  "releaseTags": ["Brief", "Implementation", "Signals"],
+  "releaseTags": [
+    "Brief",
+    "Implementation",
+    "Signals"
+  ],
   "workflow": {
     "title": "A workflow engineered for SotA decision-making.",
     "description": "From signal detection to rollout, SotA keeps your organisation aligned on the art that matters. Each release travels through our live pipeline so you can trust the output.",

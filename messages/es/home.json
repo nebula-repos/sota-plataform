@@ -1,9 +1,9 @@
 {
   "hero": {
     "eyebrow": "SotA · Estado del Arte",
-    "title": "Inteligencia orientada a señales para operadores en el estado del arte.",
-    "subtitle": "Destilamos el ruido en los informes SotA que necesitas: lanzamientos estructurados, frameworks aplicados y jugadas listas para activar que mantienen a tu equipo por delante.",
-    "primaryCta": "Explorar lanzamientos SotA",
+    "title": "Inteligencia basada en señales para operadores de vanguardia.",
+    "subtitle": "Convertimos el ruido del mercado en Señales verificables y Entregables accionables. Sin relleno, solo la inteligencia que necesitas para operar en la frontera.",
+    "primaryCta": "Explorar Señales",
     "secondaryCta": "Comenzar gratis"
   },
   "highlights": [
@@ -30,36 +30,57 @@
     }
   ],
   "features": {
-    "title": "Pilares de SotA para convertir la investigación de frontera en ventaja.",
-    "subtitle": "La capa SotA combina rigor académico con contexto aplicado para que tu organización despliegue lo que sigue, no lo que fue relevante el trimestre pasado.",
+    "title": "De Señal a Entregable.",
+    "subtitle": "SotA crea una línea directa entre los eventos del mercado y tu hoja de ruta. Capturamos la señal, el contexto y el movimiento que debes hacer.",
     "cards": [
       {
+        "icon": "radar",
+        "title": "Detección de Señales",
+        "description": "Escaneo continuo de movimientos de competidores, cambios de precios y giros regulatorios. Si importa, lo capturamos."
+      },
+      {
         "icon": "cpu",
-        "title": "Inteligencia de frontera",
-        "description": "Síntesis rápida de investigación de vanguardia con el contexto que importa a equipos de producto, política y crecimiento."
+        "title": "Inteligencia Contextual",
+        "description": "Añadimos contexto propietario a cada señal. Por qué importa, a quién impacta y el nivel de amenaza para tus operaciones."
       },
       {
         "icon": "workflow",
-        "title": "Playbooks SotA",
-        "description": "Frameworks con criterio, arquitecturas de referencia y notas de implementación diseñadas para la velocidad."
-      },
-      {
-        "icon": "shield",
-        "title": "Guardarraíles de señal",
-        "description": "Curación, validación y revisión experta que filtran el ruido y elevan solo los movimientos duraderos."
+        "title": "Entregables Accionables",
+        "description": "Las señales se resuelven en entregables concretos: informes, contra-estrategias y guías de implementación listas para tu equipo."
       }
     ]
   },
-  "latest": {
-    "eyebrow": "Últimas entregas SotA",
-    "title": "Lanzamientos que llegan ahora a la plataforma.",
-    "description": "Tu carril rápido hacia el arte: destacamos las líneas más recientes, listas para integrarse en tu hoja de ruta.",
-    "newLabel": "Nuevo",
-    "cardEyebrow": "Lanzamiento SotA",
-    "button": "Ver todos los lanzamientos",
-    "cta": "Sumergirse en el arte"
+  "signals": {
+    "title": "La inteligencia comienza con una Señal.",
+    "subtitle": "Un evento verificado que cambia el estado del arte. Rastreados por miles, pero tú solo ves lo que importa.",
+    "examples": [
+      {
+        "title": "Movimiento Competitivo",
+        "description": "Movimiento competitivo verificable: lanzamiento rival, entrada/salida de mercado, pricing ofensivo o reposicionamiento con hechos. Afecta dinámica competitiva.",
+        "icon": "radar"
+      },
+      {
+        "title": "Precio / Packaging",
+        "description": "Cambio en precios, planes, métricas de cobro, límites/quotas o bundling. Afecta costos y viabilidad económica de operar o escalar.",
+        "icon": "gauge"
+      },
+      {
+        "title": "Lanzamiento de Producto",
+        "description": "Nueva capacidad disponible (GA/Beta) que habilita o cambia cómo se realiza un proceso. Se reporta cuando existe entrega verificable.",
+        "icon": "sparkles"
+      },
+      {
+        "title": "Cambio Regulatorio",
+        "description": "Cambio en regulación, norma, guía oficial o criterio legal aplicable. Modifica obligaciones, permisos, límites o requisitos de cumplimiento.",
+        "icon": "shield"
+      }
+    ]
   },
-  "releaseTags": ["Resumen", "Implementación", "Señales"],
+  "releaseTags": [
+    "Resumen",
+    "Implementación",
+    "Señales"
+  ],
   "workflow": {
     "title": "Un flujo de trabajo diseñado para decisiones SotA.",
     "description": "Desde la detección de señales hasta el despliegue, SotA mantiene alineada a tu organización con el arte que importa. Cada lanzamiento recorre nuestro pipeline vivo para que confíes en el resultado.",
