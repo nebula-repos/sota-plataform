@@ -22,18 +22,25 @@ export async function Header() {
     "rounded-full px-5 py-2 text-sm font-medium text-foreground/90 transition-colors hover:bg-white/10 hover:text-primary"
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-gradient-to-b from-background/80 via-background/70 to-background/90 shadow-[0_18px_80px_-40px_rgba(56,189,248,0.8)] backdrop-blur-xl">
-      <div className="container mx-auto flex h-20 items-center justify-between gap-4 px-4">
-        <div className="flex items-center gap-3">
+    <header className="fixed left-1/2 top-6 z-50 w-[calc(100%-2rem)] max-w-7xl -translate-x-1/2 rounded-full border border-white/10 bg-background/60 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] backdrop-blur-xl transition-all duration-300 hover:bg-background/80 hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.5)]">
+      <div className="flex h-16 items-center justify-between px-6">
+        <div className="flex items-center gap-4">
           <Link
             href="/"
-            className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-lg font-semibold tracking-tight text-foreground shadow-inner shadow-white/5 transition-transform duration-200 hover:-translate-y-0.5"
+            className="group relative flex items-center gap-2 text-lg font-bold tracking-tight transition-transform hover:scale-105"
           >
-            <span className="bg-gradient-to-r from-blue-800 via-cyan-600 to-emerald-400 bg-clip-text text-transparent">SotA</span>
+            <span className="relative flex h-3 w-3">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-500"></span>
+            </span>
+            <span className="bg-gradient-to-r from-blue-800 via-cyan-600 to-emerald-400 bg-clip-text text-transparent">
+              SotA
+            </span>
           </Link>
         </div>
-        <nav className="flex flex-1 items-center justify-end gap-3">
-          <div className="flex flex-wrap items-center gap-1 rounded-full border border-white/10 bg-white/5 px-1 py-1 shadow-inner shadow-white/5 backdrop-blur">
+
+        <nav className="flex items-center gap-2 sm:gap-6">
+          <div className="hidden items-center gap-1 sm:flex">
             {user && (
               <Link href="/dashboard" className={navLinkClass}>
                 {common.header.nav.myAccount}
@@ -45,7 +52,8 @@ export async function Header() {
               </Link>
             )}
           </div>
-          <div className="flex flex-wrap items-center gap-2 rounded-full border border-white/10 bg-white/5 px-2 py-1 shadow-sm shadow-primary/5 backdrop-blur">
+
+          <div className="flex items-center gap-3 pl-6 sm:border-l sm:border-white/10">
             {user ? (
               <form action="/auth/signout" method="post">
                 <Button variant="ghost" size="sm" type="submit" className={subtleAuthButtonClass}>
@@ -54,7 +62,7 @@ export async function Header() {
               </form>
             ) : (
               <>
-                <Link href="/auth/login">
+                <Link href="/auth/login" className="hidden sm:inline-block">
                   <Button variant="ghost" size="sm" className={subtleAuthButtonClass}>
                     {common.header.auth.login}
                   </Button>
@@ -62,15 +70,20 @@ export async function Header() {
                 <Link href="/auth/signup">
                   <Button
                     size="sm"
-                    className="rounded-full px-6 text-sm font-semibold text-primary-foreground bg-gradient-to-r from-blue-800 via-cyan-600 to-emerald-400 shadow-lg shadow-primary/20 transition-transform hover:scale-[1.02]"
+                    className="group relative overflow-hidden rounded-full bg-primary/10 px-6 text-sm font-semibold text-primary shadow-sm hover:bg-primary/20 hover:shadow-md hover:shadow-primary/20"
                   >
-                    {common.header.auth.signup}
+                    <span className="relative z-10 flex items-center gap-2">
+                      {common.header.auth.signup}
+                      <div className="h-1.5 w-1.5 rounded-full bg-primary transition-all group-hover:bg-emerald-400" />
+                    </span>
                   </Button>
                 </Link>
               </>
             )}
+            <div className="scale-90">
+              <LanguageToggle locale={locale} />
+            </div>
           </div>
-          <LanguageToggle locale={locale} />
         </nav>
       </div>
     </header>
