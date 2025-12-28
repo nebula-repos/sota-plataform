@@ -22,11 +22,7 @@ export async function Footer() {
               {footerCopy.sections.links}
             </h3>
             <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/research-lines" className="text-muted-foreground hover:text-foreground">
-                  {footerCopy.links.researchLines}
-                </Link>
-              </li>
+
               <li>
                 <Link href="/pricing" className="text-muted-foreground hover:text-foreground">
                   {footerCopy.links.pricing}

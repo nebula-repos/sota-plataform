@@ -8,7 +8,7 @@ import { ArrowRight, Check, Cpu, Gauge, Radar, ShieldCheck, Sparkles, Workflow }
 import { MouseGlowCard } from "@/components/mouse-glow-card"
 import { getLocale } from "@/lib/i18n/server"
 import { getDictionary } from "@/lib/i18n/get-dictionary"
-import { ResearchLineCard } from "@/components/research-line-card"
+
 
 export const revalidate = 3600
 
@@ -40,12 +40,6 @@ export default async function HomePage() {
   }>
 
   // Fetch latest research lines
-  const { data: researchLines } = await supabase
-    .from("research_lines")
-    .select("*")
-    .eq("is_active", true)
-    .order("created_at", { ascending: false })
-    .limit(3)
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -165,9 +159,8 @@ export default async function HomePage() {
               {pricingPlans.map((plan) => (
                 <Card
                   key={plan.id}
-                  className={`group relative overflow-hidden border border-white/10 bg-gradient-to-b from-background/90 via-background/60 to-background/40 shadow-[0_35px_80px_-50px_rgba(15,15,15,0.7)] transition-all duration-300 hover:-translate-y-2 hover:border-primary/50 hover:shadow-[0_55px_130px_-60px_rgba(15,15,15,0.9)] ${
-                    plan.highlightLabel ? "ring-2 ring-primary/70" : ""
-                  }`}
+                  className={`group relative overflow-hidden border border-white/10 bg-gradient-to-b from-background/90 via-background/60 to-background/40 shadow-[0_35px_80px_-50px_rgba(15,15,15,0.7)] transition-all duration-300 hover:-translate-y-2 hover:border-primary/50 hover:shadow-[0_55px_130px_-60px_rgba(15,15,15,0.9)] ${plan.highlightLabel ? "ring-2 ring-primary/70" : ""
+                    }`}
                 >
                   {plan.tag && (
                     <span className="absolute left-6 top-6 rounded-full border border-primary/40 bg-primary/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-primary/80">
@@ -210,39 +203,6 @@ export default async function HomePage() {
             <p className="mt-8 text-center text-sm text-muted-foreground">{pricingCopy.overview.note}</p>
           </div>
         </section>
-
-        {/* Latest Research Lines */}
-        {researchLines && researchLines.length > 0 && (
-          <section className="relative overflow-hidden border-y border-border/60 bg-gradient-to-br from-muted/50 via-background to-muted/30 py-24">
-            <div className="container mx-auto px-4">
-              <div className="mx-auto max-w-2xl text-center">
-                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">{home.latest.eyebrow}</p>
-                <h2 className="mt-4 text-3xl font-semibold tracking-tight md:text-4xl">{home.latest.title}</h2>
-                <p className="mt-4 text-pretty text-muted-foreground">{home.latest.description}</p>
-              </div>
-              <div className="mt-12 grid gap-6 lg:grid-cols-3">
-                {researchLines.map((line) => (
-                  <ResearchLineCard
-                    key={line.id}
-                    line={line}
-                    eyebrowLabel={home.latest.cardEyebrow}
-                    dateFormatter={dateFormatter}
-                    dateFallbackLabel={home.latest.newLabel}
-                    tags={home.releaseTags}
-                    ctaLabel={home.latest.cta}
-                  />
-                ))}
-              </div>
-              <div className="mt-8 text-center">
-                <Link href="/research-lines">
-                  <Button variant="outline" className="rounded-full border-primary/40 bg-white/5 shadow-md shadow-primary/10 hover:shadow-primary/20">
-                    {home.latest.button}
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </section>
-        )}
 
         {/* Workflow Section */}
         <section className="relative overflow-hidden py-24">
