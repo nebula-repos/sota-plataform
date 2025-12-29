@@ -8,6 +8,7 @@ import { ArrowRight, Check, Cpu, Gauge, Radar, ShieldCheck, Sparkles, Workflow }
 import { MouseGlowCard } from "@/components/mouse-glow-card"
 import { getLocale } from "@/lib/i18n/server"
 import { getDictionary } from "@/lib/i18n/get-dictionary"
+import { FadeIn, SlideUp, StaggerContainer, StaggerItem, AnimatedBackgroundBlob, ScaleIn } from "@/components/ui/animation-wrappers"
 
 
 export const revalidate = 3600
@@ -49,25 +50,38 @@ export default async function HomePage() {
         <section className="relative overflow-hidden pt-32 pb-20 lg:pt-48 lg:pb-32 bg-[oklch(20.8%_0.042_265.755)]">
           {/* Background Effects */}
           <div className="absolute inset-0 z-0 pointer-events-none">
-            <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80%] h-[600px] bg-blue-500/30 blur-[120px] rounded-full opacity-70 mix-blend-screen" />
-            <div className="absolute top-[20%] right-[-10%] w-[600px] h-[600px] bg-blue-500/20 blur-[140px] rounded-full opacity-60 mix-blend-screen" />
-            <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-amber-500/20 blur-[140px] rounded-full opacity-50 mix-blend-screen" />
+            <AnimatedBackgroundBlob
+              className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80%] h-[600px] bg-blue-500/30 blur-[120px] rounded-full opacity-70 mix-blend-screen"
+              delay={0}
+            />
+            <AnimatedBackgroundBlob
+              className="absolute top-[20%] right-[-10%] w-[600px] h-[600px] bg-blue-500/20 blur-[140px] rounded-full opacity-60 mix-blend-screen"
+              delay={2}
+            />
+            <AnimatedBackgroundBlob
+              className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-amber-500/20 blur-[140px] rounded-full opacity-50 mix-blend-screen"
+              delay={4}
+            />
           </div>
 
           <div className="container relative z-10 mx-auto px-4 text-center">
 
 
-            <h1 className="mx-auto max-w-5xl text-balance text-4xl font-bold tracking-tight text-white md:text-7xl drop-shadow-sm">
-              <span className="bg-gradient-to-br from-white via-slate-100 to-slate-300 bg-clip-text text-transparent">
-                {home.hero.title}
-              </span>
-            </h1>
+            <FadeIn>
+              <h1 className="mx-auto max-w-5xl text-balance text-4xl font-bold tracking-tight text-white md:text-7xl drop-shadow-sm">
+                <span className="bg-gradient-to-br from-white via-slate-100 to-slate-300 bg-clip-text text-transparent">
+                  {home.hero.title}
+                </span>
+              </h1>
+            </FadeIn>
 
-            <p className="mx-auto mt-8 max-w-2xl text-pretty text-lg text-slate-300 md:text-xl leading-relaxed">
-              {home.hero.subtitle}
-            </p>
+            <SlideUp delay={0.2}>
+              <p className="mx-auto mt-8 max-w-2xl text-pretty text-lg text-slate-300 md:text-xl leading-relaxed">
+                {home.hero.subtitle}
+              </p>
+            </SlideUp>
 
-            <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
+            <SlideUp delay={0.3} className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
               <Link href="/about">
                 <Button
                   size="lg"
@@ -89,26 +103,27 @@ export default async function HomePage() {
                   {home.hero.secondaryCta}
                 </Button>
               </Link>
-            </div>
+            </SlideUp>
 
-            <div className="mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <StaggerContainer className="mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {home.highlights.map((highlight, index) => {
                 const Icon = iconMap[highlight.icon as keyof typeof iconMap] ?? Sparkles
                 return (
-                  <MouseGlowCard
-                    key={`${highlight.label}-${index}`}
-                    className={`relative overflow-hidden border border-white/5 bg-slate-900/30 p-8 text-left backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-amber-500/20 hover:bg-slate-900/50 group ${highlight.className ?? ""}`}
-                  >
-                    <div className="mb-6 inline-flex items-center justify-center rounded-xl border border-blue-500/20 bg-blue-500/10 p-3 text-blue-400 shadow-[0_0_15px_-3px_rgba(59,130,246,0.3)] group-hover:border-amber-500/20 group-hover:bg-amber-500/10 group-hover:text-amber-400 transition-colors duration-300">
-                      <Icon className="h-6 w-6" aria-hidden />
-                    </div>
-                    <p className="font-mono text-xs font-semibold uppercase tracking-widest text-slate-400 group-hover:text-amber-500/80 transition-colors">{highlight.label}</p>
-                    <p className="mt-2 text-3xl font-bold tracking-tight text-white">{highlight.value}</p>
-                    <p className="mt-2 text-sm text-slate-400">{highlight.description}</p>
-                  </MouseGlowCard>
+                  <StaggerItem key={`${highlight.label}-${index}`}>
+                    <MouseGlowCard
+                      className={`relative overflow-hidden border border-white/5 bg-slate-900/30 p-8 text-left backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-amber-500/20 hover:bg-slate-900/50 group ${highlight.className ?? ""}`}
+                    >
+                      <div className="mb-6 inline-flex items-center justify-center rounded-xl border border-blue-500/20 bg-blue-500/10 p-3 text-blue-400 shadow-[0_0_15px_-3px_rgba(59,130,246,0.3)] group-hover:border-amber-500/20 group-hover:bg-amber-500/10 group-hover:text-amber-400 transition-colors duration-300">
+                        <Icon className="h-6 w-6" aria-hidden />
+                      </div>
+                      <p className="font-mono text-xs font-semibold uppercase tracking-widest text-slate-400 group-hover:text-amber-500/80 transition-colors">{highlight.label}</p>
+                      <p className="mt-2 text-3xl font-bold tracking-tight text-white">{highlight.value}</p>
+                      <p className="mt-2 text-sm text-slate-400">{highlight.description}</p>
+                    </MouseGlowCard>
+                  </StaggerItem>
                 )
               })}
-            </div>
+            </StaggerContainer>
           </div>
         </section>
 
@@ -123,11 +138,11 @@ export default async function HomePage() {
               <h2 className="text-3xl font-bold tracking-tight text-white md:text-5xl">{home.features.title}</h2>
               <p className="mt-6 text-lg text-slate-400">{home.features.subtitle}</p>
             </div>
-            <div className="grid gap-8 md:grid-cols-3">
+            <StaggerContainer className="grid gap-8 md:grid-cols-3">
               {home.features.cards.map((pillar, index) => {
                 const Icon = iconMap[pillar.icon as keyof typeof iconMap] ?? Sparkles
                 return (
-                  <div
+                  <StaggerItem
                     key={`${pillar.title}-${index}`}
                     className="group relative overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-b from-white/[0.03] to-transparent p-8 shadow-2xl backdrop-blur-sm transition-all duration-500 hover:border-amber-500/40 hover:from-white/[0.08] hover:shadow-[0_0_40px_-5px_rgba(245,158,11,0.1)]"
                   >
@@ -138,10 +153,10 @@ export default async function HomePage() {
                     <p className="text-slate-400 leading-relaxed group-hover:text-slate-300 transition-colors">{pillar.description}</p>
 
                     <div className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-transparent via-amber-500 to-transparent scale-x-0 transition-transform duration-500 group-hover:scale-x-100 opacity-70" />
-                  </div>
+                  </StaggerItem>
                 )
               })}
-            </div>
+            </StaggerContainer>
           </div>
         </section>
 
@@ -156,23 +171,24 @@ export default async function HomePage() {
               <p className="text-xs font-bold uppercase tracking-[0.3em] text-amber-500 mb-3">{home.signals.title}</p>
               <h2 className="text-4xl font-bold tracking-tight text-white">{home.signals.subtitle}</h2>
             </div>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            <StaggerContainer className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {home.signals.examples.map((signal, index) => {
                 const Icon = iconMap[signal.icon as keyof typeof iconMap] ?? Sparkles
                 return (
-                  <MouseGlowCard
-                    key={`${signal.title}-${index}`}
-                    className="flex h-full flex-col border border-white/5 bg-slate-900/30 p-6 transition-all duration-300 hover:border-amber-500/30 hover:bg-slate-900/50 group backdrop-blur-xl"
-                  >
-                    <div className="mb-4 inline-flex size-10 items-center justify-center rounded-lg border border-blue-500/20 bg-blue-500/10 text-blue-400 group-hover:text-amber-400 group-hover:border-amber-500/20 group-hover:bg-amber-500/10 transition-colors">
-                      <Icon className="h-5 w-5" aria-hidden />
-                    </div>
-                    <h3 className="mb-2 text-lg font-semibold text-slate-100 group-hover:text-white">{signal.title}</h3>
-                    <p className="text-sm text-slate-400 leading-relaxed group-hover:text-slate-300">{signal.description}</p>
-                  </MouseGlowCard>
+                  <StaggerItem key={`${signal.title}-${index}`}>
+                    <MouseGlowCard
+                      className="flex h-full flex-col border border-white/5 bg-slate-900/30 p-6 transition-all duration-300 hover:border-amber-500/30 hover:bg-slate-900/50 group backdrop-blur-xl"
+                    >
+                      <div className="mb-4 inline-flex size-10 items-center justify-center rounded-lg border border-blue-500/20 bg-blue-500/10 text-blue-400 group-hover:text-amber-400 group-hover:border-amber-500/20 group-hover:bg-amber-500/10 transition-colors">
+                        <Icon className="h-5 w-5" aria-hidden />
+                      </div>
+                      <h3 className="mb-2 text-lg font-semibold text-slate-100 group-hover:text-white">{signal.title}</h3>
+                      <p className="text-sm text-slate-400 leading-relaxed group-hover:text-slate-300">{signal.description}</p>
+                    </MouseGlowCard>
+                  </StaggerItem>
                 )
               })}
-            </div>
+            </StaggerContainer>
           </div>
         </section>
 
@@ -200,9 +216,9 @@ export default async function HomePage() {
                 </Link>
               </div>
             </div>
-            <div className="grid gap-8 md:grid-cols-3">
+            <StaggerContainer className="grid gap-8 md:grid-cols-3">
               {pricingPlans.map((plan) => (
-                <div
+                <StaggerItem
                   key={plan.id}
                   className={`group relative overflow-hidden rounded-3xl border border-white/5 bg-slate-900/40 p-8 shadow-2xl backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:bg-slate-900/60 ${plan.highlightLabel ? "ring-1 ring-amber-500/50 shadow-[0_0_50px_-20px_rgba(245,158,11,0.15)]" : "hover:border-amber-500/20"
                     }`}
@@ -252,9 +268,9 @@ export default async function HomePage() {
                       </Button>
                     </Link>
                   </div>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
             <p className="mt-12 text-center text-sm text-slate-500">{pricingCopy.overview.note}</p>
           </div>
         </section>
@@ -273,9 +289,9 @@ export default async function HomePage() {
               </div>
               <div className="relative rounded-3xl border border-white/10 bg-slate-900/30 p-10 shadow-[0_0_100px_-30px_rgba(0,0,0,0.5)] backdrop-blur-md">
                 <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-blue-500/10 to-transparent blur opacity-40" />
-                <ol className="relative space-y-8">
+                <StaggerContainer className="relative space-y-8">
                   {home.workflow.steps.map((step, index) => (
-                    <li key={step.title} className="group flex gap-6">
+                    <StaggerItem key={step.title} className="group flex gap-6">
                       <div className="relative flex size-14 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-slate-800/50 text-xl font-bold text-blue-400 shadow-inner group-hover:border-amber-500/40 group-hover:text-amber-400 group-hover:bg-amber-500/10 transition-all duration-300">
                         <span>{index + 1}</span>
                         {index !== home.workflow.steps.length - 1 && (
@@ -286,9 +302,9 @@ export default async function HomePage() {
                         <p className="text-lg font-semibold text-white group-hover:text-amber-100 transition-colors">{step.title}</p>
                         <p className="mt-2 text-sm text-slate-400 leading-relaxed">{step.description}</p>
                       </div>
-                    </li>
+                    </StaggerItem>
                   ))}
-                </ol>
+                </StaggerContainer>
               </div>
             </div>
           </div>
@@ -351,7 +367,7 @@ export default async function HomePage() {
             <div className="absolute bottom-0 w-[100%] h-[300px] bg-amber-500/10 blur-[120px] rounded-full opacity-40 mix-blend-screen" />
           </div>
           <div className="container relative z-10 mx-auto px-4 text-center">
-            <div className="mx-auto max-w-4xl rounded-[2.5rem] border border-white/10 bg-slate-900/80 px-8 py-20 shadow-2xl backdrop-blur-xl transition-all hover:border-amber-500/20">
+            <ScaleIn className="mx-auto max-w-4xl rounded-[2.5rem] border border-white/10 bg-slate-900/80 px-8 py-20 shadow-2xl backdrop-blur-xl transition-all hover:border-amber-500/20">
               <h2 className="text-4xl font-bold tracking-tight text-white md:text-5xl">{home.cta.title}</h2>
               <p className="mx-auto mt-6 max-w-2xl text-xl text-slate-400 leading-relaxed">{home.cta.description}</p>
               <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -374,7 +390,7 @@ export default async function HomePage() {
                   </Button>
                 </Link>
               </div>
-            </div>
+            </ScaleIn>
           </div>
         </section>
       </main>

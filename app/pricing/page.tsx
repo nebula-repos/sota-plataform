@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { getLocale } from "@/lib/i18n/server"
 import { getDictionary } from "@/lib/i18n/get-dictionary"
+import { FadeIn, SlideUp, StaggerContainer, StaggerItem, AnimatedBackgroundBlob } from "@/components/ui/animation-wrappers"
 
 export default async function PricingPage() {
   const locale = await getLocale()
@@ -32,9 +33,18 @@ export default async function PricingPage() {
         <section className="relative overflow-hidden pt-32 pb-20 lg:pt-48 lg:pb-32 bg-[oklch(20.8%_0.042_265.755)]">
           {/* Background Effects */}
           <div className="absolute inset-0 z-0 pointer-events-none">
-            <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80%] h-[600px] bg-blue-500/30 blur-[120px] rounded-full opacity-70 mix-blend-screen" />
-            <div className="absolute top-[20%] right-[-10%] w-[600px] h-[600px] bg-blue-500/20 blur-[140px] rounded-full opacity-60 mix-blend-screen" />
-            <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-amber-500/20 blur-[140px] rounded-full opacity-50 mix-blend-screen" />
+            <AnimatedBackgroundBlob
+              className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80%] h-[600px] bg-blue-500/30 blur-[120px] rounded-full opacity-70 mix-blend-screen"
+              delay={0}
+            />
+            <AnimatedBackgroundBlob
+              className="absolute top-[20%] right-[-10%] w-[600px] h-[600px] bg-blue-500/20 blur-[140px] rounded-full opacity-60 mix-blend-screen"
+              delay={2}
+            />
+            <AnimatedBackgroundBlob
+              className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-amber-500/20 blur-[140px] rounded-full opacity-50 mix-blend-screen"
+              delay={4}
+            />
           </div>
 
           <div className="container relative z-10 mx-auto px-4 text-center">
@@ -42,17 +52,21 @@ export default async function PricingPage() {
               <span>{pricingCopy.hero.eyebrow}</span>
             </div>
 
-            <h1 className="mx-auto mt-8 max-w-4xl text-balance text-4xl font-bold tracking-tight text-white md:text-6xl drop-shadow-sm">
-              <span className="bg-gradient-to-br from-white via-slate-100 to-slate-300 bg-clip-text text-transparent">
-                {pricingCopy.hero.title}
-              </span>
-            </h1>
+            <FadeIn>
+              <h1 className="mx-auto mt-8 max-w-4xl text-balance text-4xl font-bold tracking-tight text-white md:text-6xl drop-shadow-sm">
+                <span className="bg-gradient-to-br from-white via-slate-100 to-slate-300 bg-clip-text text-transparent">
+                  {pricingCopy.hero.title}
+                </span>
+              </h1>
+            </FadeIn>
 
-            <p className="mx-auto mt-6 max-w-3xl text-pretty text-lg text-slate-400 md:text-xl leading-relaxed">
-              {pricingCopy.hero.description}
-            </p>
+            <SlideUp delay={0.2}>
+              <p className="mx-auto mt-6 max-w-3xl text-pretty text-lg text-slate-400 md:text-xl leading-relaxed">
+                {pricingCopy.hero.description}
+              </p>
+            </SlideUp>
 
-            <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <SlideUp delay={0.3} className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link href="/auth/signup">
                 <Button
                   size="lg"
@@ -74,7 +88,7 @@ export default async function PricingPage() {
                   {pricingCopy.hero.secondaryCta}
                 </Button>
               </a>
-            </div>
+            </SlideUp>
             <p className="mt-8 text-xs font-semibold uppercase tracking-[0.4em] text-slate-500">
               {pricingCopy.overview.note}
             </p>
@@ -99,9 +113,9 @@ export default async function PricingPage() {
               <p className="mt-4 text-lg text-slate-400">{pricingCopy.overview.description}</p>
             </div>
 
-            <div className="grid gap-8 md:grid-cols-3">
+            <StaggerContainer className="grid gap-8 md:grid-cols-3">
               {plans.map((plan) => (
-                <div
+                <StaggerItem
                   key={plan.id}
                   className={`group relative overflow-hidden rounded-3xl border border-white/5 bg-slate-900/40 p-8 shadow-2xl backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:bg-slate-900/60 ${plan.highlightLabel ? "ring-1 ring-amber-500/50 shadow-[0_0_50px_-20px_rgba(245,158,11,0.15)]" : "hover:border-amber-500/20"
                     }`}
@@ -153,9 +167,9 @@ export default async function PricingPage() {
                       </Button>
                     </Link>
                   </div>
-                </div>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
           </div>
         </section>
 
@@ -167,7 +181,7 @@ export default async function PricingPage() {
           <div className="container relative z-10 mx-auto px-4">
             <div className="grid gap-8 lg:grid-cols-2">
               {/* Features Grid */}
-              <div className="relative overflow-hidden rounded-3xl border border-white/5 bg-slate-900/40 p-8 shadow-2xl backdrop-blur-xl transition-all hover:bg-slate-900/50 hover:border-amber-500/20 group">
+              <FadeIn className="relative overflow-hidden rounded-3xl border border-white/5 bg-slate-900/40 p-8 shadow-2xl backdrop-blur-xl transition-all hover:bg-slate-900/50 hover:border-amber-500/20 group">
                 <div className="mb-6">
                   <h3 className="text-2xl font-bold text-white group-hover:text-amber-100 transition-colors">{pricingCopy.included.title}</h3>
                   <div className="mt-4 h-0.5 w-16 bg-gradient-to-r from-blue-500 to-transparent" />
@@ -182,10 +196,10 @@ export default async function PricingPage() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </FadeIn>
 
               {/* Contact Card */}
-              <div className="relative overflow-hidden rounded-3xl border border-white/5 bg-slate-900/40 p-8 shadow-2xl backdrop-blur-xl transition-all hover:bg-slate-900/50 hover:border-amber-500/20 group text-center flex flex-col items-center justify-center">
+              <FadeIn delay={0.2} className="relative overflow-hidden rounded-3xl border border-white/5 bg-slate-900/40 p-8 shadow-2xl backdrop-blur-xl transition-all hover:bg-slate-900/50 hover:border-amber-500/20 group text-center flex flex-col items-center justify-center">
                 <div className="mb-6 inline-flex size-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-amber-400 shadow-inner group-hover:scale-110 transition-transform duration-300">
                   <ArrowRight className="h-6 w-6" />
                 </div>
@@ -201,7 +215,7 @@ export default async function PricingPage() {
                     {pricingCopy.contact.email}
                   </p>
                 </a>
-              </div>
+              </FadeIn>
             </div>
           </div>
         </section>

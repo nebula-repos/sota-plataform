@@ -33,7 +33,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Switch } from "@/components/ui/switch" // We will need to create this if missing, but let's assume standard shadcn or use button for now
 
 const mockSignals = [
   {
@@ -103,6 +102,7 @@ export default function DashboardPage() {
   const [savedSignalIds, setSavedSignalIds] = useState<number[]>([])
   const [currentViewFilter, setCurrentViewFilter] = useState<string | undefined>(undefined)
   const [isDarkMode, setIsDarkMode] = useState(false)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true)
 
   const [filters, setFilters] = useState<FilterState>({
     all: true,
@@ -197,22 +197,26 @@ export default function DashboardPage() {
           onNavigate={setCurrentView}
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
+          onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
+          isSidebarOpen={isSidebarOpen}
         />
 
         <div className="flex">
           {/* Sidebar only shows on Feed view */}
-          {currentView === 'feed' && (
-            <SignalSelector
-              filters={filters}
-              onToggle={handleToggle}
-              currentViewFilter={currentViewFilter}
-              onViewFilterChange={handleViewFilterChange}
-            />
+          {currentView === 'feed' && isSidebarOpen && (
+            <div className="animate-in slide-in-from-left duration-300">
+              <SignalSelector
+                filters={filters}
+                onToggle={handleToggle}
+                currentViewFilter={currentViewFilter}
+                onViewFilterChange={handleViewFilterChange}
+              />
+            </div>
           )}
 
           {/* Main Content Area */}
           <main className={`flex-1 p-8 bg-gray-50/30 dark:bg-gray-900/50 ${currentView !== 'feed' ? 'bg-white dark:bg-gray-950' : ''}`}>
-            <div className="mx-auto max-w-5xl">
+            <div className={`mx-auto transition-all duration-300 ${isSidebarOpen ? 'max-w-5xl' : 'max-w-6xl'}`}>
 
               {currentView === 'feed' && (
                 <>
@@ -234,7 +238,7 @@ export default function DashboardPage() {
                     </Button>
                   </div>
 
-                  <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
+                  <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 animate-in fade-in duration-500">
                     {filteredSignals.map((signal) => (
                       <SignalCard
                         key={signal.id}
