@@ -1,4 +1,4 @@
-import { Bell, Search, Settings, User } from "lucide-react"
+import { Bell, Search, Settings, User, PanelLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { toast } from "sonner"
@@ -8,9 +8,11 @@ interface DashboardHeaderProps {
   onNavigate: (view: string) => void
   searchQuery?: string
   setSearchQuery?: (query: string) => void
+  onToggleSidebar?: () => void
+  isSidebarOpen?: boolean
 }
 
-export function DashboardHeader({ currentView, onNavigate, searchQuery = "", setSearchQuery }: DashboardHeaderProps) {
+export function DashboardHeader({ currentView, onNavigate, searchQuery = "", setSearchQuery, onToggleSidebar, isSidebarOpen }: DashboardHeaderProps) {
 
   const handleNotificationClick = () => {
     toast("No new notifications", {
@@ -21,14 +23,22 @@ export function DashboardHeader({ currentView, onNavigate, searchQuery = "", set
 
   return (
     <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 px-6 transition-colors">
-      <div
-        className="flex items-center gap-2 font-semibold cursor-pointer"
-        onClick={() => onNavigate('feed')}
-      >
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-700 text-white">
-          <span className="text-lg font-bold">S</span>
+      <div className="flex items-center gap-4">
+        {onToggleSidebar && (
+          <Button variant="ghost" size="icon" onClick={onToggleSidebar} className="text-gray-500 dark:text-gray-400 hover:text-blue-700 dark:hover:text-blue-300">
+            <PanelLeft className={`h-5 w-5 transition-transform ${isSidebarOpen ? 'rotate-0' : 'rotate-180'}`} />
+          </Button>
+        )}
+
+        <div
+          className="flex items-center gap-2 font-semibold cursor-pointer"
+          onClick={() => onNavigate('feed')}
+        >
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-700 text-white">
+            <span className="text-lg font-bold">S</span>
+          </div>
+          <span className="text-xl text-blue-900 dark:text-white">SotA</span>
         </div>
-        <span className="text-xl text-blue-900 dark:text-white">SotA</span>
       </div>
 
       <div className="ml-auto flex items-center gap-4">
