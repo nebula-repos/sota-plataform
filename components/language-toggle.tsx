@@ -30,14 +30,14 @@ export function LanguageToggle({ locale }: { locale: Locale }) {
   }
 
   return (
-    <div className="relative flex rounded-full border border-border/60 bg-background/80 p-0.5 shadow-sm shadow-primary/5 backdrop-blur">
+    <div className="relative flex rounded-full border border-white/10 bg-slate-900/50 p-1 shadow-inner shadow-black/20 backdrop-blur-md">
       <span
         aria-hidden
-        className="pointer-events-none absolute top-0.5 bottom-0.5 rounded-full bg-primary shadow transition-all duration-300 ease-out"
+        className="pointer-events-none absolute top-1 bottom-1 rounded-full bg-blue-600/90 shadow-[0_0_10px_rgba(37,99,235,0.3)] transition-all duration-300 ease-out"
         style={{
-          width: `${segmentWidth}%`,
-          transform: `translate3d(${activeIndex * 90}%, 0, 0)`,
-          opacity: 1,
+          width: `calc(${segmentWidth}% - 3px)`,
+          transform: `translate3d(calc(${activeIndex * 100}% + 3px), 0, 0)`,
+          left: 0,
         }}
       />
       {SUPPORTED_LOCALES.map((code) => {
@@ -49,8 +49,8 @@ export function LanguageToggle({ locale }: { locale: Locale }) {
             disabled={pending}
             onClick={() => handleChange(code)}
             className={cn(
-              "relative z-10 flex flex-1 items-center justify-center rounded-full px-3 py-1 text-center text-xs font-semibold uppercase tracking-[0.25em] transition-colors duration-200",
-              isActive ? "text-primary-foreground" : "text-muted-foreground hover:text-foreground",
+              "relative z-10 flex flex-1 items-center justify-center rounded-full px-3 py-1 text-center text-[10px] font-bold uppercase tracking-[0.1em] transition-colors duration-200",
+              isActive ? "text-white" : "text-slate-400 hover:text-slate-200",
             )}
             aria-pressed={isActive}
           >

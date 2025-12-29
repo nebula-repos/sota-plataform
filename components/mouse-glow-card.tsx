@@ -44,11 +44,12 @@ export function MouseGlowCard({ children, className }: MouseGlowCardProps) {
 
   const handleMouseLeave = useCallback((event: MouseEvent<HTMLDivElement>) => {
     const card = event.currentTarget
-    card.style.removeProperty("--mouse-x")
-    card.style.removeProperty("--mouse-y")
-    card.style.removeProperty("--mouse-rotate-x")
-    card.style.removeProperty("--mouse-rotate-y")
-    card.style.removeProperty("--mouse-translate-z")
+    const style = card.style
+    style.removeProperty("--mouse-x")
+    style.removeProperty("--mouse-y")
+    style.removeProperty("--mouse-rotate-x")
+    style.removeProperty("--mouse-rotate-y")
+    style.removeProperty("--mouse-translate-z")
   }, [])
 
   return (
@@ -57,7 +58,7 @@ export function MouseGlowCard({ children, className }: MouseGlowCardProps) {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       className={cn(
-        "group relative will-change-transform overflow-hidden rounded-2xl border border-border/40 bg-gradient-to-br from-background via-primary/10 to-background/80 p-6 shadow-[0_30px_80px_-45px_rgba(10,10,10,0.55)] backdrop-blur transition-[transform,shadow] duration-200 ease-out hover:shadow-[0_40px_120px_-55px_rgba(10,10,10,0.68)]",
+        "group relative will-change-transform overflow-hidden rounded-2xl border border-white/5 bg-slate-900/30 p-6 shadow-2xl backdrop-blur-xl transition-all duration-300 ease-out hover:shadow-blue-500/10 hover:bg-slate-900/50",
         className,
       )}
       style={{
@@ -69,7 +70,7 @@ export function MouseGlowCard({ children, className }: MouseGlowCardProps) {
         className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         style={{
           background:
-            "radial-gradient(260px at var(--mouse-x) var(--mouse-y), rgba(115, 115, 115, 0.26), transparent 72%)",
+            "radial-gradient(400px at var(--mouse-x) var(--mouse-y), rgba(59, 130, 246, 0.15), transparent 80%)",
         }}
       />
       <div className="relative z-10">{children}</div>

@@ -17,12 +17,12 @@ export async function Header() {
   const userProfile = user ? await resolveUserProfile(supabase, user) : null
 
   const navLinkClass =
-    "inline-flex items-center rounded-full px-4 py-2 text-sm font-medium text-muted-foreground/90 transition-colors duration-200 hover:bg-white/10 hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary/60"
+    "inline-flex items-center rounded-full px-4 py-2 text-sm font-medium text-slate-300 transition-colors duration-200 hover:bg-white/5 hover:text-amber-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-700/60"
   const subtleAuthButtonClass =
-    "rounded-full px-5 py-2 text-sm font-medium text-foreground/90 transition-colors hover:bg-white/10 hover:text-primary"
+    "rounded-full px-5 py-2 text-sm font-medium text-slate-100 transition-colors hover:bg-white/5 hover:text-amber-500"
 
   return (
-    <header className="fixed left-1/2 top-6 z-50 w-[calc(100%-2rem)] max-w-7xl -translate-x-1/2 rounded-full border border-white/10 bg-background/60 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] backdrop-blur-xl transition-all duration-300 hover:bg-background/80 hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.5)]">
+    <header className="fixed left-1/2 top-6 z-50 w-[calc(100%-2rem)] max-w-7xl -translate-x-1/2 rounded-full border border-white/5 bg-slate-950/50 shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] backdrop-blur-3xl transition-all duration-300 hover:bg-slate-950/70 hover:shadow-[0_8px_32px_0_rgba(0,0,0,0.5)]">
       <div className="flex h-16 items-center justify-between px-6">
         <div className="flex items-center gap-4">
           <Link
@@ -30,10 +30,10 @@ export async function Header() {
             className="group relative flex items-center gap-2 text-lg font-bold tracking-tight transition-transform hover:scale-105"
           >
             <span className="relative flex h-3 w-3">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-500"></span>
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-700 opacity-75"></span>
+              <span className="relative inline-flex h-3 w-3 rounded-full bg-blue-600"></span>
             </span>
-            <span className="bg-gradient-to-r from-blue-800 via-cyan-600 to-emerald-400 bg-clip-text text-transparent">
+            <span className="text-white drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]">
               SotA
             </span>
           </Link>
@@ -53,7 +53,7 @@ export async function Header() {
             )}
           </div>
 
-          <div className="flex items-center gap-3 pl-6 sm:border-l sm:border-white/10">
+          <div className="flex items-center gap-3 pl-6 sm:border-l sm:border-white/5">
             {user ? (
               <form action="/auth/signout" method="post">
                 <Button variant="ghost" size="sm" type="submit" className={subtleAuthButtonClass}>
@@ -70,17 +70,17 @@ export async function Header() {
                 <Link href="/auth/signup">
                   <Button
                     size="sm"
-                    className="group relative overflow-hidden rounded-full bg-primary/10 px-6 text-sm font-semibold text-primary shadow-sm hover:bg-primary/20 hover:shadow-md hover:shadow-primary/20"
+                    className="group relative overflow-hidden rounded-full border border-blue-500/30 bg-blue-500/10 px-6 text-sm font-semibold text-blue-200 shadow-[0_0_20px_-5px_rgba(59,130,246,0.3)] hover:bg-blue-500/20 hover:shadow-[0_0_25px_-5px_rgba(59,130,246,0.5)] hover:border-blue-500/50"
                   >
                     <span className="relative z-10 flex items-center gap-2">
                       {common.header.auth.signup}
-                      <div className="h-1.5 w-1.5 rounded-full bg-primary transition-all group-hover:bg-emerald-400" />
+                      <div className="h-1.5 w-1.5 rounded-full bg-amber-400 shadow-[0_0_10px_rgba(251,191,36,0.8)]" />
                     </span>
                   </Button>
                 </Link>
               </>
             )}
-            <div className="scale-90">
+            <div className="scale-90 opacity-80 hover:opacity-100 transition-opacity">
               <LanguageToggle locale={locale} />
             </div>
           </div>
@@ -89,3 +89,4 @@ export async function Header() {
     </header>
   )
 }
+

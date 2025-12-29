@@ -48,33 +48,34 @@ export default async function AdminUsersPage() {
   ]
 
   return (
-    <div className="flex min-h-screen flex-col bg-background">
+    <div className="flex min-h-screen flex-col bg-slate-950 selection:bg-amber-500/30">
       <Header />
       <main className="flex-1">
-        <section className="relative overflow-hidden border-b border-border/60 bg-gradient-to-b from-background via-background/80 to-primary/5 py-28">
+        <section className="relative overflow-hidden border-b border-white/5 py-28">
+          {/* Background Glows */}
           <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-800/20 via-cyan-600/12 to-transparent blur-3xl" />
-            <div className="absolute left-1/2 top-1/2 size-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/15 blur-3xl" />
-            <div className="absolute -right-10 bottom-10 size-[360px] rounded-full bg-emerald-300/10 blur-3xl" />
+            <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80%] h-[500px] bg-blue-500/20 blur-[120px] rounded-full opacity-60 mix-blend-screen" />
+            <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-amber-500/10 blur-[140px] rounded-full opacity-40 mix-blend-screen" />
           </div>
+
           <div className="container mx-auto px-4">
             <div className="grid gap-12 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:items-center">
               <div className="relative">
-                <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.4em] text-primary/90 shadow-lg shadow-primary/20 backdrop-blur">
+                <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.4em] text-blue-400 shadow-[0_0_15px_-5px_rgba(59,130,246,0.5)]">
                   <Sparkles className="h-3.5 w-3.5" aria-hidden />
                   {copy.hero.badge}
                 </div>
-                <h1 className="mt-8 text-balance text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
+                <h1 className="mt-8 text-balance text-4xl font-semibold tracking-tight text-white md:text-5xl">
                   {copy.hero.title}
                 </h1>
-                <p className="mt-6 max-w-2xl text-pretty text-lg text-muted-foreground md:text-xl">
+                <p className="mt-6 max-w-2xl text-pretty text-lg text-slate-400 md:text-xl">
                   {copy.hero.description}
                 </p>
                 <div className="mt-10 flex flex-wrap gap-4">
                   <Link href="/admin">
                     <Button
                       variant="outline"
-                      className="gap-2 rounded-full border-white/30 bg-white/5 text-foreground shadow-lg shadow-primary/10 backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/50 hover:bg-white/10 hover:text-foreground"
+                      className="gap-2 rounded-full border-slate-700 bg-transparent text-slate-300 hover:text-white hover:border-blue-500/50 hover:bg-blue-500/10 transition-all duration-300"
                     >
                       <ArrowLeft className="h-4 w-4" aria-hidden />
                       {copy.hero.back}
@@ -86,12 +87,12 @@ export default async function AdminUsersPage() {
                 {statCards.map((stat, index) => (
                   <MouseGlowCard
                     key={`${stat.label}-${index}`}
-                    className="h-full rounded-3xl border border-white/10 bg-gradient-to-b from-background/95 via-primary/5 to-background/70 p-6 shadow-[0_35px_80px_-55px_rgba(15,15,15,0.75)]"
+                    className="h-full rounded-3xl border border-white/10 bg-slate-900/40 p-6 backdrop-blur-xl"
                   >
-                    <p className="text-[0.62rem] font-semibold uppercase tracking-[0.4em] text-primary/80">
+                    <p className="text-[0.62rem] font-semibold uppercase tracking-[0.4em] text-slate-500">
                       {stat.label}
                     </p>
-                    <p className="mt-4 text-4xl font-semibold text-foreground">{stat.value}</p>
+                    <p className="mt-4 text-4xl font-semibold text-white">{stat.value}</p>
                   </MouseGlowCard>
                 ))}
               </div>
@@ -99,21 +100,22 @@ export default async function AdminUsersPage() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden border-y border-border/60 bg-gradient-to-b from-background via-muted/20 to-background py-24">
-          <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-800/15 via-transparent to-emerald-300/10 blur-[240px]" />
-            <div className="absolute right-1/3 top-1/2 size-[360px] -translate-y-1/2 rounded-full bg-primary/5 blur-3xl" />
+        <section className="relative overflow-hidden border-t border-white/5 bg-slate-950/50 py-24">
+          {/* Section Background Glow */}
+          <div className="pointer-events-none absolute inset-0 z-0">
+            <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-blue-500/10 blur-[120px] rounded-full opacity-30" />
           </div>
-          <div className="container mx-auto px-4">
-            <Card className="relative overflow-hidden rounded-[32px] border border-white/10 bg-background/90 shadow-[0_60px_140px_-80px_rgba(15,15,15,0.85)] backdrop-blur">
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-800 via-cyan-600 to-emerald-400" />
+
+          <div className="container mx-auto px-4 relative z-10">
+            <Card className="relative overflow-hidden rounded-[32px] border border-white/10 bg-slate-900/40 shadow-2xl backdrop-blur-xl">
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-0.5 bg-blue-500/50 opacity-60" />
               <CardHeader className="space-y-4">
-                <div className="inline-flex items-center gap-3 text-[0.65rem] font-semibold uppercase tracking-[0.35em] text-primary/80">
+                <div className="inline-flex items-center gap-3 text-[0.65rem] font-semibold uppercase tracking-[0.35em] text-slate-500">
                   {copy.hero.badge}
                 </div>
                 <div>
-                  <CardTitle className="text-2xl text-foreground">{copy.list.title}</CardTitle>
-                  <CardDescription className="text-pretty text-muted-foreground">{copy.list.description}</CardDescription>
+                  <CardTitle className="text-2xl text-white">{copy.list.title}</CardTitle>
+                  <CardDescription className="text-pretty text-slate-400">{copy.list.description}</CardDescription>
                 </div>
               </CardHeader>
               <CardContent>
@@ -125,32 +127,29 @@ export default async function AdminUsersPage() {
                       return (
                         <div
                           key={u.id}
-                          className="group relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-background/95 via-primary/5 to-background/75 p-6 shadow-[0_45px_100px_-75px_rgba(15,15,15,0.95)] backdrop-blur transition-all duration-300 hover:-translate-y-1"
+                          className="group relative overflow-hidden rounded-3xl border border-white/5 bg-slate-800/20 p-6 transition-all duration-300 hover:bg-slate-800/40 hover:border-blue-500/20"
                         >
-                          <div className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                            <div className="absolute inset-0 bg-gradient-to-r from-blue-800/15 via-cyan-600/10 to-emerald-400/10 blur-3xl" />
-                          </div>
                           <div className="relative flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                             <div className="space-y-3">
                               <div className="flex flex-wrap items-center gap-2">
-                                <p className="text-lg font-semibold text-foreground">
+                                <p className="text-lg font-semibold text-white">
                                   {u.full_name || copy.list.noName}
                                 </p>
                                 <Badge
                                   variant={u.role === "admin" ? "default" : "secondary"}
-                                  className="rounded-full uppercase tracking-wide"
+                                  className="rounded-full uppercase tracking-wide bg-blue-600 hover:bg-blue-500 text-white border-blue-400/20"
                                 >
                                   {roleLabel}
                                 </Badge>
                                 <Badge
                                   variant={u.membership_tier === "member" ? "default" : "outline"}
-                                  className="rounded-full uppercase tracking-wide"
+                                  className="rounded-full uppercase tracking-wide bg-transparent border-amber-500/50 text-amber-500 hover:bg-amber-500/10"
                                 >
                                   {tierLabel}
                                 </Badge>
                               </div>
-                              <p className="text-sm text-muted-foreground">{u.email}</p>
-                              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-primary/70">
+                              <p className="text-sm text-slate-400">{u.email}</p>
+                              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-600">
                                 {copy.list.registered}{" "}
                                 {format(new Date(u.created_at), "MMMM d, yyyy", { locale: dateLocale })}
                               </p>
@@ -166,7 +165,7 @@ export default async function AdminUsersPage() {
                       )
                     })
                   ) : (
-                    <p className="text-sm text-muted-foreground">{copy.list.empty}</p>
+                    <p className="text-sm text-slate-500 italic text-center py-6">{copy.list.empty}</p>
                   )}
                 </div>
               </CardContent>

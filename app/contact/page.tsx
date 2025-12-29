@@ -22,67 +22,91 @@ export default async function ContactPage() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-background text-foreground">
+    <div className="flex min-h-screen flex-col bg-slate-950 text-slate-100 selection:bg-amber-500/30">
       <Header />
       <main className="flex-1">
-        <section className="relative overflow-hidden border-b border-border/60 bg-gradient-to-b from-background via-background/80 to-primary/5 py-24">
-          <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-800/20 via-cyan-600/10 to-transparent blur-3xl" />
+        {/* Hero Section */}
+        <section className="relative overflow-hidden pt-32 pb-20 lg:pt-48 lg:pb-32 bg-[oklch(20.8%_0.042_265.755)]">
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80%] h-[600px] bg-blue-500/30 blur-[120px] rounded-full opacity-70 mix-blend-screen" />
+            <div className="absolute top-[20%] right-[-10%] w-[600px] h-[600px] bg-blue-500/20 blur-[140px] rounded-full opacity-60 mix-blend-screen" />
+            <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-amber-500/20 blur-[140px] rounded-full opacity-50 mix-blend-screen" />
           </div>
-          <div className="container mx-auto px-4 text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-primary/80">
+
+          <div className="container relative z-10 mx-auto px-4 text-center">
+            <span className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.4em] text-blue-300 shadow-[0_0_15px_-5px_rgba(59,130,246,0.3)] backdrop-blur-md">
               {contact.hero.eyebrow}
             </span>
-            <h1 className="mx-auto mt-8 max-w-4xl text-balance text-4xl font-semibold tracking-tight md:text-5xl">
+
+            <h1 className="mx-auto mt-8 max-w-4xl text-balance text-4xl font-bold tracking-tight text-white md:text-6xl drop-shadow-sm">
               {contact.hero.title}
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">{contact.hero.description}</p>
+
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-400 leading-relaxed">{contact.hero.description}</p>
+
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link href={`mailto:${contact.hero.email}`} className="group">
-                <span className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-800 via-cyan-600 to-emerald-400 px-6 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-transform group-hover:-translate-y-0.5">
+                <span className="inline-flex items-center gap-2 rounded-full border border-amber-500/20 bg-blue-600 px-8 py-3 text-sm font-semibold text-white shadow-[0_0_25px_-5px_rgba(37,99,235,0.4)] transition-all duration-300 hover:scale-[1.02] hover:bg-blue-500 hover:shadow-[0_0_35px_-5px_rgba(245,158,11,0.3)] hover:border-amber-400/50">
                   <Mail className="h-4 w-4" aria-hidden />
                   {contact.hero.emailLabel}
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
+                  <ArrowRight className="h-4 w-4 text-amber-300 transition-transform group-hover:translate-x-1" aria-hidden />
                 </span>
               </Link>
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-muted-foreground">
-                <Clock className="h-4 w-4" aria-hidden />
+              <div className="inline-flex items-center gap-2 rounded-full border border-white/5 bg-slate-900/50 px-6 py-3 text-sm text-slate-400 backdrop-blur-sm">
+                <Clock className="h-4 w-4 text-blue-400" aria-hidden />
                 {contact.hero.meta}
               </div>
             </div>
           </div>
         </section>
 
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_0.85fr]">
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-[0_30px_80px_-60px_rgba(15,15,15,0.9)]">
+        {/* Contact Content Section */}
+        <section className="py-24 bg-[oklch(12.9%_0.042_264.695)] border-t border-white/5 relative overflow-hidden">
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500/10 blur-[150px] rounded-full opacity-40 mix-blend-screen" />
+          </div>
+
+          <div className="container relative z-10 mx-auto px-4">
+            <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_0.85fr] lg:items-start">
+
+              {/* Contact Form Container */}
+              <div className="rounded-3xl border border-white/5 bg-slate-900/30 p-8 shadow-2xl backdrop-blur-xl">
+                <div className="mb-8">
+                  <h2 className="text-2xl font-bold text-white mb-2">Send us a message</h2>
+                  <p className="text-slate-400">Fill out the form below and we'll get back to you shortly.</p>
+                </div>
                 <ContactForm copy={contact.form} />
               </div>
-              <div className="space-y-6">
-                <Card className="border-white/10 bg-gradient-to-b from-background/90 via-background/60 to-background/40">
+
+              {/* Info Side */}
+              <div className="space-y-8">
+                {/* Details Card */}
+                <Card className="border border-white/5 bg-slate-900/30 shadow-xl backdrop-blur-xl overflow-hidden group hover:border-amber-500/20 transition-all duration-300">
+                  <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-blue-500 via-blue-400 to-transparent opacity-60" />
                   <CardHeader className="space-y-4">
-                    <CardTitle className="text-2xl text-foreground">{contact.details.title}</CardTitle>
-                    <CardDescription className="text-base text-muted-foreground">{contact.details.note}</CardDescription>
+                    <CardTitle className="text-2xl font-bold text-white">{contact.details.title}</CardTitle>
+                    <CardDescription className="text-base text-slate-400 leading-relaxed">{contact.details.note}</CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-primary">
+                    <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-blue-300">
                       <Clock className="h-4 w-4" aria-hidden />
                       {contact.details.response}
                     </div>
                   </CardContent>
                 </Card>
+
+                {/* Direct Contacts Grid */}
                 <div className="grid gap-4 md:grid-cols-2">
                   {contact.details.items.map((item: { label: string; description: string; value: string }) => (
-                    <Card key={item.value} className="border-white/10 bg-white/5">
+                    <Card key={item.value} className="border border-white/5 bg-slate-900/30 hover:bg-slate-900/50 backdrop-blur-xl transition-colors duration-300">
                       <CardHeader>
-                        <CardTitle className="text-lg">{item.label}</CardTitle>
-                        <CardDescription>{item.description}</CardDescription>
+                        <CardTitle className="text-lg font-semibold text-white">{item.label}</CardTitle>
+                        <CardDescription className="text-slate-400">{item.description}</CardDescription>
                       </CardHeader>
                       <CardContent>
                         <Link
                           href={`mailto:${item.value}`}
-                          className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+                          className="inline-flex items-center gap-2 text-sm font-medium text-blue-400 hover:text-amber-400 transition-colors"
                         >
                           <Mail className="h-4 w-4" aria-hidden />
                           {item.value}
@@ -91,11 +115,13 @@ export default async function ContactPage() {
                     </Card>
                   ))}
                 </div>
+
+                {/* Socials Card */}
                 {socialLinks.length > 0 && (
-                  <Card className="border-white/10 bg-gradient-to-b from-background via-background/60 to-background/40">
+                  <Card className="border border-white/5 bg-slate-900/30 shadow-xl backdrop-blur-xl group hover:border-amber-500/20 transition-all duration-300">
                     <CardHeader>
-                      <CardTitle className="text-xl text-foreground">{contact.socials.title}</CardTitle>
-                      <CardDescription className="text-muted-foreground">
+                      <CardTitle className="text-xl font-semibold text-white">{contact.socials.title}</CardTitle>
+                      <CardDescription className="text-slate-400">
                         {contact.socials.description}
                       </CardDescription>
                     </CardHeader>
@@ -109,14 +135,16 @@ export default async function ContactPage() {
                                 href={link.url}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-foreground transition-colors hover:border-primary/40"
+                                className="flex items-center gap-3 rounded-2xl border border-white/5 bg-slate-900/40 px-4 py-3 text-sm text-slate-200 transition-all hover:bg-slate-900/80 hover:border-blue-500/30 hover:translate-x-1"
                               >
-                                <Icon className="h-4 w-4 text-primary" aria-hidden />
-                                <div className="flex flex-col leading-tight">
-                                  <span className="text-xs uppercase text-muted-foreground/80">{link.label}</span>
-                                  <span className="font-semibold">{link.handle}</span>
+                                <div className="flex size-8 items-center justify-center rounded-lg bg-blue-500/10 text-blue-400">
+                                  <Icon className="h-4 w-4" aria-hidden />
                                 </div>
-                                <ArrowRight className="ml-auto h-4 w-4 text-muted-foreground" aria-hidden />
+                                <div className="flex flex-col leading-tight">
+                                  <span className="text-[10px] uppercase tracking-wider text-slate-500 font-bold">{link.label}</span>
+                                  <span className="font-semibold text-white">{link.handle}</span>
+                                </div>
+                                <ArrowRight className="ml-auto h-4 w-4 text-slate-600 group-hover:text-amber-400 transition-colors" aria-hidden />
                               </Link>
                             </li>
                           )

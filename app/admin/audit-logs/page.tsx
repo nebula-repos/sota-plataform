@@ -55,32 +55,33 @@ export default async function AdminAuditLogsPage() {
   const stats = [{ label: copy.stats.records, value: totalLogs }]
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-slate-950 selection:bg-amber-500/30">
       <Header />
       <main className="flex-1">
-        <section className="relative overflow-hidden border-b border-border/60 bg-gradient-to-b from-background via-background/80 to-primary/5 py-28">
+        <section className="relative overflow-hidden border-b border-white/5 py-28">
+          {/* Background Glows */}
           <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-blue-800/15 via-cyan-600/10 to-transparent blur-3xl" />
-            <div className="absolute -right-12 top-1/3 size-[420px] rounded-full bg-emerald-400/10 blur-3xl" />
-            <div className="absolute left-1/3 bottom-0 size-[320px] rounded-full bg-primary/10 blur-[240px]" />
+            <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80%] h-[500px] bg-blue-500/20 blur-[120px] rounded-full opacity-60 mix-blend-screen" />
+            <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-amber-500/10 blur-[140px] rounded-full opacity-40 mix-blend-screen" />
           </div>
+
           <div className="container mx-auto px-4">
             <div className="grid gap-12 lg:grid-cols-[minmax(0,6fr)_minmax(0,4fr)] lg:items-center">
               <div>
-                <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.4em] text-primary/90 shadow-lg shadow-primary/20 backdrop-blur">
+                <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.4em] text-blue-400 shadow-[0_0_15px_-5px_rgba(59,130,246,0.5)]">
                   <Sparkles className="h-3.5 w-3.5" aria-hidden />
                   <span>{copy.hero.eyebrow}</span>
                 </div>
-                <h1 className="mt-8 max-w-3xl text-balance text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
+                <h1 className="mt-8 max-w-3xl text-balance text-4xl font-semibold tracking-tight text-white md:text-5xl">
                   {copy.hero.title}
                 </h1>
-                <p className="mt-6 max-w-2xl text-pretty text-lg text-muted-foreground md:text-xl">{copy.hero.subtitle}</p>
+                <p className="mt-6 max-w-2xl text-pretty text-lg text-slate-400 md:text-xl">{copy.hero.subtitle}</p>
                 <div className="mt-10">
                   <Link href="/admin">
                     <Button
                       size="lg"
                       variant="outline"
-                      className="group gap-2 rounded-full border-white/30 bg-white/5 text-foreground shadow-lg shadow-primary/10 backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-white/10 hover:text-primary"
+                      className="group gap-2 rounded-full border-slate-700 bg-transparent text-slate-300 hover:text-white hover:border-blue-500/50 hover:bg-blue-500/10 transition-all duration-300"
                     >
                       <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" aria-hidden />
                       {copy.hero.back}
@@ -92,10 +93,10 @@ export default async function AdminAuditLogsPage() {
                 {stats.map((stat) => (
                   <MouseGlowCard
                     key={stat.label}
-                    className="h-full border border-white/15 bg-gradient-to-b from-background/85 via-primary/5 to-background/70"
+                    className="h-full border border-white/10 bg-slate-900/40 backdrop-blur-xl"
                   >
-                    <p className="text-[0.62rem] font-semibold uppercase tracking-[0.45em] text-primary/80">{stat.label}</p>
-                    <p className="mt-4 text-4xl font-semibold text-foreground">{stat.value}</p>
+                    <p className="text-[0.62rem] font-semibold uppercase tracking-[0.45em] text-slate-500">{stat.label}</p>
+                    <p className="mt-4 text-4xl font-semibold text-white">{stat.value}</p>
                   </MouseGlowCard>
                 ))}
               </div>
@@ -103,18 +104,19 @@ export default async function AdminAuditLogsPage() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden border-y border-border/60 bg-gradient-to-b from-background via-muted/25 to-background py-24">
-          <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-800/15 via-transparent to-emerald-300/10 blur-[240px]" />
-            <div className="absolute right-1/4 top-0 size-[360px] rounded-full bg-primary/5 blur-3xl" />
+        <section className="relative overflow-hidden border-t border-white/5 bg-slate-950/50 py-24">
+          {/* Section Background Glow */}
+          <div className="pointer-events-none absolute inset-0 z-0">
+            <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-blue-500/10 blur-[120px] rounded-full opacity-30" />
           </div>
-          <div className="container mx-auto px-4">
-            <Card className="group relative overflow-hidden rounded-3xl border border-white/10 bg-background/90 shadow-[0_35px_80px_-55px_rgba(15,15,15,0.75)] backdrop-blur transition-all duration-300 hover:border-primary/40">
-              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-800 via-cyan-600 to-emerald-400 opacity-60" />
+
+          <div className="container mx-auto px-4 relative z-10">
+            <Card className="group relative overflow-hidden rounded-3xl border border-white/10 bg-slate-900/40 shadow-2xl backdrop-blur-xl">
+              <div className="absolute inset-x-0 top-0 h-0.5 bg-blue-500/50 opacity-60 transition-opacity group-hover:opacity-100" />
               <CardHeader className="relative space-y-4 pt-10">
-                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-primary/80">{copy.hero.eyebrow}</p>
-                <CardTitle className="text-2xl text-foreground">{copy.list.title}</CardTitle>
-                <CardDescription className="text-pretty text-muted-foreground">{copy.list.description}</CardDescription>
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500">{copy.hero.eyebrow}</p>
+                <CardTitle className="text-2xl text-white">{copy.list.title}</CardTitle>
+                <CardDescription className="text-pretty text-slate-400">{copy.list.description}</CardDescription>
               </CardHeader>
               <CardContent className="relative">
                 <div className="space-y-4">
@@ -122,31 +124,31 @@ export default async function AdminAuditLogsPage() {
                     auditLogs.map((log) => (
                       <div
                         key={log.id}
-                        className="group/log space-y-3 rounded-2xl border border-white/10 bg-white/5 p-5 text-sm text-muted-foreground shadow-inner shadow-white/5 backdrop-blur transition-all duration-300 hover:border-primary/40"
+                        className="group/log space-y-3 rounded-2xl border border-white/5 bg-slate-800/20 p-5 text-sm text-slate-400 shadow-inner shadow-white/5 backdrop-blur transition-all duration-300 hover:bg-slate-800/40 hover:border-blue-500/20"
                       >
                         <div className="space-y-3">
                           <div className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.3em]">
-                            <Badge className="rounded-full border-none bg-primary/15 text-primary">{log.action}</Badge>
-                            <Badge variant="outline" className="rounded-full border-primary/30 bg-transparent text-primary/80">
+                            <Badge className="rounded-full border-none bg-blue-500/10 text-blue-400">{log.action}</Badge>
+                            <Badge variant="outline" className="rounded-full border-white/10 bg-transparent text-slate-500">
                               {log.entity_type}
                             </Badge>
                           </div>
-                          <p className="text-base text-foreground">
+                          <p className="text-base text-white">
                             <span className="font-semibold">{log.users?.full_name || log.users?.email}</span>
                           </p>
-                          <p className="text-[0.65rem] uppercase tracking-[0.4em] text-primary/80">
+                          <p className="text-[0.65rem] uppercase tracking-[0.4em] text-slate-600">
                             {timestampFormatter.format(new Date(log.created_at))}
                           </p>
                         </div>
                         {log.details && (
-                          <pre className="overflow-auto rounded-xl border border-white/10 bg-background/75 p-4 text-xs text-muted-foreground shadow-inner shadow-white/5">
+                          <pre className="overflow-auto rounded-xl border border-white/5 bg-slate-950/50 p-4 text-xs text-slate-500 shadow-inner">
                             {JSON.stringify(log.details, null, 2)}
                           </pre>
                         )}
                       </div>
                     ))
                   ) : (
-                    <p className="text-sm text-muted-foreground">{copy.list.empty}</p>
+                    <p className="text-sm text-slate-500 italic text-center py-6">{copy.list.empty}</p>
                   )}
                 </div>
               </CardContent>

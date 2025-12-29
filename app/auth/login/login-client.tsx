@@ -65,34 +65,38 @@ export function LoginClient({ copy }: LoginClientProps) {
     }
   }
 
+  const inputClass = "bg-slate-900/50 border-white/10 text-slate-100 placeholder:text-slate-500 focus-visible:ring-blue-500/50 focus-visible:border-blue-500/50 transition-all duration-300 backdrop-blur-sm h-12"
+  const labelClass = "text-slate-300 font-medium ml-1"
+
   return (
-    <div className="relative flex min-h-svh w-full items-center justify-center overflow-hidden bg-background">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-800/15 via-cyan-600/12 to-transparent blur-3xl" />
-        <div className="absolute left-1/2 top-1/2 size-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-3xl" />
+    <div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-slate-950 selection:bg-amber-500/30">
+      {/* Background Effects */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-500/20 blur-[120px] rounded-full opacity-60 mix-blend-screen" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[800px] h-[600px] bg-amber-500/10 blur-[140px] rounded-full opacity-40 mix-blend-screen" />
       </div>
-      <div className="relative z-10 grid w-full max-w-5xl gap-10 px-6 py-12 md:grid-cols-[1.1fr_1fr] md:px-12">
-        <div className="hidden flex-col justify-between rounded-3xl border border-border/60 bg-background/80 p-8 shadow-lg shadow-primary/5 backdrop-blur md:flex">
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-primary/80">
-              <Sparkles className="h-4 w-4" aria-hidden />
-              {copy.badge}
-            </div>
-            <h2 className="mt-6 text-3xl font-semibold tracking-tight text-foreground">{copy.headline}</h2>
-            <p className="mt-4 text-sm text-muted-foreground">{copy.subhead}</p>
-          </div>
-          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground/70">{copy.badgeFooter}</p>
+
+      <div className="relative z-10 w-full max-w-md px-6">
+        <div className="mb-8 text-center">
+          <Link href="/" className="inline-flex items-center gap-2 transition-transform hover:scale-105">
+            <span className="relative flex h-6 w-6">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-500 opacity-75"></span>
+              <span className="relative inline-flex h-6 w-6 rounded-full bg-blue-600"></span>
+            </span>
+            <span className="text-2xl font-bold text-white tracking-tight drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]">SotA</span>
+          </Link>
         </div>
-        <Card className="border border-border/60 bg-background/90 shadow-lg shadow-primary/5 backdrop-blur">
-          <CardHeader>
-            <CardTitle className="text-2xl">{copy.cardTitle}</CardTitle>
-            <CardDescription>{copy.cardDescription}</CardDescription>
+
+        <Card className="border border-white/10 bg-slate-900/40 shadow-2xl backdrop-blur-xl overflow-hidden">
+          <CardHeader className="space-y-1 text-center pb-8 pt-8">
+            <CardTitle className="text-2xl font-bold text-white">{copy.cardTitle}</CardTitle>
+            <CardDescription className="text-slate-400">{copy.cardDescription}</CardDescription>
           </CardHeader>
-          <CardContent>
-            <form onSubmit={handleLogin}>
-              <div className="flex flex-col gap-6">
-                <div className="grid gap-2">
-                  <Label htmlFor="email">{copy.emailLabel}</Label>
+          <CardContent className="pb-8 px-8">
+            <form onSubmit={handleLogin} className="space-y-6">
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="email" className={labelClass}>{copy.emailLabel}</Label>
                   <Input
                     id="email"
                     type="email"
@@ -100,32 +104,51 @@ export function LoginClient({ copy }: LoginClientProps) {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    className={inputClass}
                   />
                 </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="password">{copy.passwordLabel}</Label>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <Label htmlFor="password" className={labelClass}>{copy.passwordLabel}</Label>
+                  </div>
                   <Input
                     id="password"
                     type="password"
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    className={inputClass}
                   />
                 </div>
-                {error && <p className="text-sm text-destructive">{error}</p>}
-                <Button type="submit" className="w-full" disabled={isLoading}>
-                  {isLoading ? copy.submitLoading : copy.submit}
-                </Button>
               </div>
-              <div className="mt-4 text-center text-sm">
-                {copy.signupPrompt}{" "}
-                <Link href="/auth/signup" className="underline underline-offset-4">
-                  {copy.signupCta}
-                </Link>
-              </div>
+
+              {error && (
+                <div className="rounded-lg bg-red-500/10 border border-red-500/20 p-3 text-sm text-red-400 text-center">
+                  {error}
+                </div>
+              )}
+
+              <Button
+                type="submit"
+                className="w-full rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold h-12 shadow-[0_0_20px_-5px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_-5px_rgba(37,99,235,0.6)] transition-all duration-300 hover:scale-[1.02]"
+                disabled={isLoading}
+              >
+                {isLoading ? copy.submitLoading : copy.submit}
+              </Button>
             </form>
+
+            <div className="mt-8 text-center text-sm text-slate-400">
+              {copy.signupPrompt}{" "}
+              <Link href="/auth/signup" className="font-medium text-blue-400 hover:text-amber-400 underline decoration-blue-500/30 underline-offset-4 transition-colors">
+                {copy.signupCta}
+              </Link>
+            </div>
           </CardContent>
         </Card>
+
+        <p className="mt-8 text-center text-xs uppercase tracking-[0.2em] text-slate-500 font-medium">
+          {copy.badgeFooter}
+        </p>
       </div>
     </div>
   )
