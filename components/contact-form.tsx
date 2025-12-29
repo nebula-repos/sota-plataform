@@ -51,51 +51,54 @@ export function ContactForm({ copy }: { copy: ContactFormCopy }) {
   }
 
   const isSubmitting = status === "submitting"
+  const inputClass = "bg-slate-900/50 border-white/10 text-slate-100 placeholder:text-slate-500 focus-visible:ring-blue-500/50 focus-visible:border-blue-500/50 transition-all duration-300 backdrop-blur-sm"
+  const labelClass = "text-slate-300 font-medium ml-1"
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6" noValidate>
-      <div className="space-y-2">
-        <h3 className="text-xl font-semibold text-foreground">{copy.title}</h3>
-        <p className="text-sm text-muted-foreground">{copy.description}</p>
+      <div className="space-y-2 mb-8">
+        <h3 className="text-xl font-bold text-white">{copy.title}</h3>
+        <p className="text-sm text-slate-400 leading-relaxed">{copy.description}</p>
       </div>
-      <div className="grid gap-4">
+      <div className="grid gap-5">
         <div className="grid gap-2">
-          <Label htmlFor="name">{copy.fields.name}</Label>
-          <Input id="name" name="name" type="text" autoComplete="name" required disabled={isSubmitting} />
+          <Label htmlFor="name" className={labelClass}>{copy.fields.name}</Label>
+          <Input id="name" name="name" type="text" autoComplete="name" required disabled={isSubmitting} className={inputClass} />
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="email">{copy.fields.email}</Label>
-          <Input id="email" name="email" type="email" autoComplete="email" required disabled={isSubmitting} />
+          <Label htmlFor="email" className={labelClass}>{copy.fields.email}</Label>
+          <Input id="email" name="email" type="email" autoComplete="email" required disabled={isSubmitting} className={inputClass} />
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="company">{copy.fields.company}</Label>
-          <Input id="company" name="company" type="text" autoComplete="organization" disabled={isSubmitting} />
+          <Label htmlFor="company" className={labelClass}>{copy.fields.company}</Label>
+          <Input id="company" name="company" type="text" autoComplete="organization" disabled={isSubmitting} className={inputClass} />
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="role">{copy.fields.role}</Label>
-          <Input id="role" name="role" type="text" autoComplete="organization-title" disabled={isSubmitting} />
+          <Label htmlFor="role" className={labelClass}>{copy.fields.role}</Label>
+          <Input id="role" name="role" type="text" autoComplete="organization-title" disabled={isSubmitting} className={inputClass} />
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="topic">{copy.fields.topic}</Label>
-          <Input id="topic" name="topic" type="text" disabled={isSubmitting} />
+          <Label htmlFor="topic" className={labelClass}>{copy.fields.topic}</Label>
+          <Input id="topic" name="topic" type="text" disabled={isSubmitting} className={inputClass} />
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="message">{copy.fields.message}</Label>
-          <Textarea id="message" name="message" required disabled={isSubmitting} />
+          <Label htmlFor="message" className={labelClass}>{copy.fields.message}</Label>
+          <Textarea id="message" name="message" required disabled={isSubmitting} className={`${inputClass} min-h-[120px] resize-y`} />
         </div>
       </div>
-      <p className="text-xs text-muted-foreground">{copy.consent}</p>
-      <div className="space-y-2">
-        <Button type="submit" className="w-full rounded-full" disabled={isSubmitting}>
+      <p className="text-xs text-slate-500 px-1">{copy.consent}</p>
+      <div className="space-y-4 pt-2">
+        <Button
+          type="submit"
+          className="w-full rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-6 shadow-[0_0_20px_-5px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_-5px_rgba(37,99,235,0.6)] transition-all duration-300 border border-transparent hover:border-amber-500/30"
+          disabled={isSubmitting}
+        >
           {isSubmitting ? "Sending..." : copy.submit}
         </Button>
         {feedback && (
-          <p
-            className={`text-sm ${status === "error" ? "text-destructive" : "text-primary"}`}
-            aria-live="polite"
-          >
+          <div className={`rounded-xl px-4 py-3 text-sm font-medium border ${status === "error" ? "bg-red-500/10 border-red-500/20 text-red-400" : "bg-emerald-500/10 border-emerald-500/20 text-emerald-400"}`}>
             {feedback}
-          </p>
+          </div>
         )}
       </div>
     </form>

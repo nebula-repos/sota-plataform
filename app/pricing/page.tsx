@@ -25,33 +25,43 @@ export default async function PricingPage() {
   }>
 
   return (
-    <div className="flex min-h-screen flex-col bg-background">
+    <div className="flex min-h-screen flex-col bg-slate-950 text-slate-100 selection:bg-amber-500/30">
       <Header />
       <main className="flex-1">
-        <section className="relative overflow-hidden border-b border-border/60 bg-gradient-to-b from-background via-background/80 to-primary/5 py-28">
-          <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.15),_transparent_60%)]" />
-            <div className="absolute inset-y-0 left-1/2 h-full w-[55rem] -translate-x-1/2 bg-gradient-to-r from-blue-800/20 via-transparent to-primary/20 opacity-20 blur-3xl" />
+        {/* Hero Section */}
+        <section className="relative overflow-hidden pt-32 pb-20 lg:pt-48 lg:pb-32 bg-[oklch(20.8%_0.042_265.755)]">
+          {/* Background Effects */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80%] h-[600px] bg-blue-500/30 blur-[120px] rounded-full opacity-70 mix-blend-screen" />
+            <div className="absolute top-[20%] right-[-10%] w-[600px] h-[600px] bg-blue-500/20 blur-[140px] rounded-full opacity-60 mix-blend-screen" />
+            <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-amber-500/20 blur-[140px] rounded-full opacity-50 mix-blend-screen" />
           </div>
-          <div className="container mx-auto px-4 text-center">
-            <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.4em] text-primary/90 shadow-lg shadow-primary/20 backdrop-blur">
+
+          <div className="container relative z-10 mx-auto px-4 text-center">
+            <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.4em] text-blue-300 shadow-[0_0_15px_-5px_rgba(59,130,246,0.3)] backdrop-blur-md">
               <span>{pricingCopy.hero.eyebrow}</span>
             </div>
-            <h1 className="mx-auto mt-8 max-w-4xl text-balance text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
-              {pricingCopy.hero.title}
+
+            <h1 className="mx-auto mt-8 max-w-4xl text-balance text-4xl font-bold tracking-tight text-white md:text-6xl drop-shadow-sm">
+              <span className="bg-gradient-to-br from-white via-slate-100 to-slate-300 bg-clip-text text-transparent">
+                {pricingCopy.hero.title}
+              </span>
             </h1>
-            <p className="mx-auto mt-6 max-w-3xl text-pretty text-lg text-muted-foreground md:text-xl">
+
+            <p className="mx-auto mt-6 max-w-3xl text-pretty text-lg text-slate-400 md:text-xl leading-relaxed">
               {pricingCopy.hero.description}
             </p>
+
             <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link href="/auth/signup">
                 <Button
                   size="lg"
-                  className="group relative gap-2 overflow-hidden rounded-full !bg-gradient-to-r !from-blue-800 !via-cyan-600 !to-emerald-400 !text-primary-foreground px-8 shadow-xl shadow-primary/30 transition-all duration-300 hover:scale-[1.02]"
+                  className="group relative h-12 gap-2 overflow-hidden rounded-full border border-amber-500/20 bg-blue-600 text-white shadow-[0_0_25px_-5px_rgba(37,99,235,0.4)] transition-all duration-300 hover:scale-[1.02] hover:bg-blue-500 hover:shadow-[0_0_35px_-5px_rgba(245,158,11,0.3)] hover:border-amber-400/50 px-8"
                 >
-                  <span className="relative z-10 flex items-center gap-2">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                  <span className="relative z-10 flex items-center gap-2 font-semibold tracking-wide">
                     {pricingCopy.hero.primaryCta}
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
+                    <ArrowRight className="h-4 w-4 text-amber-300 transition-transform group-hover:translate-x-1" aria-hidden />
                   </span>
                 </Button>
               </Link>
@@ -59,124 +69,139 @@ export default async function PricingPage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="rounded-full border-white/30 bg-white/5 text-foreground shadow-lg shadow-primary/10 backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-white/10 hover:shadow-primary/25"
+                  className="h-12 rounded-full border-slate-700 bg-slate-900/50 text-slate-300 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-slate-800/80 hover:border-amber-500/40 hover:text-amber-100 hover:shadow-[0_0_15px_-5px_rgba(245,158,11,0.1)]"
                 >
                   {pricingCopy.hero.secondaryCta}
                 </Button>
               </a>
             </div>
-            <p className="mt-8 text-xs font-semibold uppercase tracking-[0.4em] text-muted-foreground">
+            <p className="mt-8 text-xs font-semibold uppercase tracking-[0.4em] text-slate-500">
               {pricingCopy.overview.note}
             </p>
           </div>
         </section>
 
-        <section className="relative overflow-hidden border-b border-border/60 bg-gradient-to-b from-background via-muted/30 to-background py-24">
-          <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-800/10 via-transparent to-primary/10 opacity-60 blur-3xl" />
-            <div className="absolute bottom-0 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-primary/20 blur-[120px]" />
+        {/* Pricing Plans Section */}
+        <section className="relative overflow-hidden py-32 bg-[oklch(12.9%_0.042_264.695)]">
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-500/30 blur-[130px] rounded-full opacity-50" />
+            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-amber-500/20 blur-[130px] rounded-full opacity-40" />
           </div>
-          <div className="container mx-auto px-4">
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.35em] text-primary/90">
+
+          <div className="container relative z-10 mx-auto px-4">
+            <div className="mx-auto max-w-2xl text-center mb-16">
+              <p className="text-xs font-bold uppercase tracking-[0.35em] text-amber-500 mb-4">
                 {pricingCopy.overview.eyebrow}
               </p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+              <h2 className="text-3xl font-bold tracking-tight text-white md:text-5xl">
                 {pricingCopy.overview.title}
               </h2>
-              <p className="mt-4 text-pretty text-muted-foreground">{pricingCopy.overview.description}</p>
+              <p className="mt-4 text-lg text-slate-400">{pricingCopy.overview.description}</p>
             </div>
-            <div className="mt-16 grid gap-8 md:grid-cols-3">
+
+            <div className="grid gap-8 md:grid-cols-3">
               {plans.map((plan) => (
-                <Card
+                <div
                   key={plan.id}
-                  className={`group relative overflow-hidden border border-white/10 bg-gradient-to-b from-background/90 via-background/60 to-background/40 shadow-[0_35px_80px_-50px_rgba(15,15,15,0.7)] transition-all duration-300 hover:-translate-y-2 hover:border-primary/50 hover:shadow-[0_55px_130px_-60px_rgba(15,15,15,0.9)] ${plan.highlightLabel ? "ring-2 ring-primary/70" : ""
+                  className={`group relative overflow-hidden rounded-3xl border border-white/5 bg-slate-900/40 p-8 shadow-2xl backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:bg-slate-900/60 ${plan.highlightLabel ? "ring-1 ring-amber-500/50 shadow-[0_0_50px_-20px_rgba(245,158,11,0.15)]" : "hover:border-amber-500/20"
                     }`}
                 >
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-blue-800/10 via-transparent to-emerald-400/5 opacity-60" />
                   {plan.tag && (
-                    <span className="absolute left-6 top-6 rounded-full border border-primary/40 bg-primary/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-primary/80">
+                    <span className="absolute left-8 top-8 rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-widest text-amber-300">
                       {plan.tag}
                     </span>
                   )}
                   {plan.highlightLabel && (
-                    <span className="absolute right-6 top-6 rounded-full bg-gradient-to-r from-blue-800 via-cyan-600 to-emerald-400 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-primary-foreground">
+                    <span className="absolute right-0 top-0 rounded-bl-2xl bg-gradient-to-br from-amber-500 to-amber-700 px-4 py-1.5 text-[0.65rem] font-bold uppercase tracking-widest text-white shadow-lg">
                       {plan.highlightLabel}
                     </span>
                   )}
-                  <CardHeader className="relative space-y-4 pt-12">
-                    <CardTitle className="text-2xl text-foreground">{plan.name}</CardTitle>
-                    <div className="flex flex-wrap items-baseline gap-2">
-                      <p className="text-3xl font-bold text-foreground">{plan.price}</p>
+
+                  <div className="mt-12 mb-8">
+                    <h3 className="text-2xl font-semibold text-white group-hover:text-amber-100 transition-colors">{plan.name}</h3>
+                    <div className="mt-4 flex flex-wrap items-baseline gap-2">
+                      <p className="text-4xl font-bold text-white tracking-tight">{plan.price}</p>
                       {plan.originalPrice && (
-                        <span className="text-sm font-semibold text-muted-foreground/80 line-through">{plan.originalPrice}</span>
+                        <span className="text-sm font-semibold text-slate-500 line-through decoration-slate-600">{plan.originalPrice}</span>
                       )}
                     </div>
                     {plan.implementationFee && (
-                      <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground/80">
+                      <p className="mt-2 text-xs font-medium uppercase tracking-wider text-slate-500">
                         {plan.implementationFee}
                       </p>
                     )}
-                    <CardDescription className="text-muted-foreground">{plan.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent className="relative space-y-6">
-                    <ul className="space-y-2 text-sm text-muted-foreground">
+                    <p className="mt-4 text-sm text-slate-400 leading-relaxed min-h-[40px]">{plan.description}</p>
+                  </div>
+
+                  <div className="space-y-6">
+                    <ul className="space-y-3">
                       {plan.features.map((feature) => (
-                        <li key={feature} className="flex items-center gap-2">
-                          <Check className="h-4 w-4 text-primary" aria-hidden />
+                        <li key={feature} className="flex items-start gap-3 text-sm text-slate-300">
+                          <div className="mt-1 inline-flex size-4 shrink-0 items-center justify-center rounded-full bg-blue-500/10 text-blue-400 shadow-[0_0_10px_-2px_rgba(59,130,246,0.3)]">
+                            <Check className="h-2.5 w-2.5" aria-hidden />
+                          </div>
                           <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
-                    <Link href={plan.id === "tier-custom" ? "/contact" : "/auth/signup"}>
-                      <Button className="w-full rounded-full">{plan.cta}</Button>
+                    <Link href={plan.id === "tier-custom" ? "/contact" : "/auth/signup"} className="block">
+                      <Button className={`w-full h-12 rounded-full font-semibold tracking-wide transition-all duration-300 ${plan.highlightLabel
+                        ? "bg-gradient-to-r from-amber-600 to-amber-500 text-white hover:from-amber-500 hover:to-amber-400 shadow-lg shadow-amber-900/20"
+                        : "bg-white/10 text-white hover:bg-white/20 border border-white/5 hover:border-amber-500/30"
+                        }`}>
+                        {plan.cta}
+                      </Button>
                     </Link>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="relative overflow-hidden py-24">
-          <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute inset-0 bg-gradient-to-b from-blue-800/5 via-transparent to-primary/5 opacity-80 blur-3xl" />
+        {/* Included & Contact Sections */}
+        <section className="relative overflow-hidden py-24 bg-[oklch(20.8%_0.042_265.755)] border-t border-white/5">
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/10 blur-[150px] rounded-full opacity-40 mix-blend-screen" />
           </div>
-          <div className="container mx-auto px-4">
+          <div className="container relative z-10 mx-auto px-4">
             <div className="grid gap-8 lg:grid-cols-2">
-              <Card className="relative overflow-hidden border border-white/10 bg-gradient-to-br from-background/95 via-primary/5 to-background/80 p-8 shadow-xl shadow-primary/10">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(14,165,233,0.15),_transparent_60%)]" />
-                <CardHeader className="relative space-y-4">
-                  <CardTitle className="text-2xl text-foreground">{pricingCopy.included.title}</CardTitle>
-                  <div className="h-px w-16 bg-gradient-to-r from-blue-800 to-transparent" />
-                </CardHeader>
-                <CardContent className="relative">
-                  <ul className="space-y-3 text-sm text-muted-foreground">
-                    {pricingCopy.included.items.map((item: string) => (
-                      <li key={item} className="flex items-center gap-2">
-                        <Check className="h-4 w-4 text-primary" aria-hidden />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
+              {/* Features Grid */}
+              <div className="relative overflow-hidden rounded-3xl border border-white/5 bg-slate-900/40 p-8 shadow-2xl backdrop-blur-xl transition-all hover:bg-slate-900/50 hover:border-amber-500/20 group">
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold text-white group-hover:text-amber-100 transition-colors">{pricingCopy.included.title}</h3>
+                  <div className="mt-4 h-0.5 w-16 bg-gradient-to-r from-blue-500 to-transparent" />
+                </div>
+                <ul className="grid gap-4 sm:grid-cols-2">
+                  {pricingCopy.included.items.map((item: string) => (
+                    <li key={item} className="flex items-start gap-3 text-sm text-slate-300">
+                      <div className="mt-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-blue-500/10 text-blue-400">
+                        <Check className="h-3 w-3" aria-hidden />
+                      </div>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-              <Card className="relative overflow-hidden border border-white/10 bg-gradient-to-br from-muted/50 via-background/80 to-background/60 p-8 shadow-xl shadow-primary/10">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,_rgba(16,185,129,0.12),_transparent_55%)]" />
-                <CardHeader className="relative space-y-4">
-                  <CardTitle className="text-2xl text-foreground">{pricingCopy.contact.title}</CardTitle>
-                  <CardDescription className="text-muted-foreground">{pricingCopy.contact.description}</CardDescription>
-                </CardHeader>
-                <CardContent className="relative space-y-6">
-                  <a href={`mailto:${pricingCopy.contact.email}`} className="inline-flex">
-                    <Button className="rounded-full px-8">{pricingCopy.contact.cta}</Button>
-                  </a>
-                  <p className="text-xs font-semibold uppercase tracking-[0.35em] text-muted-foreground">
+              {/* Contact Card */}
+              <div className="relative overflow-hidden rounded-3xl border border-white/5 bg-slate-900/40 p-8 shadow-2xl backdrop-blur-xl transition-all hover:bg-slate-900/50 hover:border-amber-500/20 group text-center flex flex-col items-center justify-center">
+                <div className="mb-6 inline-flex size-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-amber-400 shadow-inner group-hover:scale-110 transition-transform duration-300">
+                  <ArrowRight className="h-6 w-6" />
+                </div>
+
+                <h3 className="text-2xl font-bold text-white mb-2">{pricingCopy.contact.title}</h3>
+                <p className="text-slate-400 mb-8 max-w-sm">{pricingCopy.contact.description}</p>
+
+                <a href={`mailto:${pricingCopy.contact.email}`} className="inline-flex flex-col items-center gap-4">
+                  <Button className="h-12 rounded-full px-8 bg-white text-slate-900 hover:bg-amber-50 hover:text-amber-900 font-bold transition-all hover:scale-105 hover:shadow-[0_0_20px_-5px_rgba(245,158,11,0.4)]">
+                    {pricingCopy.contact.cta}
+                  </Button>
+                  <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500 hover:text-amber-500 transition-colors">
                     {pricingCopy.contact.email}
                   </p>
-                </CardContent>
-              </Card>
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -185,3 +210,4 @@ export default async function PricingPage() {
     </div>
   )
 }
+

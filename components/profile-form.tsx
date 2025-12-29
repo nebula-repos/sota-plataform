@@ -81,30 +81,46 @@ export function ProfileForm({ user, copy }: ProfileFormProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="space-y-2">
-        <Label htmlFor="email">{copy.emailLabel}</Label>
-        <Input id="email" type="email" value={user?.email} disabled />
-        <p className="text-sm text-muted-foreground">{copy.emailHelp}</p>
+        <Label htmlFor="email" className="text-slate-400">{copy.emailLabel}</Label>
+        <Input
+          id="email"
+          type="email"
+          value={user?.email}
+          disabled
+          className="bg-slate-900/50 border-white/5 text-slate-400 placeholder:text-slate-600 focus-visible:ring-blue-500/50 focus-visible:border-blue-500/50"
+        />
+        <p className="text-sm text-slate-500">{copy.emailHelp}</p>
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="fullName">{copy.fullNameLabel}</Label>
+        <Label htmlFor="fullName" className="text-slate-400">{copy.fullNameLabel}</Label>
         <Input
           id="fullName"
           type="text"
           value={fullName}
           onChange={(e) => setFullName(e.target.value)}
           placeholder={copy.fullNamePlaceholder}
+          className="bg-slate-900/50 border-white/10 text-slate-200 placeholder:text-slate-600 focus-visible:ring-blue-500/50 focus-visible:border-blue-500/50 transition-all duration-300 hover:bg-slate-800/50 hover:border-white/20"
         />
       </div>
 
-      {error && <p className="text-sm text-destructive">{error}</p>}
-      {success && <p className="text-sm text-green-600">{copy.success}</p>}
+      {error && <p className="text-sm text-red-400">{error}</p>}
+      {success && <p className="text-sm text-emerald-400">{copy.success}</p>}
 
       <div className="flex gap-4">
-        <Button type="submit" disabled={isLoading}>
+        <Button
+          type="submit"
+          disabled={isLoading}
+          className="bg-blue-600 hover:bg-blue-500 text-white shadow-[0_0_20px_-5px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_-5px_rgba(37,99,235,0.6)] transition-all duration-300"
+        >
           {isLoading ? copy.saving : copy.save}
         </Button>
-        <Button type="button" variant="outline" onClick={() => router.push("/dashboard")}>
+        <Button
+          type="button"
+          variant="outline"
+          onClick={() => router.push("/dashboard")}
+          className="border-slate-700 bg-transparent text-slate-300 hover:text-white hover:border-blue-500/50 hover:bg-blue-500/10 transition-all duration-300"
+        >
           {copy.cancel}
         </Button>
       </div>

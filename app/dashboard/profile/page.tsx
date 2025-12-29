@@ -27,32 +27,34 @@ export default async function ProfilePage() {
   const userProfile = (await resolveUserProfile(supabase, user)) ?? buildProfileFallback(user)
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-slate-950 selection:bg-amber-500/30">
       <Header />
       <main className="flex-1">
-        <section className="relative overflow-hidden border-b border-border/60 bg-gradient-to-b from-background via-background/80 to-primary/5 py-24">
+        <section className="relative overflow-hidden border-b border-white/5 py-24">
+          {/* Background Glows */}
           <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-blue-800/15 via-cyan-600/10 to-transparent blur-3xl" />
-            <div className="absolute right-1/3 top-1/2 size-[420px] -translate-y-1/2 rounded-full bg-emerald-400/10 blur-3xl" />
+            <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80%] h-[500px] bg-blue-500/20 blur-[120px] rounded-full opacity-60 mix-blend-screen" />
+            <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-amber-500/10 blur-[140px] rounded-full opacity-40 mix-blend-screen" />
           </div>
+
           <div className="container mx-auto px-4">
             <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
               <div>
-                <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.4em] text-primary/90 shadow-lg shadow-primary/20 backdrop-blur">
+                <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.4em] text-blue-400 shadow-[0_0_15px_-5px_rgba(59,130,246,0.5)]">
                   <Sparkles className="h-3.5 w-3.5" aria-hidden />
                   {profileCopy.hero.badge}
                 </div>
-                <h1 className="mt-8 text-balance text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
+                <h1 className="mt-8 text-balance text-4xl font-semibold tracking-tight text-white md:text-5xl">
                   {profileCopy.hero.title}
                 </h1>
-                <p className="mt-6 max-w-2xl text-pretty text-lg text-muted-foreground md:text-xl">
+                <p className="mt-6 max-w-2xl text-pretty text-lg text-slate-400 md:text-xl">
                   {profileCopy.hero.description}
                 </p>
               </div>
               <Link href="/dashboard">
                 <Button
                   variant="outline"
-                  className="gap-2 rounded-full border-white/30 bg-white/5 text-foreground shadow-lg shadow-primary/10 backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-white/10 hover:text-primary"
+                  className="gap-2 rounded-full border-slate-700 bg-transparent text-slate-300 hover:text-white hover:border-blue-500/50 hover:bg-blue-500/10 transition-all duration-300"
                 >
                   <ArrowLeft className="h-4 w-4" aria-hidden />
                   {profileCopy.hero.backCta}
@@ -60,35 +62,36 @@ export default async function ProfilePage() {
               </Link>
             </div>
             <div className="mt-12 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-5 text-sm text-foreground shadow-inner shadow-white/5 backdrop-blur">
-                <p className="text-[0.6rem] font-semibold uppercase tracking-[0.35em] text-primary/80">
+              <div className="rounded-2xl border border-white/5 bg-slate-900/50 p-5 text-sm text-slate-200 shadow-inner shadow-white/5 backdrop-blur transition-colors hover:bg-slate-800/50">
+                <p className="text-[0.6rem] font-semibold uppercase tracking-[0.35em] text-slate-500">
                   {profileCopy.details.currentName}
                 </p>
-                <p className="mt-2 text-base">
+                <p className="mt-2 text-base font-medium">
                   {userProfile.full_name || profileCopy.details.missing}
                 </p>
               </div>
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-5 text-sm text-foreground shadow-inner shadow-white/5 backdrop-blur">
-                <p className="text-[0.6rem] font-semibold uppercase tracking-[0.35em] text-primary/80">
+              <div className="rounded-2xl border border-white/5 bg-slate-900/50 p-5 text-sm text-slate-200 shadow-inner shadow-white/5 backdrop-blur transition-colors hover:bg-slate-800/50">
+                <p className="text-[0.6rem] font-semibold uppercase tracking-[0.35em] text-slate-500">
                   {profileCopy.details.email}
                 </p>
-                <p className="mt-2 text-base">{userProfile.email}</p>
+                <p className="mt-2 text-base font-medium">{userProfile.email}</p>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="relative overflow-hidden border-y border-border/60 bg-gradient-to-b from-background via-muted/20 to-background py-20">
-          <div className="pointer-events-none absolute inset-0 -z-10">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-800/10 via-transparent to-emerald-300/10 blur-[260px]" />
-            <div className="absolute left-1/3 top-1/3 size-[360px] -translate-x-1/2 rounded-full bg-primary/5 blur-3xl" />
+        <section className="relative overflow-hidden border-t border-white/5 bg-slate-950/50 py-20">
+          {/* Section Background Glow */}
+          <div className="pointer-events-none absolute inset-0 z-0">
+            <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-blue-500/10 blur-[120px] rounded-full opacity-30" />
           </div>
-          <div className="container mx-auto max-w-2xl px-4">
-            <Card className="group relative overflow-hidden border border-white/10 bg-gradient-to-b from-background/95 via-background/70 to-background/40 shadow-[0_35px_80px_-50px_rgba(15,15,15,0.6)] backdrop-blur">
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-blue-800/10 via-transparent to-emerald-300/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              <CardHeader>
-                <CardTitle className="text-lg text-foreground">{profileCopy.form.cardTitle}</CardTitle>
-                <CardDescription className="text-muted-foreground">{profileCopy.form.cardDescription}</CardDescription>
+
+          <div className="container mx-auto max-w-2xl px-4 relative z-10">
+            <Card className="group relative overflow-hidden rounded-3xl border border-white/10 bg-slate-900/40 shadow-2xl backdrop-blur-xl">
+              <div className="absolute inset-x-0 top-0 h-0.5 bg-blue-500/50 opacity-60 transition-opacity group-hover:opacity-100" />
+              <CardHeader className="space-y-4 pt-8">
+                <CardTitle className="text-xl text-white">{profileCopy.form.cardTitle}</CardTitle>
+                <CardDescription className="text-slate-400">{profileCopy.form.cardDescription}</CardDescription>
               </CardHeader>
               <CardContent>
                 <ProfileForm user={userProfile} copy={profileCopy.form} />

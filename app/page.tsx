@@ -42,31 +42,41 @@ export default async function HomePage() {
   // Fetch latest research lines
 
   return (
-    <div className="flex min-h-screen flex-col bg-background">
+    <div className="flex min-h-screen flex-col bg-slate-900 text-slate-100 selection:bg-amber-500/30">
       <Header />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative overflow-hidden border-b border-border/60 bg-gradient-to-b from-background via-background/80 to-primary/5 py-28">
-          <div className="container mx-auto px-4 text-center">
-            <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.4em] text-primary/90 shadow-lg shadow-primary/20 backdrop-blur">
-              <Sparkles className="h-3.5 w-3.5" aria-hidden />
-              <span>{home.hero.eyebrow}</span>
-            </div>
-            <h1 className="mx-auto mt-8 max-w-4xl text-balance text-4xl font-semibold tracking-tight text-foreground md:text-6xl">
-              {home.hero.title}
+        <section className="relative overflow-hidden pt-32 pb-20 lg:pt-48 lg:pb-32 bg-[oklch(20.8%_0.042_265.755)]">
+          {/* Background Effects */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80%] h-[600px] bg-blue-500/30 blur-[120px] rounded-full opacity-70 mix-blend-screen" />
+            <div className="absolute top-[20%] right-[-10%] w-[600px] h-[600px] bg-blue-500/20 blur-[140px] rounded-full opacity-60 mix-blend-screen" />
+            <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-amber-500/20 blur-[140px] rounded-full opacity-50 mix-blend-screen" />
+          </div>
+
+          <div className="container relative z-10 mx-auto px-4 text-center">
+
+
+            <h1 className="mx-auto max-w-5xl text-balance text-4xl font-bold tracking-tight text-white md:text-7xl drop-shadow-sm">
+              <span className="bg-gradient-to-br from-white via-slate-100 to-slate-300 bg-clip-text text-transparent">
+                {home.hero.title}
+              </span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg text-muted-foreground md:text-xl">
+
+            <p className="mx-auto mt-8 max-w-2xl text-pretty text-lg text-slate-300 md:text-xl leading-relaxed">
               {home.hero.subtitle}
             </p>
+
             <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
               <Link href="/about">
                 <Button
                   size="lg"
-                  className="group relative gap-2 overflow-hidden rounded-full !bg-gradient-to-r !from-blue-800 !via-cyan-600 !to-emerald-400 !text-primary-foreground px-8 shadow-xl shadow-primary/30 transition-all duration-300 hover:scale-[1.02]"
+                  className="group relative h-12 gap-2 overflow-hidden rounded-full border border-amber-500/20 bg-blue-600 text-white shadow-[0_0_25px_-5px_rgba(37,99,235,0.4)] transition-all duration-300 hover:scale-[1.02] hover:bg-blue-500 hover:shadow-[0_0_35px_-5px_rgba(245,158,11,0.3)] hover:border-amber-400/50 px-8"
                 >
-                  <span className="relative z-10 flex items-center gap-2">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                  <span className="relative z-10 flex items-center gap-2 font-semibold tracking-wide">
                     {home.hero.primaryCta}
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
+                    <ArrowRight className="h-4 w-4 text-amber-300 transition-transform group-hover:translate-x-1" aria-hidden />
                   </span>
                 </Button>
               </Link>
@@ -74,27 +84,27 @@ export default async function HomePage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="rounded-full border-white/30 bg-white/5 text-foreground shadow-lg shadow-primary/10 backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-white/10 hover:shadow-primary/25"
+                  className="h-12 rounded-full border-slate-700 bg-slate-900/50 text-slate-300 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-slate-800/80 hover:border-amber-500/40 hover:text-amber-100 hover:shadow-[0_0_15px_-5px_rgba(245,158,11,0.1)]"
                 >
                   {home.hero.secondaryCta}
                 </Button>
               </Link>
             </div>
-            <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+
+            <div className="mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {home.highlights.map((highlight, index) => {
                 const Icon = iconMap[highlight.icon as keyof typeof iconMap] ?? Sparkles
-
                 return (
                   <MouseGlowCard
                     key={`${highlight.label}-${index}`}
-                    className={`relative overflow-hidden border border-white/15 bg-gradient-to-b from-background/80 via-primary/5 to-background/80 p-8 text-left shadow-lg shadow-primary/10 transition-all duration-300 hover:-translate-y-2 hover:border-primary/50 ${highlight.className ?? ""}`}
+                    className={`relative overflow-hidden border border-white/5 bg-slate-900/30 p-8 text-left backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-amber-500/20 hover:bg-slate-900/50 group ${highlight.className ?? ""}`}
                   >
-                    <div className="inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 p-3 text-primary">
+                    <div className="mb-6 inline-flex items-center justify-center rounded-xl border border-blue-500/20 bg-blue-500/10 p-3 text-blue-400 shadow-[0_0_15px_-3px_rgba(59,130,246,0.3)] group-hover:border-amber-500/20 group-hover:bg-amber-500/10 group-hover:text-amber-400 transition-colors duration-300">
                       <Icon className="h-6 w-6" aria-hidden />
                     </div>
-                    <p className="mt-4 text-xs font-semibold uppercase tracking-[0.35em] text-primary/80">{highlight.label}</p>
-                    <p className="mt-3 text-3xl font-semibold text-foreground">{highlight.value}</p>
-                    <p className="mt-2 text-sm text-muted-foreground">{highlight.description}</p>
+                    <p className="font-mono text-xs font-semibold uppercase tracking-widest text-slate-400 group-hover:text-amber-500/80 transition-colors">{highlight.label}</p>
+                    <p className="mt-2 text-3xl font-bold tracking-tight text-white">{highlight.value}</p>
+                    <p className="mt-2 text-sm text-slate-400">{highlight.description}</p>
                   </MouseGlowCard>
                 )
               })}
@@ -102,33 +112,33 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* Features Section */}
-        <section className="relative overflow-hidden py-24">
-          <div className="container mx-auto px-4">
-            <div className="mx-auto max-w-2xl text-center">
-              <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">{home.features.title}</h2>
-              <p className="mt-4 text-pretty text-muted-foreground">{home.features.subtitle}</p>
+        <section className="relative overflow-hidden py-32 bg-[oklch(12.9%_0.042_264.695)]">
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-blue-500/30 blur-[120px] rounded-full opacity-50" />
+            <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-amber-500/10 blur-[120px] rounded-full opacity-50" />
+          </div>
+
+          <div className="container relative z-10 mx-auto px-4">
+            <div className="mx-auto max-w-2xl text-center mb-16">
+              <h2 className="text-3xl font-bold tracking-tight text-white md:text-5xl">{home.features.title}</h2>
+              <p className="mt-6 text-lg text-slate-400">{home.features.subtitle}</p>
             </div>
-            <div className="mt-12 grid gap-8 md:grid-cols-3">
+            <div className="grid gap-8 md:grid-cols-3">
               {home.features.cards.map((pillar, index) => {
                 const Icon = iconMap[pillar.icon as keyof typeof iconMap] ?? Sparkles
-
                 return (
-                  <Card
+                  <div
                     key={`${pillar.title}-${index}`}
-                    className="group relative overflow-hidden border border-white/10 bg-gradient-to-b from-background/90 via-background/60 to-background/80 shadow-[0_30px_70px_-45px_rgba(15,15,15,0.65)] transition-all duration-300 hover:-translate-y-2 hover:border-primary/40 hover:shadow-[0_45px_110px_-55px_rgba(15,15,15,0.82)]"
+                    className="group relative overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-b from-white/[0.03] to-transparent p-8 shadow-2xl backdrop-blur-sm transition-all duration-500 hover:border-amber-500/40 hover:from-white/[0.08] hover:shadow-[0_0_40px_-5px_rgba(245,158,11,0.1)]"
                   >
-                    <CardHeader className="relative space-y-4">
-                      <div className="inline-flex size-12 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-blue-800/20 via-cyan-600/20 to-background text-primary">
-                        <Icon className="h-5 w-5" aria-hidden />
-                      </div>
-                      <CardTitle className="text-2xl text-foreground">{pillar.title}</CardTitle>
-                      <CardDescription className="text-muted-foreground">{pillar.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent className="relative pt-6">
-                      <div className="h-px w-full bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
-                    </CardContent>
-                  </Card>
+                    <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-amber-500/20 to-transparent border border-amber-500/20 text-amber-400 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(245,158,11,0.3)] transition-all duration-300">
+                      <Icon className="h-6 w-6" aria-hidden />
+                    </div>
+                    <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-amber-200 transition-colors">{pillar.title}</h3>
+                    <p className="text-slate-400 leading-relaxed group-hover:text-slate-300 transition-colors">{pillar.description}</p>
+
+                    <div className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-transparent via-amber-500 to-transparent scale-x-0 transition-transform duration-500 group-hover:scale-x-100 opacity-70" />
+                  </div>
                 )
               })}
             </div>
@@ -136,25 +146,29 @@ export default async function HomePage() {
         </section>
 
         {/* Signals Examples Section */}
-        <section className="relative overflow-hidden border-y border-border/60 bg-gradient-to-br from-muted/50 via-background to-muted/30 py-24">
-          <div className="container mx-auto px-4">
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">{home.signals.title}</p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight md:text-4xl">{home.signals.subtitle}</h2>
+        <section className="relative overflow-hidden border-y border-white/5 bg-[oklch(20.8%_0.042_265.755)] py-32 backdrop-blur-3xl">
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <div className="absolute top-[20%] left-[20%] w-[600px] h-[600px] bg-blue-500/10 blur-[150px] rounded-full opacity-50" />
+            <div className="absolute bottom-[20%] right-[20%] w-[500px] h-[500px] bg-amber-500/10 blur-[150px] rounded-full opacity-30" />
+          </div>
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="mx-auto max-w-2xl text-center mb-16">
+              <p className="text-xs font-bold uppercase tracking-[0.3em] text-amber-500 mb-3">{home.signals.title}</p>
+              <h2 className="text-4xl font-bold tracking-tight text-white">{home.signals.subtitle}</h2>
             </div>
-            <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {home.signals.examples.map((signal, index) => {
                 const Icon = iconMap[signal.icon as keyof typeof iconMap] ?? Sparkles
                 return (
                   <MouseGlowCard
                     key={`${signal.title}-${index}`}
-                    className="flex h-full flex-col border border-white/10 bg-white/5 p-6 backdrop-blur transition-all duration-300 hover:-translate-y-2 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10"
+                    className="flex h-full flex-col border border-white/5 bg-slate-900/30 p-6 transition-all duration-300 hover:border-amber-500/30 hover:bg-slate-900/50 group backdrop-blur-xl"
                   >
-                    <div className="mb-4 inline-flex size-10 items-center justify-center rounded-xl border border-primary/20 bg-primary/10 text-primary">
+                    <div className="mb-4 inline-flex size-10 items-center justify-center rounded-lg border border-blue-500/20 bg-blue-500/10 text-blue-400 group-hover:text-amber-400 group-hover:border-amber-500/20 group-hover:bg-amber-500/10 transition-colors">
                       <Icon className="h-5 w-5" aria-hidden />
                     </div>
-                    <h3 className="mb-2 text-lg font-semibold text-foreground">{signal.title}</h3>
-                    <p className="text-sm text-muted-foreground">{signal.description}</p>
+                    <h3 className="mb-2 text-lg font-semibold text-slate-100 group-hover:text-white">{signal.title}</h3>
+                    <p className="text-sm text-slate-400 leading-relaxed group-hover:text-slate-300">{signal.description}</p>
                   </MouseGlowCard>
                 )
               })}
@@ -163,17 +177,21 @@ export default async function HomePage() {
         </section>
 
         {/* Pricing Section */}
-        <section className="relative overflow-hidden border-y border-border/60 bg-gradient-to-b from-background via-muted/30 to-background py-24">
-          <div className="container mx-auto px-4">
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.35em] text-primary/90">{pricingCopy.overview.eyebrow}</p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+        <section className="relative overflow-hidden py-32 bg-[oklch(12.9%_0.042_264.695)]">
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-500/30 blur-[130px] rounded-full opacity-50" />
+            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-amber-500/20 blur-[130px] rounded-full opacity-40" />
+          </div>
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="mx-auto max-w-3xl text-center mb-20">
+              <p className="text-xs font-bold uppercase tracking-[0.35em] text-amber-500 mb-4">{pricingCopy.overview.eyebrow}</p>
+              <h2 className="text-4xl font-bold tracking-tight text-white md:text-5xl mb-6">
                 {pricingCopy.overview.title}
               </h2>
-              <p className="mt-4 text-pretty text-muted-foreground">{pricingCopy.overview.description}</p>
-              <div className="mt-6">
+              <p className="text-lg text-slate-400 text-pretty">{pricingCopy.overview.description}</p>
+              <div className="mt-8">
                 <Link href="/pricing">
-                  <Button variant="ghost" className="group text-primary">
+                  <Button variant="ghost" className="group text-blue-400 hover:text-amber-400 hover:bg-white/5">
                     <span className="flex items-center gap-2">
                       {pricingCopy.overview.cta}
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
@@ -182,79 +200,91 @@ export default async function HomePage() {
                 </Link>
               </div>
             </div>
-            <div className="mt-12 grid gap-8 md:grid-cols-3">
+            <div className="grid gap-8 md:grid-cols-3">
               {pricingPlans.map((plan) => (
-                <Card
+                <div
                   key={plan.id}
-                  className={`group relative overflow-hidden border border-white/10 bg-gradient-to-b from-background/90 via-background/60 to-background/40 shadow-[0_35px_80px_-50px_rgba(15,15,15,0.7)] transition-all duration-300 hover:-translate-y-2 hover:border-primary/50 hover:shadow-[0_55px_130px_-60px_rgba(15,15,15,0.9)] ${plan.highlightLabel ? "ring-2 ring-primary/70" : ""
+                  className={`group relative overflow-hidden rounded-3xl border border-white/5 bg-slate-900/40 p-8 shadow-2xl backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:bg-slate-900/60 ${plan.highlightLabel ? "ring-1 ring-amber-500/50 shadow-[0_0_50px_-20px_rgba(245,158,11,0.15)]" : "hover:border-amber-500/20"
                     }`}
                 >
                   {plan.tag && (
-                    <span className="absolute left-6 top-6 rounded-full border border-primary/40 bg-primary/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-primary/80">
+                    <span className="absolute left-8 top-8 rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-widest text-amber-300">
                       {plan.tag}
                     </span>
                   )}
                   {plan.highlightLabel && (
-                    <span className="absolute right-6 top-6 rounded-full bg-gradient-to-r from-blue-800 via-cyan-600 to-emerald-400 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-primary-foreground">
+                    <span className="absolute right-0 top-0 rounded-bl-2xl bg-gradient-to-br from-amber-500 to-amber-700 px-4 py-1.5 text-[0.65rem] font-bold uppercase tracking-widest text-white shadow-lg">
                       {plan.highlightLabel}
                     </span>
                   )}
-                  <CardHeader className="relative space-y-4 pt-12">
-                    <CardTitle className="text-2xl text-foreground">{plan.name}</CardTitle>
-                    <div className="flex flex-wrap items-baseline gap-2">
-                      <p className="text-3xl font-bold text-foreground">{plan.price}</p>
+
+                  <div className="mt-12 mb-8">
+                    <h3 className="text-2xl font-semibold text-white group-hover:text-amber-100 transition-colors">{plan.name}</h3>
+                    <div className="mt-4 flex flex-wrap items-baseline gap-2">
+                      <p className="text-4xl font-bold text-white tracking-tight">{plan.price}</p>
                       {plan.originalPrice && (
-                        <span className="text-sm font-semibold text-muted-foreground/80 line-through">{plan.originalPrice}</span>
+                        <span className="text-sm font-semibold text-slate-500 line-through decoration-slate-600">{plan.originalPrice}</span>
                       )}
                     </div>
                     {(plan as any).implementationFee && (
-                      <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground/80">
+                      <p className="mt-2 text-xs font-medium uppercase tracking-wider text-slate-500">
                         {(plan as any).implementationFee}
                       </p>
                     )}
-                    <CardDescription>{plan.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent className="relative space-y-4">
-                    <ul className="space-y-2 text-sm text-muted-foreground">
+                    <p className="mt-4 text-sm text-slate-400 leading-relaxed min-h-[40px]">{plan.description}</p>
+                  </div>
+
+                  <div className="space-y-6">
+                    <ul className="space-y-3">
                       {plan.features.map((feature) => (
-                        <li key={feature} className="flex items-center gap-2">
-                          <Check className="h-4 w-4 text-primary" aria-hidden />
+                        <li key={feature} className="flex items-start gap-3 text-sm text-slate-300">
+                          <Check className="h-5 w-5 shrink-0 text-amber-500" aria-hidden />
                           <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
-                    <Link href={plan.id === "tier-custom" ? "/contact" : "/auth/signup"}>
-                      <Button className="w-full rounded-full bg-gradient-to-r from-blue-800 via-cyan-600 to-emerald-400 text-primary-foreground shadow-md shadow-primary/30">
+                    <Link href={plan.id === "tier-custom" ? "/contact" : "/auth/signup"} className="block">
+                      <Button className={`w-full h-12 rounded-full font-semibold tracking-wide transition-all duration-300 ${plan.highlightLabel
+                        ? "bg-gradient-to-r from-amber-600 to-amber-500 text-white hover:from-amber-500 hover:to-amber-400 shadow-lg shadow-amber-900/20"
+                        : "bg-white/10 text-white hover:bg-white/20 border border-white/5 hover:border-amber-500/30"
+                        }`}>
                         {plan.cta}
                       </Button>
                     </Link>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               ))}
             </div>
-            <p className="mt-8 text-center text-sm text-muted-foreground">{pricingCopy.overview.note}</p>
+            <p className="mt-12 text-center text-sm text-slate-500">{pricingCopy.overview.note}</p>
           </div>
         </section>
 
         {/* Workflow Section */}
-        <section className="relative overflow-hidden py-24">
-          <div className="container mx-auto px-4">
-            <div className="grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:items-center">
+        <section className="relative overflow-hidden py-32 border-t border-white/5 bg-[oklch(20.8%_0.042_265.755)]">
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-blue-500/20 blur-[130px] rounded-full opacity-40" />
+            <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-amber-500/10 blur-[130px] rounded-full opacity-30" />
+          </div>
+          <div className="container relative z-10 mx-auto px-4">
+            <div className="grid gap-16 lg:grid-cols-[1.1fr_1fr] lg:items-center">
               <div>
-                <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">{home.workflow.title}</h2>
-                <p className="mt-4 text-pretty text-muted-foreground">{home.workflow.description}</p>
+                <h2 className="text-4xl font-bold tracking-tight text-white mb-6">{home.workflow.title}</h2>
+                <p className="text-lg text-slate-400 leading-relaxed text-pretty">{home.workflow.description}</p>
               </div>
-              <div className="rounded-3xl border border-white/10 bg-gradient-to-b from-background/90 to-background/60 p-8 shadow-[0_30px_80px_-55px_rgba(15,15,15,0.75)] backdrop-blur transition-shadow hover:shadow-[0_45px_130px_-65px_rgba(15,15,15,0.9)]">
-                <ol className="space-y-6">
+              <div className="relative rounded-3xl border border-white/10 bg-slate-900/30 p-10 shadow-[0_0_100px_-30px_rgba(0,0,0,0.5)] backdrop-blur-md">
+                <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-blue-500/10 to-transparent blur opacity-40" />
+                <ol className="relative space-y-8">
                   {home.workflow.steps.map((step, index) => (
-                    <li key={step.title} className="flex gap-4">
-                      <div className="relative flex size-12 items-center justify-center rounded-2xl border border-primary/30 bg-gradient-to-br from-blue-800/20 via-cyan-600/10 to-background text-sm font-semibold text-primary">
+                    <li key={step.title} className="group flex gap-6">
+                      <div className="relative flex size-14 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-slate-800/50 text-xl font-bold text-blue-400 shadow-inner group-hover:border-amber-500/40 group-hover:text-amber-400 group-hover:bg-amber-500/10 transition-all duration-300">
                         <span>{index + 1}</span>
-                        <span className="absolute -right-4 top-1/2 hidden h-px w-12 -translate-y-1/2 bg-gradient-to-r from-blue-800/30 to-transparent lg:block" />
+                        {index !== home.workflow.steps.length - 1 && (
+                          <div className="absolute bottom-[-34px] left-1/2 w-px h-8 bg-white/5 group-hover:bg-amber-500/30 transition-colors" />
+                        )}
                       </div>
-                      <div>
-                        <p className="text-base font-semibold text-foreground">{step.title}</p>
-                        <p className="text-sm text-muted-foreground">{step.description}</p>
+                      <div className="pt-1">
+                        <p className="text-lg font-semibold text-white group-hover:text-amber-100 transition-colors">{step.title}</p>
+                        <p className="mt-2 text-sm text-slate-400 leading-relaxed">{step.description}</p>
                       </div>
                     </li>
                   ))}
@@ -265,18 +295,23 @@ export default async function HomePage() {
         </section>
 
         {/* Contact Preview Section */}
-        <section className="border-y border-border/60 bg-gradient-to-b from-background via-muted/20 to-background py-20">
-          <div className="container mx-auto px-4">
-            <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+        <section className="relative overflow-hidden border-y border-white/5 bg-[oklch(12.9%_0.042_264.695)] py-24">
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <div className="absolute left-[-10%] top-0 w-[500px] h-[500px] bg-blue-500/30 blur-[100px] rounded-full opacity-50" />
+            <div className="absolute right-[-10%] bottom-0 w-[500px] h-[500px] bg-amber-500/20 blur-[100px] rounded-full opacity-40" />
+          </div>
+          <div className="container relative z-10 mx-auto px-4">
+            <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-primary/80">{home.contactPreview.eyebrow}</p>
-                <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+                <p className="text-xs font-bold uppercase tracking-[0.35em] text-amber-500 mb-4">{home.contactPreview.eyebrow}</p>
+                <h2 className="text-4xl font-bold tracking-tight text-white mb-6">
                   {home.contactPreview.title}
                 </h2>
-                <p className="mt-4 text-pretty text-muted-foreground">{home.contactPreview.description}</p>
-                <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+                <p className="text-lg text-slate-400 text-pretty mb-8">{home.contactPreview.description}</p>
+
+                <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
                   <Link href="/contact">
-                    <Button className="rounded-full px-8">
+                    <Button className="h-12 rounded-full px-8 bg-white text-slate-900 hover:bg-amber-50 hover:text-amber-900 font-bold transition-all hover:scale-105 hover:shadow-[0_0_20px_-5px_rgba(245,158,11,0.4)]">
                       <span className="flex items-center gap-2">
                         {home.contactPreview.cta}
                         <ArrowRight className="h-4 w-4" aria-hidden />
@@ -285,21 +320,21 @@ export default async function HomePage() {
                   </Link>
                   <a
                     href={`mailto:${home.contactPreview.email}`}
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-primary"
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-amber-400 transition-colors"
                   >
                     {home.contactPreview.emailCta}
-                    <span className="text-muted-foreground">{home.contactPreview.email}</span>
+                    <span className="text-slate-500">{home.contactPreview.email}</span>
                   </a>
                 </div>
               </div>
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-[0_30px_100px_-60px_rgba(15,15,15,0.85)]">
-                <ul className="space-y-4">
+              <div className="rounded-3xl border border-white/5 bg-white/[0.02] p-8 lg:p-12">
+                <ul className="space-y-6">
                   {home.contactPreview.highlights.map((highlight) => (
-                    <li key={highlight} className="flex items-start gap-3">
-                      <div className="mt-1 inline-flex size-6 items-center justify-center rounded-full border border-primary/30 bg-primary/10 text-primary">
-                        <Check className="h-3 w-3" aria-hidden />
+                    <li key={highlight} className="flex items-start gap-4">
+                      <div className="mt-1 inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-blue-500/10 text-blue-400 shadow-[0_0_10px_-2px_rgba(59,130,246,0.3)]">
+                        <Check className="h-3.5 w-3.5" aria-hidden />
                       </div>
-                      <p className="text-base text-foreground">{highlight}</p>
+                      <p className="text-lg text-slate-200">{highlight}</p>
                     </li>
                   ))}
                 </ul>
@@ -309,26 +344,31 @@ export default async function HomePage() {
         </section>
 
         {/* CTA Section */}
-        <section className="relative overflow-hidden py-28">
-          <div className="container mx-auto px-4 text-center">
-            <div className="mx-auto max-w-4xl rounded-3xl border border-white/15 bg-white/5 px-8 py-16 shadow-[0_45px_140px_-70px_rgba(15,15,15,0.9)] backdrop-blur">
-              <h2 className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl">{home.cta.title}</h2>
-              <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">{home.cta.description}</p>
-              <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <section className="relative overflow-hidden py-40">
+          <div className="absolute inset-0 bg-blue-900/5" />
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/20 blur-[150px] rounded-full opacity-60 mix-blend-screen" />
+            <div className="absolute bottom-0 w-[100%] h-[300px] bg-amber-500/10 blur-[120px] rounded-full opacity-40 mix-blend-screen" />
+          </div>
+          <div className="container relative z-10 mx-auto px-4 text-center">
+            <div className="mx-auto max-w-4xl rounded-[2.5rem] border border-white/10 bg-slate-900/80 px-8 py-20 shadow-2xl backdrop-blur-xl transition-all hover:border-amber-500/20">
+              <h2 className="text-4xl font-bold tracking-tight text-white md:text-5xl">{home.cta.title}</h2>
+              <p className="mx-auto mt-6 max-w-2xl text-xl text-slate-400 leading-relaxed">{home.cta.description}</p>
+              <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Link href="/auth/signup">
                   <Button
                     size="lg"
-                    className="rounded-full bg-gradient-to-r from-blue-800 via-cyan-600 to-emerald-400 px-8 text-primary-foreground shadow-xl shadow-primary/30 transition-transform hover:scale-[1.02]"
+                    className="h-14 rounded-full bg-blue-600 px-10 text-lg font-semibold text-white shadow-[0_10px_40px_-10px_rgba(37,99,235,0.4)] transition-all duration-300 hover:scale-[1.02] hover:bg-blue-500 hover:shadow-[0_20px_60px_-15px_rgba(37,99,235,0.5)] border border-blue-400/20"
                   >
                     {home.cta.primary}
-                    <ArrowRight className="h-4 w-4" aria-hidden />
+                    <ArrowRight className="ml-2 h-5 w-5 text-amber-200" aria-hidden />
                   </Button>
                 </Link>
                 <Link href="/about">
                   <Button
                     variant="ghost"
                     size="lg"
-                    className="rounded-full text-primary transition-all hover:bg-white/10 hover:shadow-lg hover:shadow-primary/20"
+                    className="h-14 rounded-full text-lg text-slate-300 hover:bg-white/5 hover:text-amber-200"
                   >
                     {home.cta.secondary}
                   </Button>
