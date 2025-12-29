@@ -70,8 +70,8 @@ export interface Signal {
   tableData?: TableData
 }
 
-// Helper to generate many sources
-const generateSources = (count: number): Source[] => {
+// Helper to generate many sources deterministically
+const generateSources = (count: number, offset: number = 0): Source[] => {
   const sources = [
     { name: "Bloomberg", url: "https://www.bloomberg.com" },
     { name: "Reuters", url: "https://www.reuters.com" },
@@ -94,9 +94,13 @@ const generateSources = (count: number): Source[] => {
     { name: "Glassdoor", url: "https://www.glassdoor.com" },
     { name: "LinkedIn", url: "https://www.linkedin.com" }
   ]
-  // Return a subset or randomized list
-  // slightly randomized order
-  return sources.sort(() => 0.5 - Math.random()).slice(0, count)
+
+  // Deterministic circular slice based on offset
+  const result: Source[] = []
+  for (let i = 0; i < count; i++) {
+    result.push(sources[(offset + i) % sources.length])
+  }
+  return result
 }
 
 export const enrichedSignals: Signal[] = [
@@ -170,7 +174,7 @@ We expect **aggressive pricing strategies** in Q3 to capture market share. Their
     // Removed 'trend' as it's not in the unified Signal interface
     description: "Across the vertical, B2B SaaS seat prices have seen a steady increase. This suggests an opportunity to adjust our Enterprise tier.",
     fullAnalysis: `
-## Market Overview
+# Market Overview
 **Inflationary pressures** and consolidation in the dev-tool space have driven a vertical-wide price increase. 
 
 The median seat price for *Series B+ SaaS companies* has moved from **$25/mo** to **$29/mo**.
