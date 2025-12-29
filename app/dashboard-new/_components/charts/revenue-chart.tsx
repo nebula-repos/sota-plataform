@@ -1,6 +1,6 @@
 "use client"
 
-import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis } from "recharts"
+import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis, CartesianGrid } from "recharts"
 
 const data = [
   {
@@ -31,28 +31,38 @@ const data = [
 
 export function RevenueChart() {
   return (
-    <div className="h-[120px] w-full">
+    <div className="h-[250px] w-full">
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={data}>
+        <LineChart data={data} margin={{ top: 5, right: 10, left: 10, bottom: 0 }}>
+          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" opacity={0.6} />
           <XAxis
             dataKey="date"
-            stroke="#888888"
+            stroke="#9ca3af"
             fontSize={10}
             tickLine={false}
             axisLine={false}
             interval="preserveStartEnd"
+            tick={{ fill: '#6b7280' }}
+          />
+          <YAxis
+            stroke="#9ca3af"
+            fontSize={10}
+            tickLine={false}
+            axisLine={false}
+            tickFormatter={(value: number) => `$${value}`}
+            tick={{ fill: '#6b7280' }}
           />
           <Tooltip
             content={({ active, payload }) => {
               if (active && payload && payload.length) {
                 return (
-                  <div className="rounded-lg border bg-white p-2 shadow-sm">
+                  <div className="rounded-lg border border-gray-100 bg-white p-2 shadow-md dark:border-gray-800 dark:bg-gray-950">
                     <div className="grid grid-cols-2 gap-2">
                       <div className="flex flex-col">
-                        <span className="text-[0.70rem] uppercase text-gray-500">
-                          Price
+                        <span className="text-[0.70rem] uppercase text-gray-500 dark:text-gray-400">
+                          Projected
                         </span>
-                        <span className="font-bold text-gray-900">
+                        <span className="font-bold text-gray-900 dark:text-white">
                           ${payload[0].value}
                         </span>
                       </div>
@@ -66,9 +76,10 @@ export function RevenueChart() {
           <Line
             type="monotone"
             dataKey="value"
-            stroke="#b45309" // Amber 700 for better visibility than 500 on white
-            strokeWidth={2}
-            dot={false}
+            stroke="#2563eb"
+            strokeWidth={3}
+            dot={{ r: 4, strokeWidth: 2, fill: "#fff", stroke: "#2563eb" }}
+            activeDot={{ r: 6, strokeWidth: 0, fill: "#2563eb" }}
           />
         </LineChart>
       </ResponsiveContainer>
