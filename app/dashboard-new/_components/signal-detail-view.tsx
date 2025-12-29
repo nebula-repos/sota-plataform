@@ -59,9 +59,22 @@ export function SignalDetailView({ signal, onToggleSave, isSaved, onSelectSignal
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-4">
-          <Badge variant="outline" className="text-sm px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800 uppercase tracking-wide">
-            {SIGNAL_TYPE_LABELS[signal.type]}
-          </Badge>
+          <div className="flex items-center gap-2">
+            <Badge variant="outline" className="text-sm px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800 uppercase tracking-wide">
+              {SIGNAL_TYPE_LABELS[signal.type]}
+            </Badge>
+            <div className="group relative">
+              <Info className="h-4 w-4 text-gray-400 cursor-help hover:text-blue-600 transition-colors" />
+              <div className="absolute left-0 top-full mt-2 w-64 p-3 bg-gray-900 text-white text-xs rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <p className="font-semibold mb-1 text-blue-200">{SIGNAL_TYPE_LABELS[signal.type]}</p>
+                <p className="text-gray-300 leading-relaxed">
+                  {SIGNAL_TYPE_DEFINITIONS[signal.type]}
+                </p>
+                {/* Arrow */}
+                <div className="absolute left-1 bottom-full border-4 border-transparent border-b-gray-900"></div>
+              </div>
+            </div>
+          </div>
           <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
             <div className="flex items-center gap-1">
               {signal.sources.slice(0, 3).map((source, i) => (
@@ -158,8 +171,23 @@ export function SignalDetailView({ signal, onToggleSave, isSaved, onSelectSignal
       <div className="space-y-12">
         <section>
           <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Intelligence Analysis</h2>
-          <div className="prose prose-slate dark:prose-invert w-full max-w-full prose-h2:text-0 prose-h3:text-lg prose-h3:font-bold prose-h3:mt-6 prose-p:text-gray-700 dark:prose-p:text-gray-300 break-words prose-pre:whitespace-pre-wrap prose-pre:break-words prose-li:marker:text-blue-500 prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:bg-gray-50 dark:prose-blockquote:bg-gray-800 prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:rounded-r-lg prose-blockquote:not-italic">
-            <ReactMarkdown>{signal.fullAnalysis}</ReactMarkdown>
+          <div className="w-full max-w-full">
+            <ReactMarkdown
+              components={{
+                h1: ({ node, ...props }) => <h1 className="text-2xl font-bold mt-6 mb-4 text-gray-900 dark:text-white" {...props} />,
+                h2: ({ node, ...props }) => <h2 className="text-xl font-bold mt-6 mb-3 text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 pb-2" {...props} />,
+                h3: ({ node, ...props }) => <h3 className="text-lg font-semibold mt-4 mb-2 text-gray-900 dark:text-white" {...props} />,
+                p: ({ node, ...props }) => <p className="leading-relaxed mb-4 text-gray-700 dark:text-gray-300" {...props} />,
+                ul: ({ node, ...props }) => <ul className="list-disc pl-6 mb-4 space-y-1 text-gray-700 dark:text-gray-300" {...props} />,
+                ol: ({ node, ...props }) => <ol className="list-decimal pl-6 mb-4 space-y-1 text-gray-700 dark:text-gray-300" {...props} />,
+                li: ({ node, ...props }) => <li className="pl-1" {...props} />,
+                blockquote: ({ node, ...props }) => <blockquote className="border-l-4 border-blue-500 pl-4 py-1 my-4 bg-gray-50 dark:bg-gray-800 italic text-gray-700 dark:text-gray-300 rounded-r" {...props} />,
+                strong: ({ node, ...props }) => <strong className="font-bold text-gray-900 dark:text-white" {...props} />,
+                a: ({ node, ...props }) => <a className="text-blue-600 hover:underline" {...props} />,
+              }}
+            >
+              {signal.fullAnalysis}
+            </ReactMarkdown>
           </div>
         </section>
 
