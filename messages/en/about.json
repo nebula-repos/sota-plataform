@@ -58,6 +58,21 @@
       "description": "We partner with researchers, operators, and organisations willing to share projects, data, or use cases. Reach out at"
     }
   },
+  "team": {
+    "title": "Our Team",
+    "members": [
+      {
+        "name": "Maximiliano Tombolini Troncoso",
+        "role": "CEO",
+        "title": "Industrial Engineer"
+      },
+      {
+        "name": "Franco Anfossi Signorelli",
+        "role": "CTO",
+        "title": "Industrial Engineer"
+      }
+    ]
+  },
   "cta": {
     "title": "Ready to build with the art?",
     "description": "Join the SotA platform, explore active lines, and collaborate with us on future releases.",

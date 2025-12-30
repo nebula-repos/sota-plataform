@@ -1,32 +1,23 @@
 "use client"
 
-import { useRouter } from "next/navigation"
-import { useEffect, useState, useTransition } from "react"
+import { useTransition } from "react"
 
-import { LOCALE_COOKIE, Locale, SUPPORTED_LOCALES } from "@/lib/i18n/config"
+import { Locale, SUPPORTED_LOCALES } from "@/lib/i18n/config"
 import { cn } from "@/lib/utils"
+import { useLanguageTransition } from "./language-transition-provider"
 
 export function LanguageToggle({ locale }: { locale: Locale }) {
-  const router = useRouter()
-  const [pending, startTransition] = useTransition()
-  const [selectedLocale, setSelectedLocale] = useState(locale)
+  const { switchLanguage, isTransitioning } = useLanguageTransition()
+  // We still use local state or props to show active, but the switching logic is delegated
+  // Ideally, the parent passes the current locale. We can assume `locale` prop is current.
   const segmentWidth = 100 / SUPPORTED_LOCALES.length
-  const activeIndex = Math.max(SUPPORTED_LOCALES.indexOf(selectedLocale), 0)
-
-  useEffect(() => {
-    setSelectedLocale(locale)
-  }, [locale])
+  const activeIndex = Math.max(SUPPORTED_LOCALES.indexOf(locale), 0)
 
   const handleChange = (nextLocale: Locale) => {
-    if (nextLocale === selectedLocale) {
+    if (nextLocale === locale) {
       return
     }
-
-    setSelectedLocale(nextLocale)
-    document.cookie = `${LOCALE_COOKIE}=${nextLocale}; max-age=31536000; path=/`
-    startTransition(() => {
-      router.refresh()
-    })
+    switchLanguage(nextLocale)
   }
 
   return (
@@ -41,12 +32,12 @@ export function LanguageToggle({ locale }: { locale: Locale }) {
         }}
       />
       {SUPPORTED_LOCALES.map((code) => {
-        const isActive = code === selectedLocale
+        const isActive = code === locale
         return (
           <button
             key={code}
             type="button"
-            disabled={pending}
+            disabled={isTransitioning}
             onClick={() => handleChange(code)}
             className={cn(
               "relative z-10 flex flex-1 items-center justify-center rounded-full px-3 py-1 text-center text-[10px] font-bold uppercase tracking-[0.1em] transition-colors duration-200",

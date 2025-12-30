@@ -41,6 +41,12 @@ export async function Header() {
 
         <nav className="flex items-center gap-2 sm:gap-6">
           <div className="hidden items-center gap-1 sm:flex">
+            <Link href="/pricing" className={navLinkClass}>
+              {common.header.nav.pricing}
+            </Link>
+            <Link href="/about" className={navLinkClass}>
+              {common.header.nav.about}
+            </Link>
             {user && (
               <Link href="/dashboard" className={navLinkClass}>
                 {common.header.nav.myAccount}

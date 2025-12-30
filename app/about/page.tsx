@@ -189,6 +189,40 @@ export default async function AboutPage() {
           </div>
         </section>
 
+        {/* Team Section */}
+        <section className="relative overflow-hidden py-24 bg-[oklch(12.9%_0.042_264.695)] border-t border-white/5">
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-blue-500/10 blur-[130px] rounded-full opacity-30" />
+            <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-amber-500/10 blur-[130px] rounded-full opacity-20" />
+          </div>
+
+          <div className="container relative z-10 mx-auto px-4">
+            <div className="mx-auto max-w-2xl text-center mb-16">
+              <p className="text-xs font-bold uppercase tracking-[0.35em] text-amber-500 mb-4">{about.hero.eyebrow}</p>
+              <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl">{about.team.title}</h2>
+            </div>
+
+            <StaggerContainer className="grid gap-8 sm:grid-cols-2 max-w-4xl mx-auto">
+              {about.team.members.map((member, index) => (
+                <StaggerItem key={index}>
+                  <MouseGlowCard className="h-full rounded-3xl border border-white/5 bg-slate-900/30 p-8 backdrop-blur-xl transition-all duration-300 hover:bg-slate-900/50 hover:border-amber-500/20 group text-center">
+                    <div className="flex flex-col items-center gap-4 relative z-10">
+                      <div className="size-20 rounded-full bg-slate-800 border border-white/10 flex items-center justify-center text-2xl font-bold text-slate-500">
+                        {member.name.split(" ").map(n => n[0]).join("").slice(0, 2)}
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-white group-hover:text-amber-100 transition-colors">{member.name}</h3>
+                        <p className="text-blue-400 font-medium">{member.role}</p>
+                        <p className="text-sm text-slate-400 mt-1">{member.title}</p>
+                      </div>
+                    </div>
+                  </MouseGlowCard>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="relative overflow-hidden border-t border-white/5 bg-[oklch(12.9%_0.042_264.695)] py-24">
           <div className="absolute inset-0 z-0 pointer-events-none">

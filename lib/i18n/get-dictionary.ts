@@ -45,16 +45,17 @@ export type DictionaryNamespace = {
   [L in Locale]: keyof Dictionaries[L]
 }[Locale]
 
-type DictionaryResult<L extends Locale, N extends keyof Dictionaries[L]> = Awaited<ReturnType<Dictionaries[L][N]>>
+type DictionaryResult<L extends Locale, N extends keyof Dictionaries[L]> =
+  Dictionaries[L][N] extends (...args: any) => Promise<infer R> ? R : never
 
 export async function getDictionary<L extends Locale, N extends keyof Dictionaries[L]>(
   locale: L,
   namespace: N,
 ): Promise<DictionaryResult<L, N>> {
-  const loader = dictionaries[locale]?.[namespace]
+  const loader = dictionaries[locale]?.[namespace] as (() => Promise<DictionaryResult<L, N>>) | undefined
 
   if (!loader) {
-    throw new Error(`Missing dictionary for locale "${locale}" and namespace "${namespace}"`)
+    throw new Error(`Missing dictionary for locale "${locale}" and namespace "${String(namespace)}"`)
   }
 
   return loader()

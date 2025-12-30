@@ -58,6 +58,21 @@
       "description": "Nos asociamos con investigadores, operadores y organizaciones que quieran compartir proyectos, datos o casos de uso. Escríbenos en"
     }
   },
+  "team": {
+    "title": "Nuestro equipo",
+    "members": [
+      {
+        "name": "Maximiliano Tombolini Troncoso",
+        "role": "CEO",
+        "title": "Ingeniero Civil Industrial"
+      },
+      {
+        "name": "Franco Anfossi Signorelli",
+        "role": "CTO",
+        "title": "Ingeniero Civil Industrial"
+      }
+    ]
+  },
   "cta": {
     "title": "¿Listo para construir con el arte?",
     "description": "Únete a la plataforma SotA, explora líneas activas y colabora con nosotros en futuros lanzamientos.",
