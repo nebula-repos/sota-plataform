@@ -1,10 +1,9 @@
 "use client"
 
-import { Check, Star, Users, Sparkles, AlertCircle, TrendingUp } from "lucide-react"
+import { Star, Sparkles, AlertCircle } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { Badge } from "@/components/ui/badge"
-import { enrichedSignals, Signal, SIGNAL_TYPE_LABELS } from "@/app/dashboard-new/_lib/mock-data"
+import { enrichedSignals, SIGNAL_TYPE_LABELS } from "@/app/dashboard-new/_lib/mock-data"
 
 export interface SignalListProps {
   selectedSignalId: number | null

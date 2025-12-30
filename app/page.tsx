@@ -1,9 +1,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { createClient } from "@/lib/supabase/server"
 import { ArrowRight, Check, Cpu, Gauge, Radar, ShieldCheck, Sparkles, Workflow } from "lucide-react"
 import { MouseGlowCard } from "@/components/mouse-glow-card"
 import { getLocale } from "@/lib/i18n/server"
@@ -23,11 +21,9 @@ const iconMap = {
 } as const
 
 export default async function HomePage() {
-  const supabase = await createClient()
   const locale = await getLocale()
   const home = await getDictionary(locale, "home")
   const pricingCopy = await getDictionary(locale, "pricing")
-  const dateFormatter = locale === "es" ? "es-ES" : "en-US"
   const pricingPlans = pricingCopy.plans as Array<{
     id: string
     tag?: string | null
@@ -38,6 +34,7 @@ export default async function HomePage() {
     description: string
     features: string[]
     cta: string
+    implementationFee?: string | null
   }>
 
   // Fetch latest research lines
@@ -242,9 +239,9 @@ export default async function HomePage() {
                         <span className="text-sm font-semibold text-slate-500 line-through decoration-slate-600">{plan.originalPrice}</span>
                       )}
                     </div>
-                    {(plan as any).implementationFee && (
+                    {plan.implementationFee && (
                       <p className="mt-2 text-xs font-medium uppercase tracking-wider text-slate-500">
-                        {(plan as any).implementationFee}
+                        {plan.implementationFee}
                       </p>
                     )}
                     <p className="mt-4 text-sm text-slate-400 leading-relaxed min-h-[40px]">{plan.description}</p>

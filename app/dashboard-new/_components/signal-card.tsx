@@ -1,6 +1,6 @@
 import { ArrowRight, MoreHorizontal, TrendingUp, TrendingDown, Minus, Bookmark } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import {
   DropdownMenu,
