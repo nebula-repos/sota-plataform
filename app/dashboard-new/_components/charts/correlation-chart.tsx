@@ -1,6 +1,6 @@
 "use client"
 
-import { ResponsiveContainer, ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts"
+import { ResponsiveContainer, ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts"
 
 interface CorrelationChartProps {
   data: { x: number; y: number; label: string, company: string }[];

@@ -1,15 +1,15 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { DashboardHeader } from "./_components/dashboard-header"
 import { SignalList } from "./_components/signal-selector"
 import { SignalDetailView } from "./_components/signal-detail-view"
-import { enrichedSignals, Signal } from "./_lib/mock-data"
+import { enrichedSignals } from "./_lib/mock-data"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { Plus, User, Bell, Shield, Key, Users, UserPlus, MoreVertical, Trash2, Moon, Sun } from "lucide-react"
+import { Plus, Bell, Shield, Key, Users, UserPlus, MoreVertical, Trash2, Moon, Sun } from "lucide-react"
 import { Toaster, toast } from "sonner"
 import {
   Dialog,
@@ -25,7 +25,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 const mockUsers = [
   { id: 1, name: "John Doe", email: "john@corp.inc", role: "Admin", status: "Active" },

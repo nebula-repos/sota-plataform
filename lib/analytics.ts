@@ -11,7 +11,7 @@ export type EventType =
   | "upgrade_clicked"
 
 interface EventData {
-  [key: string]: any
+  [key: string]: unknown
 }
 
 export async function trackEvent(eventType: EventType, eventData?: EventData) {

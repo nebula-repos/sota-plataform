@@ -73,7 +73,7 @@ export default async function ContactPage() {
               <div className="rounded-3xl border border-white/5 bg-slate-900/30 p-8 shadow-2xl backdrop-blur-xl">
                 <div className="mb-8">
                   <h2 className="text-2xl font-bold text-white mb-2">Send us a message</h2>
-                  <p className="text-slate-400">Fill out the form below and we'll get back to you shortly.</p>
+                  <p className="text-slate-400">Fill out the form below and we&apos;ll get back to you shortly.</p>
                 </div>
                 <ContactForm copy={contact.form} />
               </div>

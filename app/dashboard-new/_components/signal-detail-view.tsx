@@ -20,7 +20,7 @@ interface SignalDetailViewProps {
   onSelectSignal: (id: number) => void
 }
 
-import { Toaster, toast } from "sonner"
+import { toast } from "sonner"
 
 import {
   DropdownMenu,
@@ -174,16 +174,16 @@ export function SignalDetailView({ signal, onToggleSave, isSaved, onSelectSignal
           <div className="w-full max-w-full">
             <ReactMarkdown
               components={{
-                h1: ({ node, ...props }) => <h1 className="text-2xl font-bold mt-6 mb-4 text-gray-900 dark:text-white" {...props} />,
-                h2: ({ node, ...props }) => <h2 className="text-xl font-bold mt-6 mb-3 text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 pb-2" {...props} />,
-                h3: ({ node, ...props }) => <h3 className="text-lg font-semibold mt-4 mb-2 text-gray-900 dark:text-white" {...props} />,
-                p: ({ node, ...props }) => <p className="leading-relaxed mb-4 text-gray-700 dark:text-gray-300" {...props} />,
-                ul: ({ node, ...props }) => <ul className="list-disc pl-6 mb-4 space-y-1 text-gray-700 dark:text-gray-300" {...props} />,
-                ol: ({ node, ...props }) => <ol className="list-decimal pl-6 mb-4 space-y-1 text-gray-700 dark:text-gray-300" {...props} />,
-                li: ({ node, ...props }) => <li className="pl-1" {...props} />,
-                blockquote: ({ node, ...props }) => <blockquote className="border-l-4 border-blue-500 pl-4 py-1 my-4 bg-gray-50 dark:bg-gray-800 italic text-gray-700 dark:text-gray-300 rounded-r" {...props} />,
-                strong: ({ node, ...props }) => <strong className="font-bold text-gray-900 dark:text-white" {...props} />,
-                a: ({ node, ...props }) => <a className="text-blue-600 hover:underline" {...props} />,
+                h1: ({ ...props }) => <h1 className="text-2xl font-bold mt-6 mb-4 text-gray-900 dark:text-white" {...props} />,
+                h2: ({ ...props }) => <h2 className="text-xl font-bold mt-6 mb-3 text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 pb-2" {...props} />,
+                h3: ({ ...props }) => <h3 className="text-lg font-semibold mt-4 mb-2 text-gray-900 dark:text-white" {...props} />,
+                p: ({ ...props }) => <p className="leading-relaxed mb-4 text-gray-700 dark:text-gray-300" {...props} />,
+                ul: ({ ...props }) => <ul className="list-disc pl-6 mb-4 space-y-1 text-gray-700 dark:text-gray-300" {...props} />,
+                ol: ({ ...props }) => <ol className="list-decimal pl-6 mb-4 space-y-1 text-gray-700 dark:text-gray-300" {...props} />,
+                li: ({ ...props }) => <li className="pl-1" {...props} />,
+                blockquote: ({ ...props }) => <blockquote className="border-l-4 border-blue-500 pl-4 py-1 my-4 bg-gray-50 dark:bg-gray-800 italic text-gray-700 dark:text-gray-300 rounded-r" {...props} />,
+                strong: ({ ...props }) => <strong className="font-bold text-gray-900 dark:text-white" {...props} />,
+                a: ({ ...props }) => <a className="text-blue-600 hover:underline" {...props} />,
               }}
             >
               {signal.fullAnalysis}
