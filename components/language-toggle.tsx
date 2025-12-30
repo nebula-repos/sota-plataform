@@ -1,7 +1,5 @@
 "use client"
 
-import { useTransition } from "react"
-
 import { Locale, SUPPORTED_LOCALES } from "@/lib/i18n/config"
 import { cn } from "@/lib/utils"
 import { useLanguageTransition } from "./language-transition-provider"

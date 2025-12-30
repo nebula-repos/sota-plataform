@@ -86,7 +86,7 @@ export function LoginClient({ copy }: LoginClientProps) {
           </Link>
         </div>
 
-        <Card className="border border-white/10 bg-slate-900/40 shadow-2xl backdrop-blur-xl overflow-hidden">
+        <Card className="border border-white/10 bg-slate-900/40 shadow-2xl backdrop-blur-xl overflow-hidden rounded-3xl">
           <CardHeader className="space-y-1 text-center pb-8 pt-8">
             <CardTitle className="text-2xl font-bold text-white">{copy.cardTitle}</CardTitle>
             <CardDescription className="text-slate-400">{copy.cardDescription}</CardDescription>
