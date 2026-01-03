@@ -3,9 +3,9 @@
 import { Star, Sparkles, AlertCircle } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { enrichedSignals, SIGNAL_TYPE_LABELS } from "@/app/dashboard-new/_lib/mock-data"
 
 export interface SignalListProps {
+  signals: any[]
   selectedSignalId: number | null
   onSelectSignal: (id: number) => void
   currentViewFilter?: string
@@ -14,7 +14,16 @@ export interface SignalListProps {
   searchQuery: string
 }
 
-export function SignalList({ selectedSignalId, onSelectSignal, currentViewFilter, onViewFilterChange, savedSignalIds, searchQuery }: SignalListProps) {
+const SIGNAL_TYPE_LABELS: Record<string, string> = {
+  regulatory: "Regulation",
+  market: "Market Shift",
+  technology: "Technology",
+  competitor: "Competitor",
+  social: "Social Sentiment",
+  geopolitical: "Geopolitics"
+}
+
+export function SignalList({ signals, selectedSignalId, onSelectSignal, currentViewFilter, onViewFilterChange, savedSignalIds, searchQuery }: SignalListProps) {
 
   const handleSavedViewClick = (view: string) => {
     if (onViewFilterChange) {
@@ -23,14 +32,15 @@ export function SignalList({ selectedSignalId, onSelectSignal, currentViewFilter
   }
 
   // Filter signals based on current view and search query
-  const filteredSignals = enrichedSignals.filter(signal => {
+  const filteredSignals = signals.filter(signal => {
     // 1. Filter by View
     if (currentViewFilter === 'saved' && !savedSignalIds.includes(signal.id)) {
       return false
     }
 
     // 2. Filter by Search Query
-    if (searchQuery && !signal.title.toLowerCase().includes(searchQuery.toLowerCase()) && !SIGNAL_TYPE_LABELS[signal.type].toLowerCase().includes(searchQuery.toLowerCase())) {
+    const typeLabel = signal.type ? SIGNAL_TYPE_LABELS[signal.type] : 'Signal'
+    if (searchQuery && !signal.title?.toLowerCase().includes(searchQuery.toLowerCase()) && !typeLabel.toLowerCase().includes(searchQuery.toLowerCase())) {
       return false
     }
 

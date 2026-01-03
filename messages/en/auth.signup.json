@@ -5,6 +5,8 @@
   "badgeFooter": "Instant access · Verify email to activate releases",
   "cardTitle": "Create account",
   "cardDescription": "Sign up to access the platform",
+  "orgNameLabel": "Organization Name",
+  "orgNamePlaceholder": "Acme Corp",
   "fullNameLabel": "Full name",
   "fullNamePlaceholder": "John Smith",
   "emailLabel": "Email address",

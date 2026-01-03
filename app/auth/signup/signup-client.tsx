@@ -19,6 +19,8 @@ interface SignupCopy {
   badgeFooter: string
   cardTitle: string
   cardDescription: string
+  orgNameLabel: string
+  orgNamePlaceholder: string
   fullNameLabel: string
   fullNamePlaceholder: string
   emailLabel: string
@@ -41,6 +43,7 @@ export function SignupClient({ copy }: SignupClientProps) {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [fullName, setFullName] = useState("")
+  const [orgName, setOrgName] = useState("")
   const [repeatPassword, setRepeatPassword] = useState("")
   const [error, setError] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
@@ -66,12 +69,13 @@ export function SignupClient({ copy }: SignupClientProps) {
           emailRedirectTo: process.env.NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL || `${window.location.origin}/dashboard`,
           data: {
             full_name: fullName,
+            org_name: orgName,
           },
         },
       })
       if (error) throw error
 
-      await trackEventClient("signup", { email, full_name: fullName })
+      await trackEventClient("signup", { email, full_name: fullName, org_name: orgName })
 
       router.push("/auth/verify-email")
     } catch (error: unknown) {
@@ -92,7 +96,7 @@ export function SignupClient({ copy }: SignupClientProps) {
         <div className="absolute bottom-[-10%] left-[-10%] w-[800px] h-[600px] bg-amber-500/10 blur-[140px] rounded-full opacity-40 mix-blend-screen" />
       </div>
 
-      <div className="relative z-10 w-full max-w-md px-6 py-12">
+      <div className="relative z-10 w-full max-w-2xl px-6 py-12">
         <div className="mb-8 text-center">
           <Link href="/" className="inline-flex items-center gap-2 transition-transform hover:scale-105">
             <span className="relative flex h-6 w-6">
@@ -109,7 +113,19 @@ export function SignupClient({ copy }: SignupClientProps) {
             <CardDescription className="text-slate-400">{copy.cardDescription}</CardDescription>
           </CardHeader>
           <CardContent className="pb-8 px-8">
-            <form onSubmit={handleSignUp} className="space-y-5">
+            <form onSubmit={handleSignUp} className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div className="space-y-2">
+                <Label htmlFor="orgName" className={labelClass}>{copy.orgNameLabel}</Label>
+                <Input
+                  id="orgName"
+                  type="text"
+                  placeholder={copy.orgNamePlaceholder}
+                  required
+                  value={orgName}
+                  onChange={(e) => setOrgName(e.target.value)}
+                  className={inputClass}
+                />
+              </div>
               <div className="space-y-2">
                 <Label htmlFor="fullName" className={labelClass}>{copy.fullNameLabel}</Label>
                 <Input
@@ -122,7 +138,7 @@ export function SignupClient({ copy }: SignupClientProps) {
                   className={inputClass}
                 />
               </div>
-              <div className="space-y-2">
+              <div className="space-y-2 col-span-1 md:col-span-2">
                 <Label htmlFor="email" className={labelClass}>{copy.emailLabel}</Label>
                 <Input
                   id="email"
@@ -158,14 +174,14 @@ export function SignupClient({ copy }: SignupClientProps) {
               </div>
 
               {error && (
-                <div className="rounded-lg bg-red-500/10 border border-red-500/20 p-3 text-sm text-red-400 text-center">
+                <div className="col-span-1 md:col-span-2 rounded-lg bg-red-500/10 border border-red-500/20 p-3 text-sm text-red-400 text-center">
                   {error}
                 </div>
               )}
 
               <Button
                 type="submit"
-                className="w-full rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold h-12 shadow-[0_0_20px_-5px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_-5px_rgba(37,99,235,0.6)] transition-all duration-300 hover:scale-[1.02] mt-2"
+                className="col-span-1 md:col-span-2 w-full rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold h-12 shadow-[0_0_20px_-5px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_-5px_rgba(37,99,235,0.6)] transition-all duration-300 hover:scale-[1.02] mt-2"
                 disabled={isLoading}
               >
                 {isLoading ? copy.submitLoading : copy.submit}
