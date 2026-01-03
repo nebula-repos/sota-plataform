@@ -11,7 +11,7 @@
     "title": "Elige la cantidad de Señales que necesitas rastrear.",
     "description": "Cada plan incluye la plataforma SotA base. Simplemente elige el volumen de señales que necesitas monitorear para mantener tu hoja de ruta por delante del mercado.",
     "cta": "Ver detalles de precios",
-    "note": "Todos los precios están en USD y se facturan mensualmente. Aplica tarifa de implementación para la configuración inicial."
+    "note": "Todos los precios están en USD y se facturan mensualmente. Aplica tarifa de implementación para la configuración inicial. Cualquier complemento o cambio debe ser discutido y tendrá un costo extra."
   },
   "plans": [
     {
@@ -19,22 +19,37 @@
       "tag": "Iniciación",
       "name": "1 Señal",
       "price": "USD 200/mes",
-      "implementationFee": "+ USD 200 pago único",
+      "implementationFee": "+ USD 400 pago único",
       "originalPrice": null,
       "description": "Perfecto para el monitoreo enfocado de una sola señal crítica.",
       "features": [
-        "1 Señal Verificada",
+        "1 Señal Estandar",
         "2 Usuarios",
-        "Briefings Semanales"
+        "Briefings Quincenales"
       ],
       "cta": "Comenzar con 1 Señal"
+    },
+    {
+      "id": "tier-1.5",
+      "tag": "Estándar",
+      "name": "3 Señales",
+      "price": "USD 500/mes",
+      "implementationFee": "+ USD 400 pago único",
+      "originalPrice": "USD 600/mes",
+      "description": "Ideal para equipos en crecimiento que necesitan mayor cobertura.",
+      "features": [
+        "3 Señales Estándar",
+        "3 Usuarios",
+        "Briefings Quincenales"
+      ],
+      "cta": "Comenzar con 3 Señales"
     },
     {
       "id": "tier-2",
       "tag": "Crecimiento",
       "name": "3+1 Señales",
       "price": "USD 800/mes",
-      "implementationFee": "+ USD 200 pago único",
+      "implementationFee": "+ USD 400 pago único",
       "originalPrice": "USD 900/mes",
       "highlightLabel": "Más popular",
       "description": "Amplía tu cobertura con 3 señales estándar y 1 señal a medida.",
@@ -51,7 +66,7 @@
       "tag": "Escala",
       "name": "5+1 Señales",
       "price": "USD 1200/mes",
-      "implementationFee": "+ USD 200 pago único",
+      "implementationFee": "+ USD 400 pago único",
       "originalPrice": "USD 1300/mes",
       "highlightLabel": null,
       "description": "Monitoreo integral con 5 señales estándar y 1 señal a medida.",
@@ -59,7 +74,7 @@
         "5 Señales Estándar",
         "1 Señal a Medida",
         "7 Usuarios",
-        "Briefings a Medida"
+        "Briefings Semanales"
       ],
       "cta": "Activar Pack Escala"
     },

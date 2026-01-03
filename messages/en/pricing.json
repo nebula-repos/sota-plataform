@@ -11,7 +11,7 @@
     "title": "Choose the number of Signals you need to track.",
     "description": "Every plan includes the core SotA platform. Simply choose the volume of signals you need to monitor to keep your roadmap ahead of the market.",
     "cta": "View full pricing details",
-    "note": "All prices are in USD and billed monthly. Implementation fee applies to the initial setup."
+    "note": "All prices are in USD and billed monthly. Implementation fee applies to the initial setup. Any add on or change should be discussed and will have extra cost."
   },
   "plans": [
     {
@@ -19,22 +19,37 @@
       "tag": "Starter",
       "name": "1 Signal",
       "price": "USD 200/mo",
-      "implementationFee": "+ USD 200 one-time fee",
+      "implementationFee": "+ USD 400 one-time fee",
       "originalPrice": null,
       "description": "Perfect for focused monitoring of a single critical signal.",
       "features": [
-        "1 Verified Signal",
+        "1 Standard Signal",
         "2 User Seats",
-        "Weekly Briefings"
+        "Bi-weekly Briefings"
       ],
       "cta": "Start with 1 Signal"
+    },
+    {
+      "id": "tier-1.5",
+      "tag": "Standard",
+      "name": "3 Signals",
+      "price": "USD 500/mo",
+      "implementationFee": "+ USD 400 one-time fee",
+      "originalPrice": "USD 600/mo",
+      "description": "Ideal for growing teams needing broader coverage.",
+      "features": [
+        "3 Standard Signals",
+        "3 User Seats",
+        "Bi-weekly Briefings"
+      ],
+      "cta": "Start with 3 Signals"
     },
     {
       "id": "tier-2",
       "tag": "Growth",
       "name": "3+1 Signals",
       "price": "USD 800/mo",
-      "implementationFee": "+ USD 200 one-time fee",
+      "implementationFee": "+ USD 400 one-time fee",
       "originalPrice": "USD 900/mo",
       "highlightLabel": "Most popular",
       "description": "Expand your coverage with 3 standard signals and 1 custom signal.",
@@ -51,7 +66,7 @@
       "tag": "Scale",
       "name": "5+1 Signals",
       "price": "USD 1200/mo",
-      "implementationFee": "+ USD 200 one-time fee",
+      "implementationFee": "+ USD 400 one-time fee",
       "originalPrice": "USD 1300/mo",
       "highlightLabel": null,
       "description": "Comprehensive monitoring with 5 standard signals and 1 custom signal.",
@@ -59,7 +74,7 @@
         "5 Standard Signals",
         "1 Custom Signal",
         "7 User Seats",
-        "Custom Briefings"
+        "Weekly Briefings"
       ],
       "cta": "Activate Scale Pack"
     },
