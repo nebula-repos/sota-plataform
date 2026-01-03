@@ -2,7 +2,6 @@
 
 import React from 'react'
 
-import { Signal, SIGNAL_TYPE_LABELS, SIGNAL_TYPE_DEFINITIONS } from "@/app/dashboard-new/_lib/mock-data"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -12,14 +11,6 @@ import { CorrelationChart } from "./charts/correlation-chart"
 import { MarketMapChart } from "./charts/market-map-chart"
 import { Share2, Bookmark, Download, ExternalLink, TrendingUp, TrendingDown, Minus, Info } from "lucide-react"
 import ReactMarkdown from 'react-markdown'
-
-interface SignalDetailViewProps {
-  signal: Signal
-  onToggleSave: (id: number) => void
-  isSaved: boolean
-  onSelectSignal: (id: number) => void
-}
-
 import { toast } from "sonner"
 
 import {
@@ -28,6 +19,50 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+
+// Define interfaces locally to avoid external mock dependencies
+interface Signal {
+  id: number | string
+  type: string
+  title: string
+  summary: string
+  date: string
+  time: string
+  description?: string
+  fullAnalysis?: string
+  metrics?: any[]
+  sources?: any[]
+  relatedSignals?: any[]
+  chartType?: string
+  revenueData?: any
+  correlationData?: any
+  marketMapData?: any
+  tableData?: any
+  impact?: 'high' | 'medium' | 'low'
+}
+
+const SIGNAL_TYPE_LABELS: Record<string, string> = {
+  'regulatory-legal-change': "Regulation",
+  'incident-outage': "Incident",
+  'security-vulnerability': "Security",
+  'market': "Market Shift",
+  'technology': "Technology",
+  'competitor': "Competitor",
+  'regulatory': "Regulation", // Fallback for old data
+  // Add other mappings as needed or use key as fallback
+}
+
+const SIGNAL_TYPE_DEFINITIONS: Record<string, string> = {
+  'regulatory-legal-change': "Changes in regulation, official guidelines, or legal criteria affecting obligations or compliance.",
+  // ... Add definitions or Generic default
+}
+
+interface SignalDetailViewProps {
+  signal: Signal
+  onToggleSave: (id: number | string) => void
+  isSaved: boolean
+  onSelectSignal: (id: number | string) => void
+}
 
 export function SignalDetailView({ signal, onToggleSave, isSaved, onSelectSignal }: SignalDetailViewProps) {
 
@@ -61,14 +96,14 @@ export function SignalDetailView({ signal, onToggleSave, isSaved, onSelectSignal
         <div className="flex items-center gap-3 mb-4">
           <div className="flex items-center gap-2">
             <Badge variant="outline" className="text-sm px-3 py-1 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800 uppercase tracking-wide">
-              {SIGNAL_TYPE_LABELS[signal.type]}
+              {SIGNAL_TYPE_LABELS[signal.type] || signal.type}
             </Badge>
             <div className="group relative">
               <Info className="h-4 w-4 text-gray-400 cursor-help hover:text-blue-600 transition-colors" />
               <div className="absolute left-0 top-full mt-2 w-64 p-3 bg-gray-900 text-white text-xs rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <p className="font-semibold mb-1 text-blue-200">{SIGNAL_TYPE_LABELS[signal.type]}</p>
+                <p className="font-semibold mb-1 text-blue-200">{SIGNAL_TYPE_LABELS[signal.type] || signal.type}</p>
                 <p className="text-gray-300 leading-relaxed">
-                  {SIGNAL_TYPE_DEFINITIONS[signal.type]}
+                  {SIGNAL_TYPE_DEFINITIONS[signal.type] || "No definition available."}
                 </p>
                 {/* Arrow */}
                 <div className="absolute left-1 bottom-full border-4 border-transparent border-b-gray-900"></div>

@@ -5,6 +5,8 @@
   "badgeFooter": "Acceso inmediato · Verifica tu correo para activar los lanzamientos",
   "cardTitle": "Crear cuenta",
   "cardDescription": "Regístrate para acceder a la plataforma",
+  "orgNameLabel": "Nombre de la Organización",
+  "orgNamePlaceholder": "Acme Corp",
   "fullNameLabel": "Nombre completo",
   "fullNamePlaceholder": "Juan Pérez",
   "emailLabel": "Correo electrónico",
