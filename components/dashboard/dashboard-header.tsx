@@ -3,14 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { toast } from "sonner"
 
-interface DashboardHeaderProps {
-  currentView: string
-  onNavigate: (view: string) => void
-  searchQuery?: string
-  setSearchQuery?: (query: string) => void
-  onToggleSidebar?: () => void
-  isSidebarOpen?: boolean
-}
+import { DashboardHeaderProps } from "@/types/dashboard.interface"
 
 export function DashboardHeader({ currentView, onNavigate, searchQuery = "", setSearchQuery, onToggleSidebar, isSidebarOpen }: DashboardHeaderProps) {
 

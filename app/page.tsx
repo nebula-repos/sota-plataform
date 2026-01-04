@@ -37,7 +37,7 @@ export default async function HomePage() {
     implementationFee?: string | null
   }>
 
-  // Fetch latest research lines
+
 
   return (
     <div className="flex min-h-screen flex-col bg-slate-900 text-slate-100 selection:bg-amber-500/30">

@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { DashboardHeader } from "./_components/dashboard-header"
-import { SignalList } from "./_components/signal-selector"
-import { SignalDetailView } from "./_components/signal-detail-view"
-// import { enrichedSignals } from "./_lib/mock-data" // Removed mock data
+import { DashboardHeader } from "@/components/dashboard/dashboard-header"
+import { SignalList } from "@/components/dashboard/signal-selector"
+import { SignalDetailView } from "@/components/dashboard/signal-detail-view"
+
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -28,53 +28,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-// Define Signal Interface (matching what components expect)
-interface Signal {
-  id: number | string // Handle both for now
-  type: string
-  title: string
-  summary: string
-  score: number
-  source: string
-  date: string
-  time: string
-  description?: string
-  fullAnalysis?: string
-  metrics?: any[]
-  sources?: any[]
-  relatedSignals?: any[]
-  chartType?: string
-  revenueData?: any
-  correlationData?: any
-  marketMapData?: any
-  tableData?: any
-  impact?: 'high' | 'medium' | 'low'
-}
-
-const mockUsers = [
-  { id: 1, name: "John Doe", email: "john@corp.inc", role: "Admin", status: "Active" },
-  { id: 2, name: "Sarah Smith", email: "sarah@corp.inc", role: "Editor", status: "Active" },
-  { id: 3, name: "Mike Johnson", email: "mike@corp.inc", role: "Viewer", status: "Invited" },
-]
-
-interface ProfileData {
-  fullName: string
-  email: string
-  role: string
-  orgName: string
-  planName: string
-}
-
-
-interface TeamMember {
-  id: string
-  name: string
-  email: string
-  role: string
-  status: string
-  type: 'user' | 'invitation'
-  initials: string
-}
+import { Signal } from "@/types/signal.interface"
+import { ProfileData, TeamMember } from "@/types/user.interface"
 
 export default function DashboardPage() {
   const router = useRouter()
@@ -86,7 +41,7 @@ export default function DashboardPage() {
   const [signals, setSignals] = useState<Signal[]>([])
   const [selectedSignalId, setSelectedSignalId] = useState<number | string | null>(null)
 
-  const [savedSignalIds, setSavedSignalIds] = useState<number[]>([])
+  const [savedSignalIds, setSavedSignalIds] = useState<(number | string)[]>([])
   const [currentViewFilter, setCurrentViewFilter] = useState<string | undefined>(undefined)
   const [isDarkMode, setIsDarkMode] = useState(false)
   const [isSidebarOpen, setIsSidebarOpen] = useState(true)
@@ -373,10 +328,7 @@ export default function DashboardPage() {
       setIsInviteUserOpen(true)
       return
     }
-    // Handle "Edit Role [Name]" or "Remove [Name]" logic?
-    // The dropdown items call this with formatted strings. 
-    // I should refactor the dropdowns to call new handlers directly if possible, or parse string.
-    // Parsing string is brittle. Better to update the dropdowns in the UI render.
+
 
     toast(`Action: ${actionName}`, {
       description: "This is a mock action for demonstration purposes.",
@@ -385,22 +337,17 @@ export default function DashboardPage() {
 
   const handleToggleSignalSave = (id: number | string) => {
     setSavedSignalIds(prev => {
-      const isCurrentlySaved = prev.includes(id as number) // Cast to number for now, assuming savedSignalIds stores numbers
-
-      // Perform side effect immediately based on current state check
-      // Note in strict mode this updater might run twice but we only want to toast once.
-      // Better approach: Calculate next state then toast.
+      const isCurrentlySaved = prev.includes(id)
 
       if (isCurrentlySaved) {
-        // We can't put toast here safely in Strict Mode if we want it once.
         return prev.filter(sid => sid !== id)
       } else {
-        return [...prev, id as number] // Cast to number for now
+        return [...prev, id]
       }
     })
 
     // Check current state outside updater to fire toast
-    if (savedSignalIds.includes(id as number)) { // Cast to number for now
+    if (savedSignalIds.includes(id)) {
       toast.info("Signal removed from saved items")
     } else {
       toast.success("Signal saved to your list")

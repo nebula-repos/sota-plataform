@@ -20,26 +20,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-// Define interfaces locally to avoid external mock dependencies
-interface Signal {
-  id: number | string
-  type: string
-  title: string
-  summary: string
-  date: string
-  time: string
-  description?: string
-  fullAnalysis?: string
-  metrics?: any[]
-  sources?: any[]
-  relatedSignals?: any[]
-  chartType?: string
-  revenueData?: any
-  correlationData?: any
-  marketMapData?: any
-  tableData?: any
-  impact?: 'high' | 'medium' | 'low'
-}
+import { Signal, SignalType } from "@/types/signal.interface"
 
 const SIGNAL_TYPE_LABELS: Record<string, string> = {
   'regulatory-legal-change': "Regulation",
@@ -57,12 +38,7 @@ const SIGNAL_TYPE_DEFINITIONS: Record<string, string> = {
   // ... Add definitions or Generic default
 }
 
-interface SignalDetailViewProps {
-  signal: Signal
-  onToggleSave: (id: number | string) => void
-  isSaved: boolean
-  onSelectSignal: (id: number | string) => void
-}
+import { SignalDetailViewProps } from "@/types/dashboard.interface"
 
 export function SignalDetailView({ signal, onToggleSave, isSaved, onSelectSignal }: SignalDetailViewProps) {
 
@@ -112,23 +88,23 @@ export function SignalDetailView({ signal, onToggleSave, isSaved, onSelectSignal
           </div>
           <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
             <div className="flex items-center gap-1">
-              {signal.sources.slice(0, 3).map((source, i) => (
+              {(signal.sources || []).slice(0, 3).map((source, i) => (
                 <React.Fragment key={i}>
                   <a href={source.url} target="_blank" rel="noopener noreferrer" className="font-medium hover:text-blue-600 hover:underline transition-colors">
                     {source.name}
                   </a>
-                  {i < Math.min(signal.sources.length, 3) - 1 ? "," : ""}
+                  {i < Math.min((signal.sources || []).length, 3) - 1 ? "," : ""}
                 </React.Fragment>
               ))}
-              {signal.sources.length > 3 && (
+              {(signal.sources || []).length > 3 && (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Badge variant="secondary" className="px-1.5 py-0 h-5 text-[10px] cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 ml-1">
-                      +{signal.sources.length - 3}
+                      +{(signal.sources || []).length - 3}
                     </Badge>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="start" className="w-56 max-h-80 overflow-y-auto">
-                    {signal.sources.slice(3).map((source, i) => (
+                    {(signal.sources || []).slice(3).map((source, i) => (
                       <DropdownMenuItem key={i} asChild>
                         <a href={source.url} target="_blank" rel="noopener noreferrer" className="cursor-pointer">
                           {source.name}
@@ -176,7 +152,7 @@ export function SignalDetailView({ signal, onToggleSave, isSaved, onSelectSignal
 
       {/* Metrics Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-        {signal.metrics.map((metric, idx) => (
+        {(signal.metrics || []).map((metric, idx) => (
           <Card key={idx} className="bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800">
             <CardHeader className="pb-2">
               <CardTitle className="text-sm font-medium text-gray-500 dark:text-gray-400">
@@ -304,7 +280,7 @@ export function SignalDetailView({ signal, onToggleSave, isSaved, onSelectSignal
         <section className="bg-blue-50/50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900 rounded-xl p-6">
           <h3 className="text-lg font-bold text-blue-900 dark:text-blue-100 mb-6">Related Intelligence</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {signal.relatedSignals.length > 0 ? signal.relatedSignals.map(related => (
+            {signal.relatedSignals && signal.relatedSignals.length > 0 ? signal.relatedSignals.map(related => (
               <Card
                 key={related.id}
                 className="group cursor-pointer hover:shadow-md transition-all border-blue-100 dark:border-blue-800/50 bg-white dark:bg-gray-900/50"

@@ -25,7 +25,7 @@ export default async function ContactPage() {
     <div className="flex min-h-screen flex-col bg-slate-950 text-slate-100 selection:bg-amber-500/30">
       <Header />
       <main className="flex-1">
-        {/* Hero Section */}
+
         <section className="relative overflow-hidden pt-32 pb-20 lg:pt-48 lg:pb-32 bg-[oklch(20.8%_0.042_265.755)]">
           <div className="absolute inset-0 z-0 pointer-events-none">
             <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80%] h-[600px] bg-blue-500/30 blur-[120px] rounded-full opacity-70 mix-blend-screen" />
@@ -60,7 +60,7 @@ export default async function ContactPage() {
           </div>
         </section>
 
-        {/* Contact Content Section */}
+
         <section className="py-24 bg-[oklch(12.9%_0.042_264.695)] border-t border-white/5 relative overflow-hidden">
           <div className="absolute inset-0 z-0 pointer-events-none">
             <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500/10 blur-[150px] rounded-full opacity-40 mix-blend-screen" />
@@ -69,7 +69,7 @@ export default async function ContactPage() {
           <div className="container relative z-10 mx-auto px-4">
             <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_0.85fr] lg:items-start">
 
-              {/* Contact Form Container */}
+
               <div className="rounded-3xl border border-white/5 bg-slate-900/30 p-8 shadow-2xl backdrop-blur-xl">
                 <div className="mb-8">
                   <h2 className="text-2xl font-bold text-white mb-2">Send us a message</h2>
@@ -78,9 +78,9 @@ export default async function ContactPage() {
                 <ContactForm copy={contact.form} />
               </div>
 
-              {/* Info Side */}
+
               <div className="space-y-8">
-                {/* Details Card */}
+
                 <Card className="border border-white/5 bg-slate-900/30 shadow-xl backdrop-blur-xl overflow-hidden group hover:border-amber-500/20 transition-all duration-300">
                   <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-blue-500 via-blue-400 to-transparent opacity-60" />
                   <CardHeader className="space-y-4">
@@ -95,7 +95,7 @@ export default async function ContactPage() {
                   </CardContent>
                 </Card>
 
-                {/* Direct Contacts Grid */}
+
                 <div className="grid gap-4 md:grid-cols-2">
                   {contact.details.items.map((item: { label: string; description: string; value: string }) => (
                     <Card key={item.value} className="border border-white/5 bg-slate-900/30 hover:bg-slate-900/50 backdrop-blur-xl transition-colors duration-300">
@@ -116,7 +116,7 @@ export default async function ContactPage() {
                   ))}
                 </div>
 
-                {/* Socials Card */}
+
                 {socialLinks.length > 0 && (
                   <Card className="border border-white/5 bg-slate-900/30 shadow-xl backdrop-blur-xl group hover:border-amber-500/20 transition-all duration-300">
                     <CardHeader>

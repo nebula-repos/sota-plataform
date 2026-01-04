@@ -12,32 +12,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { trackEventClient } from "@/lib/analytics-client"
-interface SignupCopy {
-  badge: string
-  headline: string
-  subhead: string
-  badgeFooter: string
-  cardTitle: string
-  cardDescription: string
-  orgNameLabel: string
-  orgNamePlaceholder: string
-  fullNameLabel: string
-  fullNamePlaceholder: string
-  emailLabel: string
-  emailPlaceholder: string
-  passwordLabel: string
-  confirmPasswordLabel: string
-  submitLoading: string
-  submit: string
-  loginPrompt: string
-  loginCta: string
-  passwordMismatch: string
-  genericError: string
-}
-
-interface SignupClientProps {
-  copy: SignupCopy
-}
+import { SignupClientProps } from "@/types/auth.interface"
 
 export function SignupClient({ copy }: SignupClientProps) {
   const [email, setEmail] = useState("")
@@ -90,7 +65,7 @@ export function SignupClient({ copy }: SignupClientProps) {
 
   return (
     <div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-slate-950 selection:bg-amber-500/30">
-      {/* Background Effects */}
+
       <div className="pointer-events-none absolute inset-0 z-0">
         <div className="absolute top-[-20%] right-[10%] w-[900px] h-[700px] bg-blue-500/20 blur-[130px] rounded-full opacity-50 mix-blend-screen" />
         <div className="absolute bottom-[-10%] left-[-10%] w-[800px] h-[600px] bg-amber-500/10 blur-[140px] rounded-full opacity-40 mix-blend-screen" />

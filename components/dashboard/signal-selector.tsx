@@ -4,15 +4,7 @@ import { Star, Sparkles, AlertCircle } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { ScrollArea } from "@/components/ui/scroll-area"
 
-export interface SignalListProps {
-  signals: any[]
-  selectedSignalId: number | null
-  onSelectSignal: (id: number) => void
-  currentViewFilter?: string
-  onViewFilterChange?: (view: string) => void
-  savedSignalIds: number[]
-  searchQuery: string
-}
+import { SignalListProps } from "@/types/dashboard.interface"
 
 const SIGNAL_TYPE_LABELS: Record<string, string> = {
   regulatory: "Regulation",

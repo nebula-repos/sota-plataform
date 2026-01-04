@@ -5,10 +5,7 @@ import { useRouter } from "next/navigation"
 import { AnimatePresence, motion } from "framer-motion"
 import { Locale, LOCALE_COOKIE } from "@/lib/i18n/config"
 
-type LanguageTransitionContextType = {
-  isTransitioning: boolean
-  switchLanguage: (nextLocale: Locale) => Promise<void>
-}
+import { LanguageTransitionContextType } from "@/types/context.interface"
 
 const LanguageTransitionContext = createContext<LanguageTransitionContextType | undefined>(undefined)
 

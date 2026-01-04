@@ -23,9 +23,9 @@ export default async function AboutPage() {
     <div className="flex min-h-screen flex-col bg-slate-950 text-slate-100 selection:bg-amber-500/30">
       <Header />
       <main className="flex-1">
-        {/* Hero Section */}
+
         <section className="relative overflow-hidden pt-32 pb-20 lg:pt-48 lg:pb-32 bg-[oklch(20.8%_0.042_265.755)]">
-          {/* Background Effects */}
+
           <div className="absolute inset-0 z-0 pointer-events-none">
             <AnimatedBackgroundBlob
               className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80%] h-[600px] bg-blue-500/30 blur-[120px] rounded-full opacity-70 mix-blend-screen"
@@ -84,7 +84,7 @@ export default async function AboutPage() {
           </div>
         </section>
 
-        {/* Principles Section */}
+
         <section className="relative overflow-hidden py-24 bg-[oklch(12.9%_0.042_264.695)] border-t border-white/5">
           <div className="absolute inset-0 z-0 pointer-events-none">
             <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-blue-500/20 blur-[130px] rounded-full opacity-40" />
@@ -132,7 +132,7 @@ export default async function AboutPage() {
           </div>
         </section>
 
-        {/* How We Work Section */}
+
         <section className="relative overflow-hidden border-t border-white/5 bg-[oklch(20.8%_0.042_265.755)] py-24">
           <div className="absolute inset-0 z-0 pointer-events-none">
             <div className="absolute left-[-10%] top-0 w-[500px] h-[500px] bg-blue-500/30 blur-[100px] rounded-full opacity-50" />
@@ -141,7 +141,7 @@ export default async function AboutPage() {
 
           <div className="container relative z-10 mx-auto px-4">
             <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
-              {/* Main Card */}
+
               <FadeIn className="relative overflow-hidden rounded-3xl border border-white/5 bg-slate-900/30 p-10 shadow-2xl backdrop-blur-xl transition-all duration-300 hover:bg-slate-900/50 hover:border-amber-500/20 group">
                 <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-blue-500 via-blue-400 to-amber-400 opacity-60" />
                 <div className="space-y-6">
@@ -156,7 +156,7 @@ export default async function AboutPage() {
                 </div>
               </FadeIn>
 
-              {/* Side Cards */}
+
               <StaggerContainer className="space-y-6">
                 <StaggerItem className="relative overflow-hidden rounded-3xl border border-white/5 bg-slate-900/40 p-8 shadow-xl backdrop-blur-xl transition-all duration-300 hover:bg-slate-900/60 hover:-translate-y-1 hover:border-amber-500/20">
                   <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-blue-500/50 to-transparent" />
@@ -189,7 +189,7 @@ export default async function AboutPage() {
           </div>
         </section>
 
-        {/* Team Section */}
+
         <section className="relative overflow-hidden py-24 bg-[oklch(12.9%_0.042_264.695)] border-t border-white/5">
           <div className="absolute inset-0 z-0 pointer-events-none">
             <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-blue-500/10 blur-[130px] rounded-full opacity-30" />
@@ -223,7 +223,7 @@ export default async function AboutPage() {
           </div>
         </section>
 
-        {/* CTA Section */}
+
         <section className="relative overflow-hidden border-t border-white/5 bg-[oklch(12.9%_0.042_264.695)] py-24">
           <div className="absolute inset-0 z-0 pointer-events-none">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/10 blur-[150px] rounded-full opacity-40 mix-blend-screen" />

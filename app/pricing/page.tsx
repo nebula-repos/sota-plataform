@@ -8,29 +8,20 @@ import { getLocale } from "@/lib/i18n/server"
 import { getDictionary } from "@/lib/i18n/get-dictionary"
 import { FadeIn, SlideUp, StaggerContainer, StaggerItem, AnimatedBackgroundBlob } from "@/components/ui/animation-wrappers"
 
+import { PricingPlan } from "@/types/pricing.interface"
+
 export default async function PricingPage() {
   const locale = await getLocale()
   const pricingCopy = await getDictionary(locale, "pricing")
-  const plans = pricingCopy.plans as Array<{
-    id: string
-    tag?: string | null
-    name: string
-    price: string
-    implementationFee?: string | null
-    originalPrice?: string | null
-    highlightLabel?: string | null
-    description: string
-    features: string[]
-    cta: string
-  }>
+  const plans = pricingCopy.plans as PricingPlan[]
 
   return (
     <div className="flex min-h-screen flex-col bg-slate-950 text-slate-100 selection:bg-amber-500/30">
       <Header />
       <main className="flex-1">
-        {/* Hero Section */}
+
         <section className="relative overflow-hidden pt-32 pb-20 lg:pt-48 lg:pb-32 bg-[oklch(20.8%_0.042_265.755)]">
-          {/* Background Effects */}
+
           <div className="absolute inset-0 z-0 pointer-events-none">
             <AnimatedBackgroundBlob
               className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80%] h-[600px] bg-blue-500/30 blur-[120px] rounded-full opacity-70 mix-blend-screen"
@@ -94,7 +85,7 @@ export default async function PricingPage() {
           </div>
         </section>
 
-        {/* Pricing Plans Section */}
+
         <section className="relative overflow-hidden py-32 bg-[oklch(12.9%_0.042_264.695)]">
           <div className="absolute inset-0 z-0 pointer-events-none">
             <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-500/30 blur-[130px] rounded-full opacity-50" />
@@ -172,14 +163,14 @@ export default async function PricingPage() {
           </div>
         </section>
 
-        {/* Included & Contact Sections */}
+
         <section className="relative overflow-hidden py-24 bg-[oklch(20.8%_0.042_265.755)] border-t border-white/5">
           <div className="absolute inset-0 z-0 pointer-events-none">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/10 blur-[150px] rounded-full opacity-40 mix-blend-screen" />
           </div>
           <div className="container relative z-10 mx-auto px-4">
             <div className="grid gap-8 lg:grid-cols-2">
-              {/* Features Grid */}
+
               <FadeIn className="relative overflow-hidden rounded-3xl border border-white/5 bg-slate-900/40 p-8 shadow-2xl backdrop-blur-xl transition-all hover:bg-slate-900/50 hover:border-amber-500/20 group">
                 <div className="mb-6">
                   <h3 className="text-2xl font-bold text-white group-hover:text-amber-100 transition-colors">{pricingCopy.included.title}</h3>
@@ -197,7 +188,7 @@ export default async function PricingPage() {
                 </ul>
               </FadeIn>
 
-              {/* Contact Card */}
+
               <FadeIn delay={0.2} className="relative overflow-hidden rounded-3xl border border-white/5 bg-slate-900/40 p-8 shadow-2xl backdrop-blur-xl transition-all hover:bg-slate-900/50 hover:border-amber-500/20 group text-center flex flex-col items-center justify-center">
                 <div className="mb-6 inline-flex size-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-amber-400 shadow-inner group-hover:scale-110 transition-transform duration-300">
                   <ArrowRight className="h-6 w-6" />
