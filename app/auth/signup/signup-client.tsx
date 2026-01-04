@@ -156,7 +156,7 @@ export function SignupClient({ copy }: SignupClientProps) {
 
               <Button
                 type="submit"
-                className="col-span-1 md:col-span-2 w-full rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold h-12 shadow-[0_0_20px_-5px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_-5px_rgba(37,99,235,0.6)] transition-all duration-300 hover:scale-[1.02] mt-2"
+                className="col-span-1 md:col-span-2 w-full rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold h-12 shadow-[0_0_20px_-5px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_-5px_rgba(37,99,235,0.6)] transition-all duration-300 hover:scale-[1.02] mt-2"
                 disabled={isLoading}
               >
                 {isLoading ? copy.submitLoading : copy.submit}

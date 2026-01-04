@@ -10,3 +10,9 @@ export interface PricingPlan {
   features: string[]
   cta: string
 }
+
+import { BaseComponentProps } from "./common.interface"
+
+export interface PricingCardProps extends BaseComponentProps {
+  plan: PricingPlan
+}

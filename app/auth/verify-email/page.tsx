@@ -18,7 +18,7 @@ export default async function VerifyEmailPage() {
       <div className="relative z-10 w-full max-w-md px-6">
         <Card className="border border-white/10 bg-slate-900/40 shadow-2xl backdrop-blur-xl overflow-hidden">
           <CardHeader className="items-center text-center pb-6 pt-10">
-            <div className="inline-flex items-center justify-center rounded-full border border-blue-500/30 bg-blue-500/10 p-3 shadow-[0_0_15px_-5px_rgba(59,130,246,0.5)] mb-6">
+            <div className="inline-flex items-center justify-center rounded-xl border border-blue-500/30 bg-blue-500/10 p-3 shadow-[0_0_15px_-5px_rgba(59,130,246,0.5)] mb-6">
               <Sparkles className="h-6 w-6 text-blue-400" aria-hidden />
             </div>
             <CardTitle className="text-2xl font-bold text-white">{copy.title}</CardTitle>

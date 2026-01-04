@@ -76,7 +76,7 @@ export async function Footer() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <div className="flex size-8 items-center justify-center rounded-full bg-slate-800 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    <div className="flex size-8 items-center justify-center rounded-xl bg-slate-800 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                       {item.label === "Instagram" && <Instagram className="h-4 w-4" aria-hidden />}
                       {item.label.startsWith("X") && <Twitter className="h-4 w-4" aria-hidden />}
                       {item.label === "LinkedIn" && <Linkedin className="h-4 w-4" aria-hidden />}
