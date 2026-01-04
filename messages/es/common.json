@@ -1,6 +1,7 @@
 {
   "header": {
     "nav": {
+      "signals": "Señales",
       "pricing": "Precios",
       "about": "Acerca de",
       "researchLines": "Líneas de investigación",

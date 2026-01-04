@@ -82,7 +82,7 @@ export function ContactForm({ copy }: { copy: ContactFormCopy }) {
       <div className="space-y-4 pt-2">
         <Button
           type="submit"
-          className="w-full rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-6 shadow-[0_0_20px_-5px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_-5px_rgba(37,99,235,0.6)] transition-all duration-300 border border-transparent hover:border-amber-500/30"
+          className="w-full rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold py-6 shadow-[0_0_20px_-5px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_-5px_rgba(37,99,235,0.6)] transition-all duration-300 border border-transparent hover:border-amber-500/30"
           disabled={isSubmitting}
         >
           {isSubmitting ? "Sending..." : copy.submit}

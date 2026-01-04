@@ -20,8 +20,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-import { Signal, SignalType } from "@/types/signal.interface"
-
 const SIGNAL_TYPE_LABELS: Record<string, string> = {
   'regulatory-legal-change': "Regulation",
   'incident-outage': "Incident",
@@ -29,8 +27,7 @@ const SIGNAL_TYPE_LABELS: Record<string, string> = {
   'market': "Market Shift",
   'technology': "Technology",
   'competitor': "Competitor",
-  'regulatory': "Regulation", // Fallback for old data
-  // Add other mappings as needed or use key as fallback
+  'regulatory': "Regulation",
 }
 
 const SIGNAL_TYPE_DEFINITIONS: Record<string, string> = {

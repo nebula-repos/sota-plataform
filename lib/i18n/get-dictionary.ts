@@ -9,6 +9,7 @@ const dictionaries = {
     contact: () => import("@/messages/en/contact.json").then((module) => module.default),
     privacy: () => import("@/messages/en/privacy.json").then((module) => module.default),
     terms: () => import("@/messages/en/terms.json").then((module) => module.default),
+    signals: () => import("@/messages/en/signals.json").then((module) => module.default),
     "auth.login": () => import("@/messages/en/auth.login.json").then((module) => module.default),
     "auth.signup": () => import("@/messages/en/auth.signup.json").then((module) => module.default),
     "auth.verify": () => import("@/messages/en/auth.verify.json").then((module) => module.default),
@@ -27,6 +28,7 @@ const dictionaries = {
     contact: () => import("@/messages/es/contact.json").then((module) => module.default),
     privacy: () => import("@/messages/es/privacy.json").then((module) => module.default),
     terms: () => import("@/messages/es/terms.json").then((module) => module.default),
+    signals: () => import("@/messages/es/signals.json").then((module) => module.default),
     "auth.login": () => import("@/messages/es/auth.login.json").then((module) => module.default),
     "auth.signup": () => import("@/messages/es/auth.signup.json").then((module) => module.default),
     "auth.verify": () => import("@/messages/es/auth.verify.json").then((module) => module.default),
@@ -46,7 +48,7 @@ export type DictionaryNamespace = {
 }[Locale]
 
 type DictionaryResult<L extends Locale, N extends keyof Dictionaries[L]> =
-  Dictionaries[L][N] extends (...args: any) => Promise<infer R> ? R : never
+  Dictionaries[L][N] extends (...args: unknown[]) => Promise<infer R> ? R : never
 
 export async function getDictionary<L extends Locale, N extends keyof Dictionaries[L]>(
   locale: L,

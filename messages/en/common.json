@@ -1,6 +1,7 @@
 {
   "header": {
     "nav": {
+      "signals": "Signals",
       "pricing": "Pricing",
       "about": "About",
       "researchLines": "Research Lines",

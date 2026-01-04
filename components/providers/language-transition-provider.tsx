@@ -20,15 +20,13 @@ export function useLanguageTransition() {
 export function LanguageTransitionProvider({ children }: { children: ReactNode }) {
   const router = useRouter()
   const [isTransitioning, setIsTransitioning] = useState(false)
-  const [pending, startTransition] = useTransition()
+  const [, startTransition] = useTransition()
 
   const switchLanguage = async (nextLocale: Locale) => {
     setIsTransitioning(true)
 
-    // Wait for the entrance animation to cover the screen
     await new Promise((resolve) => setTimeout(resolve, 300))
 
-    // Switch the locale
     document.cookie = `${LOCALE_COOKIE}=${nextLocale}; max-age=31536000; path=/`
 
     startTransition(() => {

@@ -1,4 +1,4 @@
-import { Signal, SignalType, Metric, RelatedSignal, Source, CorrelationData, MarketMapData, TableData } from "@/types/signal.interface";
+import { Signal, SignalType, Source } from "@/types/signal.interface";
 
 export const SIGNAL_TYPE_LABELS: Record<SignalType, string> = {
   academic: "Academic Research",

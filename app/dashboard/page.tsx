@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { useRouter } from "next/navigation"
 import { DashboardHeader } from "@/components/dashboard/dashboard-header"
 import { SignalList } from "@/components/dashboard/signal-selector"
@@ -58,7 +58,7 @@ export default function DashboardPage() {
   const [inviteRole, setInviteRole] = useState("user")
   const [inviteLoading, setInviteLoading] = useState(false)
 
-  const fetchSignals = async () => {
+  const fetchSignals = useCallback(async () => {
     const supabase = createClient()
     const { data, error } = await supabase
       .from('signals')
@@ -101,7 +101,7 @@ export default function DashboardPage() {
         setSelectedSignalId(mapped[0].id)
       }
     }
-  }
+  }, [selectedSignalId])
 
   const fetchTeamData = async () => {
     const supabase = createClient()
@@ -167,7 +167,6 @@ export default function DashboardPage() {
           .single()
 
         if (userData && !error) {
-          // @ts-ignore - Supabase types inference might need distinct type generation, explicit casting for now
           const org = Array.isArray(userData.organizations) ? userData.organizations[0] : userData.organizations
 
           let planName = "Free"
@@ -193,7 +192,7 @@ export default function DashboardPage() {
       }
     }
     fetchProfile()
-  }, [])
+  }, [fetchSignals])
 
   // Handlers
   const handleAddSignal = () => {
