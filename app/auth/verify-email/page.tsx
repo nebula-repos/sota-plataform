@@ -9,7 +9,7 @@ export default async function VerifyEmailPage() {
 
   return (
     <div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-slate-950 selection:bg-amber-500/30">
-      {/* Background Effects */}
+
       <div className="pointer-events-none absolute inset-0 z-0">
         <div className="absolute inset-0 bg-blue-900/10 blur-[100px]" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/10 blur-[120px] rounded-full mix-blend-screen" />

@@ -12,7 +12,7 @@ export default async function TermsPage() {
     <div className="flex min-h-screen flex-col bg-slate-950 text-slate-100 selection:bg-amber-500/30">
       <Header />
       <main className="flex-1">
-        {/* Hero Section */}
+
         <section className="relative overflow-hidden pt-32 pb-20 lg:pt-48 lg:pb-32 bg-[oklch(20.8%_0.042_265.755)]">
           <div className="absolute inset-0 z-0 pointer-events-none">
             <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80%] h-[600px] bg-blue-500/30 blur-[120px] rounded-full opacity-70 mix-blend-screen" />
@@ -30,7 +30,7 @@ export default async function TermsPage() {
           </div>
         </section>
 
-        {/* Content Section */}
+
         <section className="relative overflow-hidden py-24 bg-[oklch(12.9%_0.042_264.695)] border-t border-white/5">
           <div className="absolute inset-0 z-0 pointer-events-none">
             <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-blue-500/10 blur-[130px] rounded-full opacity-40 mix-blend-screen" />
@@ -82,7 +82,7 @@ export default async function TermsPage() {
           </div>
         </section>
 
-        {/* CTA Footer Section */}
+
         <section className="relative overflow-hidden border-t border-white/5 bg-[oklch(20.8%_0.042_265.755)] py-24">
           <div className="absolute inset-0 z-0 pointer-events-none">
             <div className="absolute inset-0 bg-blue-900/5 blur-3xl opacity-50" />

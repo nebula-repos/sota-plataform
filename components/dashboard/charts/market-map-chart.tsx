@@ -2,12 +2,7 @@
 
 import { ResponsiveContainer, ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ReferenceLine, LabelList, Cell } from "recharts"
 
-interface MarketMapChartProps {
-  data: { x: number; y: number; label: string; color?: string }[];
-  xLabel: string;
-  yLabel: string;
-  quadrants: [string, string, string, string]; // TR, TL, BL, BR
-}
+import { MarketMapChartProps } from "@/types/dashboard.interface";
 
 export function MarketMapChart({ data, xLabel, yLabel, quadrants }: MarketMapChartProps) {
   return (

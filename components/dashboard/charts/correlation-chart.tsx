@@ -2,11 +2,7 @@
 
 import { ResponsiveContainer, ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts"
 
-interface CorrelationChartProps {
-  data: { x: number; y: number; label: string, company: string }[];
-  xLabel: string;
-  yLabel: string;
-}
+import { CorrelationChartProps } from "@/types/dashboard.interface"
 
 export function CorrelationChart({ data, xLabel, yLabel }: CorrelationChartProps) {
   return (

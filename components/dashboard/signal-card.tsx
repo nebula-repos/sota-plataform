@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-export type SignalType = "academic" | "industrial" | "pricing" | "competitor" | "regulation"
+import { SignalType } from "@/types/signal.interface"
 
 export interface SignalCardProps {
   type: SignalType

@@ -7,15 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 
-export type ContactFormCopy = {
-  title: string
-  description: string
-  fields: Record<string, string>
-  consent: string
-  submit: string
-  success: string
-  error: string
-}
+import { ContactFormCopy } from "@/types/form.interface"
 
 export function ContactForm({ copy }: { copy: ContactFormCopy }) {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle")

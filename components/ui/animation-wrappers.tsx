@@ -4,12 +4,7 @@ import { motion, useScroll, useTransform, HTMLMotionProps } from "framer-motion"
 import { ReactNode, useRef } from "react"
 import { cn } from "@/lib/utils"
 
-interface AnimationProps extends HTMLMotionProps<"div"> {
-  children: ReactNode
-  className?: string
-  delay?: number
-  duration?: number
-}
+import { AnimationProps, StaggerContainerProps } from "@/types/animation.interface"
 
 export function FadeIn({ children, className, delay = 0, duration = 0.5, ...props }: AnimationProps) {
   return (
@@ -54,13 +49,6 @@ export function ScaleIn({ children, className, delay = 0, duration = 0.5, ...pro
       {children}
     </motion.div>
   )
-}
-
-interface StaggerContainerProps extends HTMLMotionProps<"div"> {
-  children: ReactNode
-  className?: string
-  delay?: number
-  staggerChildren?: number
 }
 
 export function StaggerContainer({ children, className, delay = 0, staggerChildren = 0.1, ...props }: StaggerContainerProps) {

@@ -12,26 +12,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { trackEventClient } from "@/lib/analytics-client"
-interface LoginCopy {
-  badge: string
-  headline: string
-  subhead: string
-  badgeFooter: string
-  cardTitle: string
-  cardDescription: string
-  emailLabel: string
-  emailPlaceholder: string
-  passwordLabel: string
-  submitLoading: string
-  submit: string
-  signupPrompt: string
-  signupCta: string
-  genericError: string
-}
-
-interface LoginClientProps {
-  copy: LoginCopy
-}
+import { LoginClientProps } from "@/types/auth.interface"
 
 export function LoginClient({ copy }: LoginClientProps) {
   const [email, setEmail] = useState("")
@@ -69,7 +50,7 @@ export function LoginClient({ copy }: LoginClientProps) {
 
   return (
     <div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-slate-950 selection:bg-amber-500/30">
-      {/* Background Effects */}
+
       <div className="pointer-events-none absolute inset-0 z-0">
         <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-500/20 blur-[120px] rounded-full opacity-60 mix-blend-screen" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[800px] h-[600px] bg-amber-500/10 blur-[140px] rounded-full opacity-40 mix-blend-screen" />

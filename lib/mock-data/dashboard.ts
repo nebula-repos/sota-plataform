@@ -1,4 +1,4 @@
-export type SignalType = "academic" | "industrial" | "pricing" | "competitor" | "regulation";
+import { Signal, SignalType, Metric, RelatedSignal, Source, CorrelationData, MarketMapData, TableData } from "@/types/signal.interface";
 
 export const SIGNAL_TYPE_LABELS: Record<SignalType, string> = {
   academic: "Academic Research",
@@ -16,62 +16,9 @@ export const SIGNAL_TYPE_DEFINITIONS: Record<SignalType, string> = {
   regulation: "Alerts on new legislative frameworks, compliance deadlines, and regulatory risks affecting AI and data privacy."
 };
 
-export interface Metric {
-  label: string;
-  value: string;
-  change: string;
-  trend: "positive" | "negative" | "neutral";
-}
-
-export interface RelatedSignal {
-  id: number;
-  title: string;
-  date: string;
-}
-
-export interface Source {
-  name: string
-  url: string
-}
-
-export interface CorrelationData {
-  xLabel: string;
-  yLabel: string;
-  points: { x: number; y: number; label: string; company: string }[];
-}
-
-export interface MarketMapData {
-  xLabel: string; // e.g. "Price"
-  yLabel: string; // e.g. "Feature Completeness"
-  quadrants: [string, string, string, string]; // Top-Right, Top-Left, Bottom-Left, Bottom-Right
-  points: { x: number; y: number; label: string; color?: string }[];
-}
-
-export interface TableData {
-  headers: string[];
-  rows: string[][];
-}
-
-export interface Signal {
-  id: number
-  type: SignalType
-  title: string
-  description: string
-  date: string
-  time: string
-  impact: 'high' | 'medium' | 'low'
-  sources: Source[]
-  metrics: Metric[]
-  fullAnalysis: string
-  relatedSignals: RelatedSignal[]
-  chartType?: 'revenue' | 'correlation' | 'marketMap'
-  correlationData?: CorrelationData
-  marketMapData?: MarketMapData
-  tableData?: TableData
-}
-
 // Helper to generate many sources deterministically
 const generateSources = (count: number, offset: number = 0): Source[] => {
+
   const sources = [
     { name: "Bloomberg", url: "https://www.bloomberg.com" },
     { name: "Reuters", url: "https://www.reuters.com" },
