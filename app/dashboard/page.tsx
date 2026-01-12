@@ -146,52 +146,64 @@ export default function DashboardPage() {
 
 
   useEffect(() => {
+    const supabase = createClient()
+    let isActive = true
+
     const fetchProfile = async () => {
-      const supabase = createClient()
       const { data: { user } } = await supabase.auth.getUser()
+      if (!user || !isActive) return
 
-      if (user) {
-        // Fetch public user data + organization info
-        const { data: userData, error } = await supabase
-          .from('users')
-          .select(`
-            full_name, 
-            email, 
-            role, 
-            organizations (
-              name,
-              plan_id
-            )
-          `)
-          .eq('id', user.id)
-          .single()
+      const { data: userData, error } = await supabase
+        .from('users')
+        .select(`
+          full_name, 
+          email, 
+          role, 
+          organizations (
+            name,
+            plan_id
+          )
+        `)
+        .eq('id', user.id)
+        .single()
 
-        if (userData && !error) {
-          const org = Array.isArray(userData.organizations) ? userData.organizations[0] : userData.organizations
+      if (userData && !error && isActive) {
+        const org = Array.isArray(userData.organizations) ? userData.organizations[0] : userData.organizations
 
-          let planName = "Free"
-          if (org?.plan_id) {
-            const { data: planData } = await supabase
-              .from('pricing_plans')
-              .select('name')
-              .eq('id', org.plan_id)
-              .single()
-            if (planData) planName = planData.name
-          }
-
-          setProfileData({
-            fullName: userData.full_name || user.email || "User",
-            email: userData.email,
-            role: userData.role,
-            orgName: org?.name || "No Organization",
-            planName: planName
-          })
-          fetchTeamData()
-          fetchSignals()
+        let planName = "Free"
+        if (org?.plan_id) {
+          const { data: planData } = await supabase
+            .from('pricing_plans')
+            .select('name')
+            .eq('id', org.plan_id)
+            .single()
+          if (planData) planName = planData.name
         }
+
+        setProfileData({
+          fullName: userData.full_name || user.email || "User",
+          email: userData.email,
+          role: userData.role,
+          orgName: org?.name || "No Organization",
+          planName: planName
+        })
+        fetchTeamData()
+        fetchSignals()
       }
     }
+
     fetchProfile()
+
+    const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        fetchProfile()
+      }
+    })
+
+    return () => {
+      isActive = false
+      authListener?.subscription.unsubscribe()
+    }
   }, [fetchSignals])
 
   // Handlers
@@ -424,6 +436,7 @@ export default function DashboardPage() {
           setSearchQuery={setSearchQuery}
           onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
           isSidebarOpen={isSidebarOpen}
+          isSuperAdmin={profileData?.role === "super_admin"}
         />
 
         <div className="flex h-[calc(100vh-4rem)] overflow-hidden">

@@ -24,6 +24,7 @@ export interface DashboardHeaderProps {
   setSearchQuery?: (query: string) => void
   onToggleSidebar?: () => void
   isSidebarOpen?: boolean
+  isSuperAdmin?: boolean
 }
 
 export interface MarketMapChartProps {

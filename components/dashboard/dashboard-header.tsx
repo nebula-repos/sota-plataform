@@ -1,11 +1,20 @@
-import { Bell, Search, Settings, User, PanelLeft } from "lucide-react"
+import Link from "next/link"
+import { Bell, Search, Settings, User, PanelLeft, Shield } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { toast } from "sonner"
 
 import { DashboardHeaderProps } from "@/types/dashboard.interface"
 
-export function DashboardHeader({ currentView, onNavigate, searchQuery = "", setSearchQuery, onToggleSidebar, isSidebarOpen }: DashboardHeaderProps) {
+export function DashboardHeader({
+  currentView,
+  onNavigate,
+  searchQuery = "",
+  setSearchQuery,
+  onToggleSidebar,
+  isSidebarOpen,
+  isSuperAdmin,
+}: DashboardHeaderProps) {
 
   const handleNotificationClick = () => {
     toast("No new notifications", {
@@ -35,6 +44,15 @@ export function DashboardHeader({ currentView, onNavigate, searchQuery = "", set
       </div>
 
       <div className="ml-auto flex items-center gap-4">
+        {isSuperAdmin && (
+          <Link
+            href="/super_admin"
+            className="hidden items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-amber-700 transition hover:border-amber-300 hover:bg-amber-100 md:flex"
+          >
+            <Shield className="h-4 w-4" />
+            Super Admin
+          </Link>
+        )}
         {setSearchQuery && (
           <div className="relative">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500 dark:text-gray-400" />

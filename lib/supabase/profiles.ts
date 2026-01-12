@@ -3,7 +3,7 @@ import "server-only"
 import { type PostgrestError, type SupabaseClient, type User } from "@supabase/supabase-js"
 import { getAdminClient } from "@/lib/supabase/admin"
 
-type UserProfileRole = "user" | "admin"
+type UserProfileRole = "user" | "admin" | "super_admin"
 type UserMembershipTier = "free" | "member"
 
 export interface UserProfile {
