@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
+import { Briefcase, Building2, Check, Mail, MessageCircle, Phone, User } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -12,13 +13,23 @@ import { ContactFormCopy } from "@/types/form.interface"
 export function ContactForm({ copy }: { copy: ContactFormCopy }) {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle")
   const [feedback, setFeedback] = useState("")
+  const resetTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  useEffect(() => {
+    return () => {
+      if (resetTimerRef.current) {
+        clearTimeout(resetTimerRef.current)
+      }
+    }
+  }, [])
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
     setStatus("submitting")
     setFeedback("")
 
-    const formData = new FormData(event.currentTarget)
+    const form = event.currentTarget
+    const formData = new FormData(form)
     const payload = Object.fromEntries(formData.entries()) as Record<string, string>
 
     try {
@@ -34,7 +45,14 @@ export function ContactForm({ copy }: { copy: ContactFormCopy }) {
 
       setStatus("success")
       setFeedback(copy.success)
-      event.currentTarget.reset()
+      form.reset()
+      if (resetTimerRef.current) {
+        clearTimeout(resetTimerRef.current)
+      }
+      resetTimerRef.current = setTimeout(() => {
+        setStatus("idle")
+        setFeedback("")
+      }, 5000)
     } catch (error) {
       console.error(error)
       setStatus("error")
@@ -43,56 +61,158 @@ export function ContactForm({ copy }: { copy: ContactFormCopy }) {
   }
 
   const isSubmitting = status === "submitting"
-  const inputClass = "bg-slate-900/50 border-white/10 text-slate-100 placeholder:text-slate-500 focus-visible:ring-blue-500/50 focus-visible:border-blue-500/50 transition-all duration-300 backdrop-blur-sm"
-  const labelClass = "text-slate-300 font-medium ml-1"
+  const isSuccess = status === "success"
+  const inputClass = "h-12 rounded-none border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus-visible:ring-slate-900/10 focus-visible:border-slate-300 shadow-none"
+  const textareaClass = "rounded-none border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus-visible:ring-slate-900/10 focus-visible:border-slate-300 shadow-none min-h-[140px] resize-y"
+  const labelClass = "text-slate-700 text-sm font-semibold"
+  const iconClass = "absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+  const buttonLabel = isSubmitting ? `${copy.submit}...` : copy.submit
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6" noValidate>
-      <div className="space-y-2 mb-8">
-        <h3 className="text-xl font-bold text-white">{copy.title}</h3>
-        <p className="text-sm text-slate-400 leading-relaxed">{copy.description}</p>
-      </div>
-      <div className="grid gap-5">
-        <div className="grid gap-2">
-          <Label htmlFor="name" className={labelClass}>{copy.fields.name}</Label>
-          <Input id="name" name="name" type="text" autoComplete="name" required disabled={isSubmitting} className={inputClass} />
+      {isSuccess ? (
+        <div className="flex min-h-[520px] flex-col items-center justify-center gap-4 bg-blue-950/5 px-6 text-center">
+          <span className="flex size-14 items-center justify-center rounded-full bg-blue-900 text-blue-50">
+            <Check className="h-6 w-6" aria-hidden />
+          </span>
+          <p className="text-2xl font-semibold text-slate-900 md:text-3xl">{copy.success}</p>
         </div>
-        <div className="grid gap-2">
-          <Label htmlFor="email" className={labelClass}>{copy.fields.email}</Label>
-          <Input id="email" name="email" type="email" autoComplete="email" required disabled={isSubmitting} className={inputClass} />
-        </div>
-        <div className="grid gap-2">
-          <Label htmlFor="company" className={labelClass}>{copy.fields.company}</Label>
-          <Input id="company" name="company" type="text" autoComplete="organization" disabled={isSubmitting} className={inputClass} />
-        </div>
-        <div className="grid gap-2">
-          <Label htmlFor="role" className={labelClass}>{copy.fields.role}</Label>
-          <Input id="role" name="role" type="text" autoComplete="organization-title" disabled={isSubmitting} className={inputClass} />
-        </div>
-        <div className="grid gap-2">
-          <Label htmlFor="topic" className={labelClass}>{copy.fields.topic}</Label>
-          <Input id="topic" name="topic" type="text" disabled={isSubmitting} className={inputClass} />
-        </div>
-        <div className="grid gap-2">
-          <Label htmlFor="message" className={labelClass}>{copy.fields.message}</Label>
-          <Textarea id="message" name="message" required disabled={isSubmitting} className={`${inputClass} min-h-[120px] resize-y`} />
-        </div>
-      </div>
-      <p className="text-xs text-slate-500 px-1">{copy.consent}</p>
-      <div className="space-y-4 pt-2">
-        <Button
-          type="submit"
-          className="w-full rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold py-6 shadow-[0_0_20px_-5px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_-5px_rgba(37,99,235,0.6)] transition-all duration-300 border border-transparent hover:border-amber-500/30"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? "Sending..." : copy.submit}
-        </Button>
-        {feedback && (
-          <div className={`rounded-xl px-4 py-3 text-sm font-medium border ${status === "error" ? "bg-red-500/10 border-red-500/20 text-red-400" : "bg-emerald-500/10 border-emerald-500/20 text-emerald-400"}`}>
-            {feedback}
+      ) : (
+        <>
+          <div className="space-y-3 text-center">
+            {copy.eyebrow && (
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-400">
+                {copy.eyebrow}
+              </p>
+            )}
+            <h3 className="text-2xl font-semibold text-slate-900 md:text-3xl">{copy.title}</h3>
+            <p className="text-sm text-slate-500 leading-relaxed">{copy.description}</p>
           </div>
-        )}
-      </div>
+          <div className="grid gap-5 md:grid-cols-2">
+            <div className="grid gap-2">
+              <Label htmlFor="name" className={labelClass}>{copy.fields.name}</Label>
+              <div className="relative">
+                <User className={iconClass} aria-hidden />
+                <Input
+                  id="name"
+                  name="name"
+                  type="text"
+                  autoComplete="name"
+                  placeholder={copy.placeholders.name}
+                  required
+                  disabled={isSubmitting}
+                  className={`${inputClass} pl-10`}
+                />
+              </div>
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="company" className={labelClass}>{copy.fields.company}</Label>
+              <div className="relative">
+                <Building2 className={iconClass} aria-hidden />
+                <Input
+                  id="company"
+                  name="company"
+                  type="text"
+                  autoComplete="organization"
+                  placeholder={copy.placeholders.company}
+                  disabled={isSubmitting}
+                  className={`${inputClass} pl-10`}
+                />
+              </div>
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="email" className={labelClass}>{copy.fields.email}</Label>
+              <div className="relative">
+                <Mail className={iconClass} aria-hidden />
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  placeholder={copy.placeholders.email}
+                  required
+                  disabled={isSubmitting}
+                  className={`${inputClass} pl-10`}
+                />
+              </div>
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="phone" className={labelClass}>{copy.fields.phone}</Label>
+              <div className="relative">
+                <Phone className={iconClass} aria-hidden />
+                <Input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  autoComplete="tel"
+                  placeholder={copy.placeholders.phone}
+                  disabled={isSubmitting}
+                  className={`${inputClass} pl-10`}
+                />
+              </div>
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="industry" className={labelClass}>{copy.fields.industry}</Label>
+              <div className="relative">
+                <Briefcase className={iconClass} aria-hidden />
+                <Input
+                  id="industry"
+                  name="industry"
+                  type="text"
+                  placeholder={copy.placeholders.industry}
+                  disabled={isSubmitting}
+                  className={`${inputClass} pl-10`}
+                />
+              </div>
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="help" className={labelClass}>{copy.fields.help}</Label>
+              <div className="relative">
+                <MessageCircle className={iconClass} aria-hidden />
+                <Input
+                  id="help"
+                  name="help"
+                  type="text"
+                  placeholder={copy.placeholders.help}
+                  disabled={isSubmitting}
+                  className={`${inputClass} pl-10`}
+                />
+              </div>
+            </div>
+            <div className="grid gap-2 md:col-span-2">
+              <Label htmlFor="message" className={labelClass}>{copy.fields.message}</Label>
+              <Textarea
+                id="message"
+                name="message"
+                placeholder={copy.placeholders.message}
+                required
+                disabled={isSubmitting}
+                className={textareaClass}
+              />
+            </div>
+          </div>
+          <p className="text-xs text-slate-500">{copy.consent}</p>
+          <div className="space-y-4 pt-2">
+            <Button
+              type="submit"
+              className="w-full rounded-none bg-black text-white font-semibold py-6 shadow-[0_20px_35px_-25px_rgba(15,23,42,0.6)] transition-all duration-300 hover:bg-slate-900"
+              disabled={isSubmitting}
+            >
+              <span className="flex items-center justify-center gap-2">
+                {buttonLabel}
+                <svg aria-hidden className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M3.4 3.4a1 1 0 0 1 1.04-.2l11.8 4.3a1 1 0 0 1 0 1.86l-11.8 4.3A1 1 0 0 1 3 12.75V10l7-1-7-1V3.4Z" />
+                </svg>
+              </span>
+            </Button>
+            {status === "error" && feedback && (
+              <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-600">
+                {feedback}
+              </div>
+            )}
+          </div>
+        </>
+      )}
     </form>
   )
 }

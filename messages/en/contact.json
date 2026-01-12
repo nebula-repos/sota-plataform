@@ -5,41 +5,42 @@
     "description": "Share what you are building, the teams you support, or the partnerships you have in mind. We'll route you to the right editors and operators inside SotA Research.",
     "meta": "We reply within two business days.",
     "emailLabel": "Email the team",
-    "email": "hola@sotar.ai"
+    "email": "nebula.contacto.shared@gmail.com"
   },
   "form": {
-    "title": "Send us a note",
-    "description": "Give us the context and desired outcomes. The more signal you share, the faster we can respond with a tailored plan.",
+    "eyebrow": "Complete the form",
+    "title": "We'll reach out shortly",
+    "description": "Share the essentials and we'll get back to you as soon as possible.",
     "fields": {
-      "name": "Full name",
-      "email": "Work email",
-      "company": "Organization",
-      "role": "Role or team",
-      "topic": "Focus or topic",
-      "message": "How can we help?"
+      "name": "Full name *",
+      "company": "Company",
+      "email": "Work email *",
+      "phone": "WhatsApp / Phone",
+      "industry": "Industry",
+      "help": "How can we help?",
+      "message": "Message *"
+    },
+    "placeholders": {
+      "name": "Your name",
+      "company": "Your company",
+      "email": "you@company.com",
+      "phone": "+1 555 000 0000",
+      "industry": "Select an industry",
+      "help": "Automation, AI, integrations",
+      "message": "Tell us about the challenge, expected impact, and timeline..."
     },
     "consent": "By submitting this form you agree to let SotA Research contact you about the request.",
     "submit": "Send message",
-    "success": "Thanks for reaching out. We'll come back with next steps shortly.",
+    "success": "All set! We received your message and will reach out shortly.",
     "error": "We couldn't send your message. Please try again or email us directly."
   },
   "details": {
-    "title": "Other ways to connect",
+    "title": "Direct contact",
     "items": [
       {
-        "label": "General inquiries",
-        "description": "For partnerships, research collaborations, or anything platform related.",
-        "value": "hola@sotar.ai"
-      },
-      {
-        "label": "Enterprise & onboarding",
-        "description": "Tailored programs, multi-seat deployments, or procurement needs.",
-        "value": "partners@sotar.ai"
-      },
-      {
-        "label": "Support",
-        "description": "Account questions or issues inside the platform.",
-        "value": "support@sotar.ai"
+        "label": "Email",
+        "description": "Write to us and we'll get back to you as soon as possible.",
+        "value": "nebula.contacto.shared@gmail.com"
       }
     ],
     "note": "Prefer async? Send us an email and include timelines, goals, and any relevant links to speed things up.",

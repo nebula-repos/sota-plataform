@@ -1,0 +1,23 @@
+{
+  "badge": "Invitation",
+  "headline": "You are invited to join a workspace.",
+  "subhead": "Complete your account to access the organization and start collaborating.",
+  "badgeFooter": "Instant access · Verify your email to activate the account",
+  "cardTitle": "Join the organization",
+  "cardDescription": "Create your account to accept the invitation",
+  "orgLabel": "Organization",
+  "orgPlaceholder": "Organization invitation",
+  "fullNameLabel": "Full name",
+  "fullNamePlaceholder": "John Smith",
+  "emailLabel": "Email address",
+  "emailPlaceholder": "you@example.com",
+  "emailLockedHint": "This email matches your invitation.",
+  "passwordLabel": "Password",
+  "confirmPasswordLabel": "Confirm password",
+  "submitLoading": "Creating account...",
+  "submit": "Accept invitation",
+  "loginPrompt": "Already have an account?",
+  "loginCta": "Log in",
+  "passwordMismatch": "Passwords do not match",
+  "genericError": "An error occurred"
+}
