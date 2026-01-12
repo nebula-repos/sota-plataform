@@ -231,33 +231,81 @@ export default function DashboardPage() {
     setInviteLoading(true)
     const supabase = createClient()
 
-    // Get organization ID from current user
-    const { data: { user } } = await supabase.auth.getUser()
-    if (!user) return
+    try {
+      const { data: { user } } = await supabase.auth.getUser()
+      if (!user) {
+        toast.error("You must be signed in")
+        return
+      }
 
-    const { data: userData } = await supabase.from('users').select('organization_id').eq('id', user.id).single()
-    if (!userData?.organization_id) {
-      toast.error("Organization not found")
-      setInviteLoading(false)
-      return
-    }
+      const { data: userData, error: userError } = await supabase
+        .from('users')
+        .select('organization_id')
+        .eq('id', user.id)
+        .single()
 
-    const { error } = await supabase.from('user_invitations').insert({
-      email: inviteEmail,
-      role: inviteRole,
-      organization_id: userData.organization_id,
-      status: 'pending'
-    })
+      if (userError || !userData?.organization_id) {
+        toast.error("Organization not found")
+        return
+      }
 
-    if (error) {
-      toast.error(error.message)
-    } else {
+      const { data: orgData } = await supabase
+        .from('organizations')
+        .select('name')
+        .eq('id', userData.organization_id)
+        .single()
+
+      const { data: sessionData } = await supabase.auth.getSession()
+      const accessToken = sessionData?.session?.access_token
+      if (!accessToken) {
+        toast.error("Missing session token")
+        return
+      }
+
+      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+      const functionsBase =
+        process.env.NEXT_PUBLIC_SUPABASE_FUNCTIONS_URL ||
+        (supabaseUrl ? supabaseUrl.replace(".supabase.co", ".functions.supabase.co") : "")
+
+      if (!functionsBase) {
+        toast.error("Missing functions URL")
+        return
+      }
+
+      const response = await fetch(`${functionsBase}/invite_user`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+          apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "",
+        },
+        body: JSON.stringify({
+          email: inviteEmail,
+          organization_id: userData.organization_id,
+          role: inviteRole,
+          org_name: orgData?.name ?? null,
+          invited_by: user.email ?? null,
+        }),
+      })
+
+      const responseBody = await response.json().catch(() => null)
+      const error = response.ok ? null : responseBody?.error || "Invitation failed"
+
+      if (error) {
+        toast.error(error)
+        return
+      }
+
       toast.success(`Invitation sent to ${inviteEmail}`)
       setIsInviteUserOpen(false)
       setInviteEmail("")
       fetchTeamData() // Refresh list
+    } catch (error) {
+      console.error(error)
+      toast.error("Invitation failed")
+    } finally {
+      setInviteLoading(false)
     }
-    setInviteLoading(false)
   }
 
   const handleUpdateMemberRole = async (member: TeamMember, newRole: string) => {

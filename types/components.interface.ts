@@ -47,4 +47,5 @@ export interface InfoCardProps extends BaseComponentProps {
   response?: string
   items?: Array<{ label: string; description: string; value: string }>
   socials?: SocialLink[]
+  tone?: "dark" | "light"
 }

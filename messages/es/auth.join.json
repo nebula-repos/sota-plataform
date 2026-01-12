@@ -1,0 +1,23 @@
+{
+  "badge": "Invitacion",
+  "headline": "Te invitaron a unirte a un espacio de trabajo.",
+  "subhead": "Completa tu cuenta para acceder a la organizacion y empezar a colaborar.",
+  "badgeFooter": "Acceso inmediato · Verifica tu correo para activar la cuenta",
+  "cardTitle": "Unete a la organizacion",
+  "cardDescription": "Crea tu cuenta para aceptar la invitacion",
+  "orgLabel": "Organizacion",
+  "orgPlaceholder": "Invitacion a la organizacion",
+  "fullNameLabel": "Nombre completo",
+  "fullNamePlaceholder": "Juan Perez",
+  "emailLabel": "Correo electronico",
+  "emailPlaceholder": "tu@ejemplo.com",
+  "emailLockedHint": "Este correo corresponde a tu invitacion.",
+  "passwordLabel": "Contrasena",
+  "confirmPasswordLabel": "Confirmar contrasena",
+  "submitLoading": "Creando cuenta...",
+  "submit": "Aceptar invitacion",
+  "loginPrompt": "Ya tienes una cuenta?",
+  "loginCta": "Iniciar sesion",
+  "passwordMismatch": "Las contrasenas no coinciden",
+  "genericError": "Ocurrio un error"
+}

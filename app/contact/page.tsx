@@ -39,47 +39,45 @@ export default async function ContactPage() {
         }
       />
 
-      <PageSection variant="alternate" blobs>
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_0.85fr] lg:items-start">
+      <PageSection variant="default" className="bg-slate-50 !border-0">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_0.75fr] lg:items-start">
 
-          <div className="rounded-3xl border border-white/5 bg-slate-900/30 p-8 shadow-2xl backdrop-blur-xl">
-            <div className="mb-8">
-              <h2 className="text-2xl font-bold text-white mb-2">Send us a message</h2>
-              <p className="text-slate-400">Fill out the form below and we&apos;ll get back to you shortly.</p>
-            </div>
+          <div className="rounded-none border border-slate-200 bg-white p-8 shadow-[0_35px_80px_-50px_rgba(15,23,42,0.4)] md:p-10">
             <ContactForm copy={contact.form} />
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-6">
             <InfoCard
               title={contact.details.title}
               description={contact.details.note}
               response={contact.details.response}
-            />
-
-            <div className="grid gap-4 md:grid-cols-2">
-              {contact.details.items.map((item: { label: string; description: string; value: string }) => (
-                <InfoCard
-                  key={item.value}
-                  title={item.label}
-                  description={item.description}
-                >
+              tone="light"
+            >
+              {contact.details.items?.[0] && (
+                <div className="space-y-2">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-slate-400">
+                    {contact.details.items[0].label}
+                  </p>
                   <Link
-                    href={`mailto:${item.value}`}
-                    className="inline-flex items-center gap-2 text-sm font-medium text-blue-400 hover:text-amber-400 transition-colors"
+                    href={`mailto:${contact.details.items[0].value}`}
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-slate-700 transition-colors hover:text-slate-900"
                   >
-                    <Mail className="h-4 w-4" aria-hidden />
-                    {item.value}
+                    <span className="flex size-8 items-center justify-center rounded-none bg-slate-100 text-slate-600">
+                      <Mail className="h-4 w-4" aria-hidden />
+                    </span>
+                    {contact.details.items[0].value}
                   </Link>
-                </InfoCard>
-              ))}
-            </div>
+                  <p className="text-sm text-slate-500">{contact.details.items[0].description}</p>
+                </div>
+              )}
+            </InfoCard>
 
             {socialLinks.length > 0 && (
               <InfoCard
                 title={contact.socials.title}
                 description={contact.socials.description}
                 socials={socialLinks}
+                tone="light"
               />
             )}
           </div>
