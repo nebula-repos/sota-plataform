@@ -55,8 +55,8 @@ export async function Header() {
                 {common.header.nav.myAccount}
               </Link>
             )}
-            {userProfile?.role === "admin" && (
-              <Link href="/admin" className={navLinkClass}>
+            {userProfile?.role === "super_admin" && (
+              <Link href="/super_admin" className={navLinkClass}>
                 {common.header.nav.admin}
               </Link>
             )}
@@ -98,4 +98,3 @@ export async function Header() {
     </header>
   )
 }
-

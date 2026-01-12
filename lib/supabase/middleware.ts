@@ -34,7 +34,12 @@ export async function updateSession(request: NextRequest) {
   } = await supabase.auth.getUser()
 
   // Protect dashboard and admin routes
-  if (!user && (request.nextUrl.pathname.startsWith("/dashboard") || request.nextUrl.pathname.startsWith("/admin"))) {
+  if (
+    !user &&
+    (request.nextUrl.pathname.startsWith("/dashboard") ||
+      request.nextUrl.pathname.startsWith("/admin") ||
+      request.nextUrl.pathname.startsWith("/super_admin"))
+  ) {
     const url = request.nextUrl.clone()
     url.pathname = "/auth/login"
     return NextResponse.redirect(url)
@@ -48,7 +53,21 @@ export async function updateSession(request: NextRequest) {
       console.error("Middleware failed to load user profile:", error)
     }
 
-    if (userData && userData.role !== "admin") {
+    if (userData && !["admin", "super_admin"].includes(userData.role)) {
+      const url = request.nextUrl.clone()
+      url.pathname = "/dashboard"
+      return NextResponse.redirect(url)
+    }
+  }
+
+  if (user && request.nextUrl.pathname.startsWith("/super_admin")) {
+    const { data: userData, error } = await supabase.from("users").select("role").eq("id", user.id).maybeSingle()
+
+    if (error) {
+      console.error("Middleware failed to load user profile:", error)
+    }
+
+    if (userData && userData.role !== "super_admin") {
       const url = request.nextUrl.clone()
       url.pathname = "/dashboard"
       return NextResponse.redirect(url)

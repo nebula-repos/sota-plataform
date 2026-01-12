@@ -28,7 +28,7 @@ export function LoginClient({ copy }: LoginClientProps) {
     setError(null)
 
     try {
-      const { error } = await supabase.auth.signInWithPassword({
+      const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       })
@@ -36,7 +36,17 @@ export function LoginClient({ copy }: LoginClientProps) {
 
       await trackEventClient("login", { email })
 
-      router.push("/dashboard")
+      const userId = data.user?.id
+      let nextRoute = "/dashboard"
+
+      if (userId) {
+        const { data: profile } = await supabase.from("users").select("role").eq("id", userId).maybeSingle()
+        if (profile?.role === "super_admin") {
+          nextRoute = "/super_admin"
+        }
+      }
+
+      router.replace(nextRoute)
       router.refresh()
     } catch (error: unknown) {
       setError(error instanceof Error ? error.message : copy.genericError)
