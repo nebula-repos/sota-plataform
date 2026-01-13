@@ -41,8 +41,8 @@ export function LoginClient({ copy }: LoginClientProps) {
 
       if (userId) {
         const { data: profile } = await supabase.from("users").select("role").eq("id", userId).maybeSingle()
-        if (profile?.role === "super_admin") {
-          nextRoute = "/super_admin"
+        if (profile?.role === "superadmin") {
+          nextRoute = "/superadmin"
         }
       }
 

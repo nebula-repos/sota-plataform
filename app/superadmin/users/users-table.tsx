@@ -16,7 +16,7 @@ type AdminUserRow = {
   organizations?: { name: string } | { name: string }[] | null
 }
 
-const roleOptions = ["user", "admin", "super_admin"] as const
+const roleOptions = ["user", "admin", "superadmin"] as const
 
 export function UsersTable({ users }: { users: AdminUserRow[] }) {
   const [items, setItems] = useState<AdminUserRow[]>(users)

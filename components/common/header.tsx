@@ -55,8 +55,8 @@ export async function Header() {
                 {common.header.nav.myAccount}
               </Link>
             )}
-            {userProfile?.role === "super_admin" && (
-              <Link href="/super_admin" className={navLinkClass}>
+            {userProfile?.role === "superadmin" && (
+              <Link href="/superadmin" className={navLinkClass}>
                 {common.header.nav.admin}
               </Link>
             )}

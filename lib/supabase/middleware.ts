@@ -38,7 +38,7 @@ export async function updateSession(request: NextRequest) {
     !user &&
     (request.nextUrl.pathname.startsWith("/dashboard") ||
       request.nextUrl.pathname.startsWith("/admin") ||
-      request.nextUrl.pathname.startsWith("/super_admin"))
+      request.nextUrl.pathname.startsWith("/superadmin"))
   ) {
     const url = request.nextUrl.clone()
     url.pathname = "/auth/login"
@@ -53,21 +53,21 @@ export async function updateSession(request: NextRequest) {
       console.error("Middleware failed to load user profile:", error)
     }
 
-    if (userData && !["admin", "super_admin"].includes(userData.role)) {
+    if (userData && !["admin", "superadmin"].includes(userData.role)) {
       const url = request.nextUrl.clone()
       url.pathname = "/dashboard"
       return NextResponse.redirect(url)
     }
   }
 
-  if (user && request.nextUrl.pathname.startsWith("/super_admin")) {
+  if (user && request.nextUrl.pathname.startsWith("/superadmin")) {
     const { data: userData, error } = await supabase.from("users").select("role").eq("id", user.id).maybeSingle()
 
     if (error) {
       console.error("Middleware failed to load user profile:", error)
     }
 
-    if (userData && userData.role !== "super_admin") {
+    if (userData && userData.role !== "superadmin") {
       const url = request.nextUrl.clone()
       url.pathname = "/dashboard"
       return NextResponse.redirect(url)

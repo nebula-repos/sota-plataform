@@ -436,7 +436,7 @@ export default function DashboardPage() {
           setSearchQuery={setSearchQuery}
           onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)}
           isSidebarOpen={isSidebarOpen}
-          isSuperAdmin={profileData?.role === "super_admin"}
+          isSuperAdmin={profileData?.role === "superadmin"}
         />
 
         <div className="flex h-[calc(100vh-4rem)] overflow-hidden">
