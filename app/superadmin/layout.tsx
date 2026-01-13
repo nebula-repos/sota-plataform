@@ -17,7 +17,7 @@ export default async function SuperAdminLayout({ children }: { children: ReactNo
 
   const { data: profile } = await supabase.from("users").select("role, email").eq("id", user.id).maybeSingle()
 
-  if (!profile || profile.role !== "super_admin") {
+  if (!profile || profile.role !== "superadmin") {
     redirect("/dashboard")
   }
 

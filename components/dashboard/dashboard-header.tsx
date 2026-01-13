@@ -46,7 +46,7 @@ export function DashboardHeader({
       <div className="ml-auto flex items-center gap-4">
         {isSuperAdmin && (
           <Link
-            href="/super_admin"
+            href="/superadmin"
             className="hidden items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-amber-700 transition hover:border-amber-300 hover:bg-amber-100 md:flex"
           >
             <Shield className="h-4 w-4" />

@@ -29,7 +29,7 @@ export async function PATCH(request: Request, context: RouteContext) {
 
     const { data: profile } = await supabaseServer.from("users").select("role").eq("id", user.id).maybeSingle()
 
-    if (!profile || profile.role !== "super_admin") {
+    if (!profile || profile.role !== "superadmin") {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 })
     }
 
@@ -61,7 +61,7 @@ export async function DELETE(_request: Request, context: RouteContext) {
 
     const { data: profile } = await supabaseServer.from("users").select("role").eq("id", user.id).maybeSingle()
 
-    if (!profile || profile.role !== "super_admin") {
+    if (!profile || profile.role !== "superadmin") {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 })
     }
 

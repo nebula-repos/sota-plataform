@@ -16,10 +16,10 @@ type NavItem = {
 }
 
 const navItems: NavItem[] = [
-  { label: "Overview", href: "/super_admin", icon: LayoutDashboard },
-  { label: "Leads", href: "/super_admin/leads", icon: Inbox },
-  { label: "Users", href: "/super_admin/users", icon: Users },
-  { label: "Organizations", href: "/super_admin/organizations", icon: Building2 },
+  { label: "Overview", href: "/superadmin", icon: LayoutDashboard },
+  { label: "Leads", href: "/superadmin/leads", icon: Inbox },
+  { label: "Users", href: "/superadmin/users", icon: Users },
+  { label: "Organizations", href: "/superadmin/organizations", icon: Building2 },
 ]
 
 export function SuperAdminShell({ email, children }: { email: string; children: ReactNode }) {
@@ -63,7 +63,7 @@ export function SuperAdminShell({ email, children }: { email: string; children: 
           <nav className="mt-6 flex flex-1 flex-col gap-2 px-3 text-sm">
             {navItems.map((item) => {
               const isActive =
-                pathname === item.href || (item.href !== "/super_admin" && pathname.startsWith(item.href))
+                pathname === item.href || (item.href !== "/superadmin" && pathname.startsWith(item.href))
               const Icon = item.icon
 
               return (

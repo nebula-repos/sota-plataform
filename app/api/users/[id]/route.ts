@@ -9,7 +9,7 @@ type RouteContext = {
   }
 }
 
-const allowedRoles = ["user", "admin", "super_admin"] as const
+const allowedRoles = ["user", "admin", "superadmin"] as const
 
 export async function PATCH(request: Request, context: RouteContext) {
   try {
@@ -31,7 +31,7 @@ export async function PATCH(request: Request, context: RouteContext) {
 
     const { data: profile } = await supabaseServer.from("users").select("role").eq("id", user.id).maybeSingle()
 
-    if (!profile || profile.role !== "super_admin") {
+    if (!profile || profile.role !== "superadmin") {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 })
     }
 
